@@ -26,24 +26,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		41820CAB17E0A88900E0F019 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		41820CAD17E0A88900E0F019 /* minimal-mulle-scion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "minimal-mulle-scion"; path = "/Volumes/Source/srcM/Tests/minimal-mulle-scion/build/Release/minimal-mulle-scion"; sourceTree = "<absolute>"; };
 		41820CB017E0A88900E0F019 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		41820CB317E0A88900E0F019 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		41820CBE17E0A8BA00E0F019 /* MulleScionTemplates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MulleScionTemplates.framework; sourceTree = "<group>"; };
 		41820CC017E0A92F00E0F019 /* test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = test.plist; sourceTree = "<group>"; };
 		41820CC117E0A94E00E0F019 /* test.scion */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.scion; sourceTree = "<group>"; };
+		419966FA17E0B1180088EA83 /* minimal-mulle-scion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "minimal-mulle-scion"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +55,7 @@
 			children = (
 				41820CB217E0A88900E0F019 /* minimal-mulle-scion */,
 				41820CAF17E0A88900E0F019 /* Frameworks */,
+				419966FA17E0B1180088EA83 /* minimal-mulle-scion */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,7 +95,6 @@
 			buildPhases = (
 				41820CA917E0A88900E0F019 /* Sources */,
 				41820CAA17E0A88900E0F019 /* Frameworks */,
-				41820CAB17E0A88900E0F019 /* CopyFiles */,
 				418118D917E0AB9300CF2B4D /* CopyFiles */,
 			);
 			buildRules = (
@@ -112,7 +103,7 @@
 			);
 			name = "minimal-mulle-scion";
 			productName = "minimal-mulle-scion";
-			productReference = 41820CAD17E0A88900E0F019 /* minimal-mulle-scion */;
+			productReference = 419966FA17E0B1180088EA83 /* minimal-mulle-scion */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
