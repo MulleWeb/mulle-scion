@@ -1,3 +1,7 @@
+### If you want to edit this, copy it from cmake/share to cmake. It will be
+### picked up in preference over the one in cmake/share. And it will not get
+### clobbered with the next upgrade.
+
 ### Files
 if( NOT __FILES__CMAKE__)
    set( __FILES___CMAKE__ ON)
@@ -8,8 +12,8 @@ endif()
 
 include( PreFiles OPTIONAL)
 
-include( "cmake/Headers.cmake" OPTIONAL)
-include( "cmake/Sources.cmake" OPTIONAL)
+include( Headers OPTIONAL)
+include( Sources OPTIONAL)
 
 include_directories( ${INCLUDE_DIRS})
 
@@ -19,12 +23,15 @@ set( PROJECT_FILES
    ${PROJECT_FILES}
    ${SOURCES}
    ${PUBLIC_HEADERS}
+   ${PUBLIC_GENERATED_HEADERS}
    ${PRIVATE_HEADERS}
+   ${PRIVATE_GENERATED_HEADERS}
    ${CMAKE_EDITABLE_FILES}
 )
 
 set( PROJECT_INSTALLABLE_HEADERS
    ${PUBLIC_HEADERS}
+   ${PUBLIC_GENERATED_HEADERS}
    ${PRIVATE_HEADERS}
 )
 

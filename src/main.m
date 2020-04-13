@@ -35,15 +35,12 @@
 //
 #import "import-private.h"
 
-#import "MulleScion.h"
-#import "MulleMongoose.h"
-
-#import "MulleScionObjectModel+MulleMongoose.h"
-#import "MulleScionTemplate+CompressedArchive.h"
-#import "NSFileHandle+MulleOutputFileHandle.h"
+#import "MulleScionObjectModel+WebServer.h"
+#import "WebServer.h"
+#import <MulleObjC/NSDebug.h>
 
 #include <sys/param.h>  // for MAXPATHLEN
-
+#include <unistd.h>
 
 // all C strings
 #ifndef DEBUG
@@ -532,7 +529,8 @@ static int   main_www( int argc, char *argv[])
 #if __APPLE__
    system( "(sleep 1 ; open http://" SERVER_HOST ":" SERVER_PORT ") &");
 #endif
-   mulle_mongoose_main( plist, default_options);
+   [WebServer runServerWithCStringOptions:default_options
+                               dataSource:plist];
    return( 0);
 }
 #endif

@@ -13,6 +13,7 @@
 .repos/
 .bootstrap.repos/
 .vscode/
+var/
 
 /addiction
 /bin

@@ -14,7 +14,7 @@ It will also produce the **mulle-scion** executable. This will place the Framewo
 iOS
 =====
 
-	mulle-bootstrap
+	mulle-sde craft
 	xcodebuild -target iOS
 
 to produce a static library libMulleScion.a with a set of include headers.

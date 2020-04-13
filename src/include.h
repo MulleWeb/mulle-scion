@@ -19,8 +19,7 @@
    sourcetree, then you don't need it.
  */
 
-#include "_MulleScion-include.h"
-
 /* You can add some more include statements here */
+#include "_mulle-scion-include.h"
 
 #endif
