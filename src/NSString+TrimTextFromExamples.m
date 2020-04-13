@@ -42,27 +42,27 @@
    NSRange           range;
    NSString          *s;
    NSScanner         *scanner;
-   
+
    // grab all stuff until # Example$
    // throw it away, keep the header snarf up code until ``` has been
    // encountered a second time
-   
+
    buf     = [NSMutableString string];
    scanner = [[[NSScanner alloc] initWithString:self] autorelease];
-   
+
    for( ;;)
    {
       if( ! [scanner scanUpToString:@"# Example"
                          intoString:&s])
          break;
-      
+
       // dial back to preceeding \n + 1
       range = [s rangeOfString:@"\n"
                        options:NSBackwardsSearch|NSLiteralSearch];
       if( range.length)
          s = [s substringFromIndex:range.location + 1];
       [buf appendString:s];
-      
+
       // scan up to first ``` and copy (including ```)
       if( ! [scanner scanUpToString:@"```"
                          intoString:&s])
@@ -71,7 +71,7 @@
       [scanner scanString:@"```"
                intoString:NULL];
       [buf appendString:@"```"];
-      
+
       // scan up to second ``` and copy (including ```)
       // weirdly code, because the NSScanner API is weird...
       if( ! [scanner scanUpToString:@"```"
@@ -80,11 +80,11 @@
       if( ! [scanner scanString:@"```"
                      intoString:NULL])
          break;
-      
+
       [buf appendString:s];
       [buf appendString:@"```\n"];
    }
-   
+
    return( buf);
 }
 
@@ -96,7 +96,7 @@
 - (NSData *) trimmedTextFromExamplesData
 {
    NSString   *s;
-   
+
    s = [[[NSString alloc] initWithData:self
                               encoding:NSUTF8StringEncoding] autorelease];
    s = [s stringByTrimmingTextFromExamples];

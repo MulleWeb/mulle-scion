@@ -1,0 +1,39 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"*~",
+				"*~.*",
+				"*.chk",
+				".DS_Store",
+				"._.DS_Store",
+				"*.sublime-workspace",
+				"tmp.*"
+			],
+			"folder_exclude_patterns":
+			[
+				".git",
+				".mulle/var",
+				".mulle/share",
+				".unison*",
+				"addiction",
+				"build",
+				"kitchen",
+				"dependency",
+				"stash"
+			],
+			"path": "."
+		},
+		{
+			"path": "/home/src/srcM/MulleScion/MulleScion"
+		},
+		{
+			"path": "/home/src/srcM/MulleScion/MulleHoedown"
+		},
+		{
+			"path": "/home/src/srcM/MulleScion/MulleZlib"
+		}
+	]
+}

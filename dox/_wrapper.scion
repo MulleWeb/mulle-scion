@@ -20,7 +20,7 @@
 {% block scion_contents_left %}
    {% pretty_name_from_file( pretty_name, @"{$ WRAPPED_TEMPLATE $}") %}
    <h2>{{ pretty_name }}</h2>
-   {% filter [Hoedown htmlEscapedFilter] %}
+   {% filter [MulleHoedown htmlEscapedFilter] %}
    {% includes verbatim "{$ WRAPPED_TEMPLATE $}" %}
    {% endfilter %}
 {% endblock %}
@@ -31,7 +31,7 @@
    <blockquote>
    This is the output <b>MulleScion</b> generates from the examples above.
    </blockquote>
-   {% filter [Hoedown regularFilter] %}
+   {% filter [MulleHoedown regularFilter] %}
    {% includes trimmedTextFromExamplesData "{$ WRAPPED_TEMPLATE $}" %}
    {% endfilter %}
 {% endblock %}

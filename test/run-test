@@ -9,61 +9,6 @@
 
 [ "${TRACE}" = 'YES' ] && set -x && : "$0" "$@"
 
-set -m
-
-# check if running a single test or all
-
-executable=`basename $0`
-executable=`basename $executable .sh`
-
-
-VERBOSE="YES"
-
-while [ $# -ne 0 ]
-do
-   case "$1" in
-      -v|-vv|-vvv|-V) # not really the same :)
-         VERBOSE="YES"
-      ;;
-
-      -q)
-         VERBOSE="NO"
-      ;;
-
-      --path-prefix)
-         shift # ignore argument
-      ;;
-      -*)
-         echo "unknown option $1" >&2
-         exit 1
-      ;;
-
-      *)
-         break
-      ;;
-   esac
-   shift
-done
-
-
-TEST="$1"
-shift
-
-trace_ignore()
-{
-  return 0
-}
-
-trap trace_ignore 5 6
-
-
-
-DIR=`pwd`
-shift
-
-HAVE_WARNED="NO"
-RUNS=0
-
 
 search_plist()
 {
@@ -308,17 +253,23 @@ scan_directory()
    local filename
    local root
    local dir
+   local pattern
 
    root="$1"
+   pattern="$2"
 
-   for i in [^_]*
+   if [ -z "${pattern}" ]
+   then
+      pattern='[^_]*'
+   fi
+
+   for i in $pattern
    do
       if [ -d "$i" ]
       then
-         dir=`pwd`
-         cd "$i"
-         scan_directory "$root"
-         cd "$dir"
+         (
+            cd "$i" && scan_directory "$root"
+         )
       else
          filename=`basename "$i" .scion`
          if [ "$filename" != "$i" ]
@@ -345,7 +296,7 @@ test_binary()
 
    if [ $code -eq 127 ]
    then
-      echo "$MULLE_SCION can not be run (missing shared library probably ($PWD, $PATH)" >&2
+      echo "${MULLE_SCION} can not be run (missing shared library probably ($PWD, $PATH)" >&2
       exit 1
    fi
 
@@ -370,7 +321,6 @@ absolute_path_if_relative()
 }
 
 
-
 trace_ignore()
 {
   return 0
@@ -381,19 +331,24 @@ main()
 {
    trap trace_ignore 5 6
 
+   VERBOSE="YES"
+   DIR=`pwd -P`
+   HAVE_WARNED="NO"
+   RUNS=0
+
    while [ $# -ne 0 ]
    do
       case "$1" in
-         -q)
-            VERBOSE="no"
+         -v|-vv|-vvv|-V) # not really the same :)
+            VERBOSE="YES"
          ;;
 
-         -v)
-            VERBOSE="yes"
+         -q)
+            VERBOSE="NO"
          ;;
 
          --path-prefix)
-            shift
+            shift # ignore argument
          ;;
 
          -*)
@@ -414,44 +369,11 @@ main()
    #
    # find executable
    #
-   exe=`ls -1 ./bin/mulle-scion 2> /dev/null | tail -1`
-   if [ ! -x "${exe}" ]
-   then
-      exe=`ls -1 ../kitchen/*/mulle-scion 2> /dev/null | tail -1`
-      if [ ! -x "${exe}" ]
-      then
-         exe=`ls -1 ../kitchen/mulle-scion 2> /dev/null | tail -1 2> /dev/null`
-      fi
-   fi
-
-   # old code
-   if [ -z "${exe}" ]
-   then
-      exe=`ls -1 ./bin/mulle-scion 2> /dev/null | tail -1`
-      if [ ! -x "${exe}" ]
-      then
-         exe=`ls -1 ../?uild/Products/*/mulle-scion 2> /dev/null | tail -1`
-         if [ ! -x "${exe}" ]
-         then
-            exe=`ls -1 ../?uild/*/mulle-scion 2> /dev/null | tail -1 2> /dev/null`
-            if [ ! -x "${exe}" ]
-            then
-               exe=`ls -1 ../?uild*/mulle-scion 2> /dev/null | tail -1 2> /dev/null`
-            fi
-         fi
-      fi
-   fi
-
-   if [ -x "${exe}" ]
-   then
-      MULLE_SCION="${exe}"
-   else
-      MULLE_SCION="`which mulle-scion`"
-   fi
+   MULLE_SCION="`which mulle-scion`"
 
    if [ -z "${MULLE_SCION}" ]
    then
-      echo "mulle-scion can not be found" >&2
+      echo "mulle-scion can not be found (start test inside mulle-sde)" >&2
       exit 1
    fi
 
@@ -476,14 +398,10 @@ main()
 
    test_binary "$MULLE_SCION"
 
-   DIR="`pwd -P`"
-
-   HAVE_WARNED="no"
-   RUNS=0
-
    if [ -z "$TEST" ]
    then
-      scan_directory "$DIR"
+      set +x
+      scan_directory "$DIR" "[0-9][0-9]*"
 
       if [ "$RUNS" -ne 0 ]
       then
@@ -516,13 +434,19 @@ main()
           exit 1
        fi
 
-       old=`pwd`
-       cd "${directory}"
-       run_test "$filename" "${directory}"
-       rval=$?
-       cd "$old"
-       exit $rval
+       (
+          cd "${directory}" && run_test "$filename" "${directory}"
+       )
+       exit $?
    fi
 }
+
+set -m
+
+# check if running a single test or all
+
+executable=`basename $0`
+executable=`basename $executable .sh`
+
 
 main "$@"

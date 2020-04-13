@@ -13,7 +13,7 @@
    sourcetree, then you don't need it.
  */
 
-#include "_MulleScion-include-private.h"
+#include "_mulle-scion-include-private.h"
 
 /* You can add some more include statements here */
 

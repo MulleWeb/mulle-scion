@@ -15,11 +15,6 @@
    Here the prefix is harmless and serves disambiguation. If you have no
    sourcetree, then you don't need it.
  */
-
-#import <Foundation/Foundation.h>
-
-#import "_MulleScion-import.h"
-
-/* You can add some more import statements here */
+#import "_mulle-scion-import.h"
 
 #endif

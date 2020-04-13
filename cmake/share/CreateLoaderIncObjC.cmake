@@ -1,3 +1,7 @@
+### If you want to edit this, copy it from cmake/share to cmake. It will be
+### picked up in preference over the one in cmake/share. And it will not get
+### clobbered with the next upgrade.
+
 # can be included multiple times
 # define OBJC_LOADER_INC
 #        CREATE_OBJC_LOADER_INC
@@ -8,7 +12,7 @@ if( MULLE_TRACE_INCLUDE)
    message( STATUS "# Include \"${CMAKE_CURRENT_LIST_FILE}\"" )
 endif()
 
-# this is the the second part, the option is in DefineLoaderIncObjC.cmake
+# this is the second part, the option is in DefineLoaderIncObjC.cmake
 
 if( CREATE_OBJC_LOADER_INC)
    if( NOT LIBRARY_NAME)
@@ -25,7 +29,7 @@ if( CREATE_OBJC_LOADER_INC)
    endif()
 
    if( NOT OBJC_LOADER_INC)
-      set( OBJC_LOADER_INC "${CMAKE_SOURCE_DIR}/src/objc-loader.inc")
+      set( OBJC_LOADER_INC "${CMAKE_SOURCE_DIR}/src/reflect/objc-loader.inc")
    endif()
 
    set_source_files_properties( "${OBJC_LOADER_INC}"
@@ -48,10 +52,10 @@ if( CREATE_OBJC_LOADER_INC)
 
    # The preferred way:
    #
-   # _1_MulleScion is an object library (a collection of files).
-   # _2_MulleScion is the loader with OBJC_LOADER_INC.
+   # _1_mulle-scion is an object library (a collection of files).
+   # _2_mulle-scion is the loader with OBJC_LOADER_INC.
    #
-   # Produce a static library _3_MulleScion from _1_MulleScion
+   # Produce a static library _3_mulle-scion from _1_mulle-scion
    # to feed into MULLE_OBJC_LOADER_TOOL.
    #
    # The static library is, so that the commandline doesn't overflow for
@@ -102,7 +106,7 @@ if( CREATE_OBJC_LOADER_INC)
 
    #
    # tricky: this file can only be installed during link phase.
-   #         It's installation is somewhat gratuitous now.
+   #         Used by optimization.
    #
    if( LINK_PHASE)
       install( FILES "${OBJC_LOADER_INC}" DESTINATION "include/${LIBRARY_NAME}/private")

@@ -1,4 +1,0 @@
-{# just a minimal template  #}
-{% foo = "Bochum" %}
-VfL {{ foo }} 1848
-
