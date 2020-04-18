@@ -347,10 +347,10 @@ main()
             VERBOSE="NO"
          ;;
 
-         --path-prefix)
+         --path-prefix|--serial|--no-parallel)
             shift # ignore argument
          ;;
-
+ 
          -*)
             echo "unknown option \"$1\"" >&2 && exit 1
          ;;

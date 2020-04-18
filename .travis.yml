@@ -18,17 +18,18 @@ matrix:
       dist: xenial
       sudo: required
       before_install:
-        - '[ ! -f .travis.d/before_install.linux ]      || source .travis.d/before_install.linux'
-        - '[ ! -f .travis.d/before_install-aux.linux ]  || source .travis.d/before_install-aux.linux'
-        - '[ ! -f .travis.d/before_install-user.linux ] || source .travis.d/before_install-user.linux'
+         - '[ ! -f .travis.d/before_install.linux ]      || source .travis.d/before_install.linux'
+         - '[ ! -f .travis.d/before_install-aux.linux ]  || source .travis.d/before_install-aux.linux'
+         - '[ ! -f .travis.d/before_install-user.linux ] || source .travis.d/before_install-user.linux'
+
 #
 # Uncomment if you want osx too
 #
 #    - os: osx
 #      before_install:
-#        - '[ ! -f .travis.d/before_install.darwin ]      || source .travis.d/before_install.darwin'
-#        - '[ ! -f .travis.d/before_install-aux.darwin ]  || source .travis.d/before_install-aux.darwin'
-#        - '[ ! -f .travis.d/before_install-user.darwin ] || source .travis.d/before_install-user.darwin'
+#         - '[ ! -f .travis.d/before_install.darwin ]      || source .travis.d/before_install.darwin'
+#         - '[ ! -f .travis.d/before_install-aux.darwin ]  || source .travis.d/before_install-aux.darwin'
+#         - '[ ! -f .travis.d/before_install-user.darwin ] || source .travis.d/before_install-user.darwin'
 
 
 # install:
@@ -39,7 +40,7 @@ matrix:
 #
 
 script:
-  - '[ ! -f .travis.d/script ] || source .travis.d/script'
+   - '[ ! -f .travis.d/script ] || source .travis.d/script'
 
 # before_cache:
 #    - '[ ! -f .travis.d/before_cache ] || source .travis.d/before_cache'

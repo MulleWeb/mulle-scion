@@ -39,8 +39,10 @@
 @interface WebServer : MulleCivetWebServer
 
 @property( retain) NSDictionary  *dataSource;
+@property( retain) NSString      *documentRoot;
 
 + (void) runServerWithCStringOptions:(char **) options
+                        documentRoot:(NSString *) root
                           dataSource:(id) plist;
 
 @end
