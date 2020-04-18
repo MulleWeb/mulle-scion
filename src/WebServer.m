@@ -51,6 +51,74 @@
 
 #pragma mark - Response
 
+- (BOOL) fileExists:(NSString *) fileName
+{
+   NSFileManager  *manager;
+   NSString       *dir;
+   NSString       *path;
+
+   if( ! [fileName length])
+      return( NO);
+
+   manager = [NSFileManager defaultManager];
+   dir     = [self documentRoot];
+   path    = [dir stringByAppendingPathComponent:fileName];
+   path    = [path stringByResolvingSymlinksInPath];
+   path    = [path stringByStandardizingPath];
+   return( [manager fileExistsAtPath:path]);
+}
+
+
+- (id) templateWithContentsOfFile:(NSString *) fileName
+                          options:(NSDictionary *) info
+{
+   NSString          *wrapper;
+   MulleScionParser  *parser;
+   NSMutableData     *data;
+   NSData            *search;
+   NSData            *replace;
+   NSRange           range;
+
+   wrapper = [info objectForKey:@"wrapper"];
+   if( ! wrapper)
+      return( [[[MulleScionTemplate alloc] initWithContentsOfFile:fileName] autorelease]);
+
+   // be sure, that users ain't spoofing us
+   if( ! [self fileExists:fileName])
+      return( nil);
+
+   data = [NSMutableData dataWithContentsOfMappedFile:wrapper];
+   if( ! data)
+      return( nil);
+
+   if( getenv( "MULLESCION_DUMP_FILEPATHS"))
+      fprintf( stderr, "parsing \"%s\"\n", [wrapper fileSystemRepresentation]);
+
+   search  = [@"{$ WRAPPED_TEMPLATE $}" dataUsingEncoding:NSUTF8StringEncoding];
+   replace = [fileName dataUsingEncoding:NSUTF8StringEncoding];
+
+   for(;;)
+   {
+      range = NSMakeRange( 0, [data length]);
+      range = [data rangeOfData:search
+                        options:0
+                          range:range];
+      if( range.length == 0)
+         break;
+
+      [data replaceBytesInRange:range
+                      withBytes:[replace bytes]
+                         length:[replace length]];
+   }
+
+   // no caching :)
+   parser = [[[MulleScionParser alloc] initWithData:data
+                                           fileName:wrapper] autorelease];
+   return( [parser template]);
+}
+
+
+
 - (MulleCivetWebResponse *) webResponseForWebRequest:(MulleCivetWebRequest *) request
 {
    NSURL                        *url;
@@ -75,8 +143,8 @@
       s = @"index.scion";
 
    queryDictionary = [url mulleQueryDictionary];
-   template        = [[[MulleScionTemplate alloc] initWithContentsOfFile:s
-                                                                 options:queryDictionary] autorelease];
+   template        = [self templateWithContentsOfFile:s
+                                              options:queryDictionary];
    if( ! template)
       return( [super webResponseForWebRequest:request]);
 
@@ -105,6 +173,7 @@ static void   signal_handler( int sig_num)
 
 
 + (void) runServerWithCStringOptions:(char **) options
+                        documentRoot:(NSString *) root
                           dataSource:(id) plist
 {
    WebServer   *server;
@@ -137,6 +206,7 @@ static void   signal_handler( int sig_num)
       return;
    }
    [server setDataSource:plist];
+   [server setDocumentRoot:root];
 
    NSLog( @"%s started on port(s) %s with document root \"%s\"",
        server->_server_name,

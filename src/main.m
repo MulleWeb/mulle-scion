@@ -44,7 +44,7 @@
 
 // all C strings
 #ifndef DEBUG
-# define DOCUMENT_ROOT "/usr/local/share/mulle-scion/dox"
+# define DOCUMENT_ROOT INSTALL_PREFIX "/share/mulle-scion/dox"
 #else
 # define DOCUMENT_ROOT "dox"
 #endif
@@ -509,7 +509,7 @@ static int   main_www( int argc, char *argv[])
 
    if( s)
    {
-      root = [NSString stringWithCString:s];
+      root                = [NSString stringWithCString:s];
       default_options[ 1] = s;
    }
 
@@ -530,6 +530,7 @@ static int   main_www( int argc, char *argv[])
    system( "(sleep 1 ; open http://" SERVER_HOST ":" SERVER_PORT ") &");
 #endif
    [WebServer runServerWithCStringOptions:default_options
+                             documentRoot:root
                                dataSource:plist];
    return( 0);
 }

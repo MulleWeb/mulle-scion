@@ -1,0 +1,6 @@
+# Copy .plist to resources
+
+*.plist
+!*.graffle/*.plist
+*.scion
+
