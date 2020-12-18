@@ -49,7 +49,7 @@
    if( n <= 1)
       return( [self hoedownedString]);
 
-   buf = [NSMutableString string];
+   buf = [NSMutableString object];
    for( i = 1; i < n; i += 2)
    {
       s = [components objectAtIndex:i - 1];

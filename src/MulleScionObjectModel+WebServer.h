@@ -41,9 +41,9 @@
 
 - (id) initWithString:(NSString *) s;
 
-- (id) initWithContentsOfFile:(NSString *) fileName
-                      options:(NSDictionary *) info;
-
+//- (id) initWithContentsOfFile:(NSString *) fileName
+//                      options:(NSDictionary *) info;
+//
 + (NSDictionary *) dependencyTableOfFile:(NSString *) fileName;
 
 @end

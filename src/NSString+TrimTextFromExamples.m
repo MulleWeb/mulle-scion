@@ -47,7 +47,7 @@
    // throw it away, keep the header snarf up code until ``` has been
    // encountered a second time
 
-   buf     = [NSMutableString string];
+   buf     = [NSMutableString object];
    scanner = [[[NSScanner alloc] initWithString:self] autorelease];
 
    for( ;;)

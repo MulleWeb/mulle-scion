@@ -13,7 +13,7 @@ int main(int argc, const char * argv[])
    MulleScionParser    *parser;
    NSData              *data;
    MulleScionTemplate  *template;
-   
+
    pool = [NSAutoreleasePool new];
 
    // create a compiled template
@@ -23,16 +23,16 @@ int main(int argc, const char * argv[])
    template = [parser template];
 
    // use template to produce output
-   output = [NSMutableString string];
+   output = [NSMutableString object];
    info   = [NSDictionary dictionaryWithObject:@"clever"
                                         forKey:@"stupid"];
    [template writeToOutput:output
                 dataSource:info
             localVariables:nil];
-   
+
    if( output)
       fputs( [output UTF8String], stdout);
-   
+
    return( ! [output length]);
 }
 

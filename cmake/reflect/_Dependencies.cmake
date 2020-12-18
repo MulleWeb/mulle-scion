@@ -8,7 +8,7 @@ endif()
 
 #
 # Generated from sourcetree: Foundation;no-singlephase;
-# Disable with: `mulle-sourcetree mark Foundation no-link`
+# Disable with: `mulle-sourcetree mark Foundation no-header`
 #
 if( NOT FOUNDATION_LIBRARY)
    find_library( FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}Foundation${CMAKE_STATIC_LIBRARY_SUFFIX} Foundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -93,7 +93,7 @@ endif()
 
 #
 # Generated from sourcetree: Foundation-startup;no-dynamic-link,no-header,no-intermediate-link;
-# Disable with: `mulle-sourcetree mark Foundation-startup no-link`
+# Disable with: `mulle-sourcetree mark Foundation-startup no-header`
 #
 if( NOT FOUNDATION_STARTUP_LIBRARY)
    find_library( FOUNDATION_STARTUP_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}Foundation-startup${CMAKE_STATIC_LIBRARY_SUFFIX} Foundation-startup NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -178,7 +178,7 @@ endif()
 
 #
 # Generated from sourcetree: MulleScion;no-singlephase;
-# Disable with: `mulle-sourcetree mark MulleScion no-link`
+# Disable with: `mulle-sourcetree mark MulleScion no-header`
 #
 if( NOT MULLE_SCION_LIBRARY)
    find_library( MULLE_SCION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleScion${CMAKE_STATIC_LIBRARY_SUFFIX} MulleScion NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -263,7 +263,7 @@ endif()
 
 #
 # Generated from sourcetree: MulleHoedown;no-singlephase;
-# Disable with: `mulle-sourcetree mark MulleHoedown no-link`
+# Disable with: `mulle-sourcetree mark MulleHoedown no-header`
 #
 if( NOT MULLE_HOEDOWN_LIBRARY)
    find_library( MULLE_HOEDOWN_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleHoedown${CMAKE_STATIC_LIBRARY_SUFFIX} MulleHoedown NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -348,7 +348,7 @@ endif()
 
 #
 # Generated from sourcetree: MulleWebServer;no-singlephase;
-# Disable with: `mulle-sourcetree mark MulleWebServer no-link`
+# Disable with: `mulle-sourcetree mark MulleWebServer no-header`
 #
 if( NOT MULLE_WEB_SERVER_LIBRARY)
    find_library( MULLE_WEB_SERVER_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleWebServer${CMAKE_STATIC_LIBRARY_SUFFIX} MulleWebServer NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
