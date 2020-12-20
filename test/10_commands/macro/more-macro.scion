@@ -4,7 +4,7 @@
 {% endmacro %}
 
 {% macro stress( description) %}
-{% if description %}     // want change here
+{% if description %}  // want change here
 {% endif %}
 {% while not description %}  // want change here
 {% endwhile %}
@@ -17,9 +17,9 @@
 {{ description . description }}  // change left only
 {{ description and description or description and not description }}  // change all
 
-{% [description call:description] %}         // dont' change target
+{% [description call:description] %}  // dont' change target
 
-{% description( xxx=description, description=xxx) %} // change first parameter value only
+{% description( xxx=description, description=xxx) %}  // change first parameter value only
 
 {% set description = description %}  // only change expr (second)
 {% endmacro %}
