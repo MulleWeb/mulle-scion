@@ -133,21 +133,21 @@ run()
 
    if [ "$stdout" != "-" ]
    then
-      result=`diff -q "$stdout" "$output"`
+      result=`diff -q "$output" "$stdout"`
       if [ "$result" != "" ]
       then
-         white=`diff -q -w "$stdout" "$output"`
+         white=`diff -q -w "$output" "$stdout"`
          if [ "$white" != "" ]
          then
             echo "FAILED: \"$pretty_template\" produced unexpected output" >& 2
-            echo "DIFF: ($stdout vs. $output)" >& 2
-            diff -y "$stdout" "$output" >& 2
+            echo "DIFF: ($output vs. $stdout)" >& 2
+            diff -y "$output" "$stdout" >& 2
          else
             echo "FAILED: \"$pretty_template\" produced different whitespace output" >& 2
-            echo "DIFF: ($stdout vs. $output)" >& 2
+            echo "DIFF: ($output vs. $stdout)" >& 2
             od -a "$output" > "$output".actual.hex
             od -a "$stdout" > "$output".expect.hex
-            diff -y "$output".expect.hex "$output".actual.hex >& 2
+            diff -y "$output".actual.hex "$output".expect.hex >& 2
          fi
 
          echo "DIAGNOSTICS:" >& 2
@@ -163,7 +163,7 @@ run()
       then
          echo "WARNING: \"$pretty_template\" produced unexpected diagnostics ($errput)" >& 2
          echo "" >& 2
-         diff "$stderr" "$errput" >& 2
+         diff "$errput" "$stderr" >& 2
          echo "DIAGNOSTICS:" >& 2
          cat  "$errput"
          exit 3
