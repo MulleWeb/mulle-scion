@@ -1,0 +1,20 @@
+{
+   "name" : "mulle-scion",
+   "version" : "1859.1.4",
+   "description" : "🌱 A modern template engine for Objective C",
+   "homepage" : "https://github.com/MulleWeb/mulle-scion",
+   "bugs" : "https://github.com/MulleWeb/mulle-scion/issues",
+   "keywords" : [],
+   "license" : "BSD-3-Clause",
+   "repository" : {
+      "type" : "git",
+      "url" : "MulleWeb/mulle-scion"
+   },
+   "dependencies" : {
+      "Foundation" : "MulleFoundation/Foundation",
+      "Foundation-startup" : "MulleFoundation/Foundation-startup",
+      "MulleScion" : "MulleWeb/MulleScion",
+      "MulleHoedown" : "MulleWeb/MulleHoedown",
+      "MulleWebServer" : "MulleWeb/MulleWebServer"
+   }
+}
