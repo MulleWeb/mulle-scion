@@ -267,9 +267,9 @@ scan_directory()
    do
       if [ -d "$i" ]
       then
-         (
-            cd "$i" && scan_directory "$root"
-         )
+         old="${PWD}" # keep RUNS alive so no subshell
+         cd "$i" && scan_directory "$root"
+         cd "${old}"
       else
          filename=`basename "$i" .scion`
          if [ "$filename" != "$i" ]
@@ -343,6 +343,13 @@ main()
             VERBOSE="YES"
          ;;
 
+         -t)
+            set -x
+         ;;
+
+         -lx|-ld)
+         ;;
+
          -q)
             VERBOSE="NO"
          ;;
@@ -350,7 +357,7 @@ main()
          --path-prefix|--serial|--no-parallel)
             shift # ignore argument
          ;;
- 
+
          -*)
             echo "unknown option \"$1\"" >&2 && exit 1
          ;;
@@ -400,7 +407,6 @@ main()
 
    if [ -z "$TEST" ]
    then
-      set +x
       scan_directory "$DIR" "[0-9][0-9]*"
 
       if [ "$RUNS" -ne 0 ]
