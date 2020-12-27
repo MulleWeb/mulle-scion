@@ -16,57 +16,37 @@
 //    remove:             `mulle-sourcetree mark Foundation no-header`
 //    rename:             `mulle-sde dependency|library set Foundation include whatever.h`
 //    toggle #import:     `mulle-sourcetree mark Foundation [no-]import`
-//    toggle localheader: `mulle-sourcetree mark Foundation [no-]localheader`
 //    toggle public:      `mulle-sourcetree mark Foundation [no-]public`
 //    toggle optional:    `mulle-sourcetree mark Foundation [no-]require`
 //    remove for os:      `mulle-sourcetree mark Foundation no-os-<osname>`
-# if defined( __has_include) && __has_include("Foundation.h")
-#   import "Foundation.h"   // Foundation
-# else
-#   import <Foundation/Foundation.h>   // Foundation
-# endif
+# import <Foundation/Foundation.h>   // Foundation
 
 // How to tweak the following MulleScion #import
 //    remove:             `mulle-sourcetree mark MulleScion no-header`
 //    rename:             `mulle-sde dependency|library set MulleScion include whatever.h`
 //    toggle #import:     `mulle-sourcetree mark MulleScion [no-]import`
-//    toggle localheader: `mulle-sourcetree mark MulleScion [no-]localheader`
 //    toggle public:      `mulle-sourcetree mark MulleScion [no-]public`
 //    toggle optional:    `mulle-sourcetree mark MulleScion [no-]require`
 //    remove for os:      `mulle-sourcetree mark MulleScion no-os-<osname>`
-# if defined( __has_include) && __has_include("MulleScion.h")
-#   import "MulleScion.h"   // MulleScion
-# else
-#   import <MulleScion/MulleScion.h>   // MulleScion
-# endif
+# import <MulleScion/MulleScion.h>   // MulleScion
 
 // How to tweak the following MulleHoedown #import
 //    remove:             `mulle-sourcetree mark MulleHoedown no-header`
 //    rename:             `mulle-sde dependency|library set MulleHoedown include whatever.h`
 //    toggle #import:     `mulle-sourcetree mark MulleHoedown [no-]import`
-//    toggle localheader: `mulle-sourcetree mark MulleHoedown [no-]localheader`
 //    toggle public:      `mulle-sourcetree mark MulleHoedown [no-]public`
 //    toggle optional:    `mulle-sourcetree mark MulleHoedown [no-]require`
 //    remove for os:      `mulle-sourcetree mark MulleHoedown no-os-<osname>`
-# if defined( __has_include) && __has_include("MulleHoedown.h")
-#   import "MulleHoedown.h"   // MulleHoedown
-# else
-#   import <MulleHoedown/MulleHoedown.h>   // MulleHoedown
-# endif
+# import <MulleHoedown/MulleHoedown.h>   // MulleHoedown
 
 // How to tweak the following MulleWebServer #import
 //    remove:             `mulle-sourcetree mark MulleWebServer no-header`
 //    rename:             `mulle-sde dependency|library set MulleWebServer include whatever.h`
 //    toggle #import:     `mulle-sourcetree mark MulleWebServer [no-]import`
-//    toggle localheader: `mulle-sourcetree mark MulleWebServer [no-]localheader`
 //    toggle public:      `mulle-sourcetree mark MulleWebServer [no-]public`
 //    toggle optional:    `mulle-sourcetree mark MulleWebServer [no-]require`
 //    remove for os:      `mulle-sourcetree mark MulleWebServer no-os-<osname>`
-# if defined( __has_include) && __has_include("MulleWebServer.h")
-#   import "MulleWebServer.h"   // MulleWebServer
-# else
-#   import <MulleWebServer/MulleWebServer.h>   // MulleWebServer
-# endif
+# import <MulleWebServer/MulleWebServer.h>   // MulleWebServer
 
 #ifdef __has_include
 # if __has_include( "_mulle-scion-include.h")
