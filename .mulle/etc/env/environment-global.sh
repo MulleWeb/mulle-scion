@@ -16,3 +16,9 @@ export MULLE_MATCH_PATH="${MULLE_MATCH_PATH}:dox"
 export MULLE_MATCH_FILENAMES="${MULLE_MATCH_FILENAMES}:*.plist:*.scion"
 
 
+#
+#
+#
+export MULLE_SOURCETREE_RESOLVE_TAG="NO"
+
+
