@@ -42,12 +42,6 @@ search_plist()
 }
 
 
-relpath()
-{
-   python -c "import os.path; print os.path.relpath('$1', '$2')"
-}
-
-
 run()
 {
    local template
@@ -73,7 +67,9 @@ run()
    errors=`basename $template .scion`.errors
 
    pwd=`pwd`
-   pretty_template=`relpath "$pwd"/"$template" "$root"`
+   pretty_template="$pwd/$template"
+   pretty_template="${pretty_template#${root}/}"
+
    if [ "$VERBOSE" = "YES" ]
    then
       echo "$pretty_template" >&2
@@ -380,7 +376,7 @@ main()
 
    if [ -z "${MULLE_SCION}" ]
    then
-      echo "mulle-scion can not be found (start test inside mulle-sde)" >&2
+      echo "mulle-scion can not be found (start test inside mulle-sde) PATH=\"${PATH}\"" >&2
       exit 1
    fi
 
