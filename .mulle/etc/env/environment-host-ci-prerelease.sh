@@ -401,9 +401,9 @@ export MULLE_SPRINTF_NODETYPE="git"
 
 
 #
-# mulle-sprintf url: ${MULLE_SPRINTF_URL:-https://github.com/mulle-c/mulle-sprintf/archive/${MULLE_TAG}.tar.gz}
+# mulle-sprintf url: ${MULLE_SPRINTF_URL:-https://github.com/mulle-core/mulle-sprintf/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE_SPRINTF_URL="https://github.com/mulle-c/mulle-sprintf.git"
+export MULLE_SPRINTF_URL="https://github.com/mulle-core/mulle-sprintf.git"
 
 
 #
@@ -446,6 +446,60 @@ export MULLE_MMAP_URL="https://github.com/mulle-core/mulle-mmap.git"
 # mulle-mmap branch: ${MULLE_MMAP_BRANCH}
 #
 export MULLE_MMAP_BRANCH="prerelease"
+
+
+#
+# MulleObjCLockFoundation nodetype: ${MULLE_OBJC_LOCK_FOUNDATION_NODETYPE:-tar}
+#
+export MULLE_OBJC_LOCK_FOUNDATION_NODETYPE="git"
+
+
+#
+# MulleObjCLockFoundation url: ${MULLE_OBJC_LOCK_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCLockFoundation/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_OBJC_LOCK_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCLockFoundation.git"
+
+
+#
+# MulleObjCLockFoundation branch: ${MULLE_OBJC_LOCK_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_LOCK_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# mulle-time nodetype: ${MULLE_TIME_NODETYPE:-tar}
+#
+export MULLE_TIME_NODETYPE="git"
+
+
+#
+# mulle-time url: ${MULLE_TIME_URL:-https://github.com/mulle-core/mulle-time/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_TIME_URL="https://github.com/mulle-core/mulle-time.git"
+
+
+#
+# mulle-time branch: ${MULLE_TIME_BRANCH}
+#
+export MULLE_TIME_BRANCH="prerelease"
+
+
+#
+# MulleObjCPlistFoundation nodetype: ${MULLE_OBJC_PLIST_FOUNDATION_NODETYPE:-tar}
+#
+export MULLE_OBJC_PLIST_FOUNDATION_NODETYPE="git"
+
+
+#
+# MulleObjCPlistFoundation url: ${MULLE_OBJC_PLIST_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCPlistFoundation/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_OBJC_PLIST_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCPlistFoundation.git"
+
+
+#
+# MulleObjCPlistFoundation branch: ${MULLE_OBJC_PLIST_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_PLIST_FOUNDATION_BRANCH="prerelease"
 
 
 #
@@ -554,6 +608,24 @@ export MULLE_UNICODE_URL="https://github.com/mulle-c/mulle-unicode.git"
 # mulle-unicode branch: ${MULLE_UNICODE_BRANCH}
 #
 export MULLE_UNICODE_BRANCH="prerelease"
+
+
+#
+# MulleObjCArchiverFoundation nodetype: ${MULLE_OBJC_ARCHIVER_FOUNDATION_NODETYPE:-git}
+#
+export MULLE_OBJC_ARCHIVER_FOUNDATION_NODETYPE="git"
+
+
+#
+# MulleObjCArchiverFoundation url: ${MULLE_OBJC_ARCHIVER_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCArchiverFoundation}
+#
+export MULLE_OBJC_ARCHIVER_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCArchiverFoundation.git"
+
+
+#
+# MulleObjCArchiverFoundation branch: ${MULLE_OBJC_ARCHIVER_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_ARCHIVER_FOUNDATION_BRANCH="prerelease"
 
 
 #
