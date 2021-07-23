@@ -1,3 +1,7 @@
+### 1859.1.6
+
+* Various small improvements
+
 ### 1859.1.5
 
 * Various small improvements

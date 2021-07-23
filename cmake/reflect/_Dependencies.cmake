@@ -15,7 +15,7 @@ endif()
 #
 # Generated from sourcetree: 5C7B0A16-98BA-4D02-90ED-FAD925D8C216;Foundation;no-singlephase;
 # Disable with : `mulle-sourcetree mark Foundation no-link`
-# Disable for this platform: `mulle-sourcetree mark Foundation no-cmake-platform-darwin`
+# Disable for this platform: `mulle-sourcetree mark Foundation no-cmake-platform-linux`
 #
 if( NOT FOUNDATION_LIBRARY)
    find_library( FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}Foundation${CMAKE_STATIC_LIBRARY_SUFFIX} Foundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -112,7 +112,7 @@ endif()
 #
 # Generated from sourcetree: A7F3F89B-BF3E-4326-994A-DA5BFF120CB7;Foundation-startup;no-dynamic-link,no-header,no-intermediate-link;
 # Disable with : `mulle-sourcetree mark Foundation-startup no-link`
-# Disable for this platform: `mulle-sourcetree mark Foundation-startup no-cmake-platform-darwin`
+# Disable for this platform: `mulle-sourcetree mark Foundation-startup no-cmake-platform-linux`
 #
 if( NOT FOUNDATION_STARTUP_LIBRARY)
    find_library( FOUNDATION_STARTUP_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}Foundation-startup${CMAKE_STATIC_LIBRARY_SUFFIX} Foundation-startup NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -209,7 +209,7 @@ endif()
 #
 # Generated from sourcetree: CE994F9D-CBD0-4CA9-BC81-96B12D0BBB69;MulleScion;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleScion no-link`
-# Disable for this platform: `mulle-sourcetree mark MulleScion no-cmake-platform-darwin`
+# Disable for this platform: `mulle-sourcetree mark MulleScion no-cmake-platform-linux`
 #
 if( NOT MULLE_SCION_LIBRARY)
    find_library( MULLE_SCION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleScion${CMAKE_STATIC_LIBRARY_SUFFIX} MulleScion NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -306,7 +306,7 @@ endif()
 #
 # Generated from sourcetree: 671DBE4D-4DB4-4AE9-AA29-C96136355B21;MulleHoedown;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleHoedown no-link`
-# Disable for this platform: `mulle-sourcetree mark MulleHoedown no-cmake-platform-darwin`
+# Disable for this platform: `mulle-sourcetree mark MulleHoedown no-cmake-platform-linux`
 #
 if( NOT MULLE_HOEDOWN_LIBRARY)
    find_library( MULLE_HOEDOWN_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleHoedown${CMAKE_STATIC_LIBRARY_SUFFIX} MulleHoedown NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -403,7 +403,7 @@ endif()
 #
 # Generated from sourcetree: D7FD831D-5E53-4BFD-B938-BC6C546A4D62;MulleWebServer;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleWebServer no-link`
-# Disable for this platform: `mulle-sourcetree mark MulleWebServer no-cmake-platform-darwin`
+# Disable for this platform: `mulle-sourcetree mark MulleWebServer no-cmake-platform-linux`
 #
 if( NOT MULLE_WEB_SERVER_LIBRARY)
    find_library( MULLE_WEB_SERVER_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleWebServer${CMAKE_STATIC_LIBRARY_SUFFIX} MulleWebServer NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
