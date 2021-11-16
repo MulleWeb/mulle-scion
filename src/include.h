@@ -21,5 +21,9 @@
 
 /* You can add some more include statements here */
 #include "_mulle-scion-include.h"
+#ifndef MULLE_SCION_EXTERN_GLOBAL
+# define MULLE_SCION_EXTERN_GLOBAL MULLE_C_EXTERN_GLOBAL
+#endif
+
 
 #endif

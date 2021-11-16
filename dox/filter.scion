@@ -23,7 +23,7 @@ THIS/IS/POSSIBLE
 
 There is also function `filter()` available. This will push a string argument
 through the currently active filter only (but not through the chain). If
-the filter ist stateful (like MulleHoedown), this may not produce an immediate result.
+the filter ist stateful (like MulleMarkdown), this may not produce an immediate result.
 
 #### Example 3
 ```

@@ -287,7 +287,7 @@ test_binary()
    output="$random.stdout"
    errput="$random.stderr"
 
-   $MULLE_SCION > /dev/null 2>&1
+   "${MULLE_SCION}" > /dev/null 2>&1
    code=$?
 
    if [ $code -eq 127 ]
@@ -296,9 +296,15 @@ test_binary()
       exit 1
    fi
 
+   if [ $code -eq 111 ]
+   then
+      echo "${MULLE_SCION} universe is broken (check tmp ?)" >&2
+      exit 1
+   fi
+
    if [ $code -ne 253 ]
    then
-      echo "${MULLE_SCION} is wrong executable" >&2
+      echo "${MULLE_SCION} is wrong executable ($code)" >&2
       exit 1
    fi
 

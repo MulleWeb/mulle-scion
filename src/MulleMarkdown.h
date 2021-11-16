@@ -1,9 +1,11 @@
 //
-//  Hoedown+MulleScionPrinting.h
-//  MulleScion
+//  MulleMarkdown.m
+//  mulle-scion
 //
-//  Created by Nat! on 18.02.15.
-//  Copyright (c) 2015 Mulle kybernetiK. All rights reserved.
+//  Copyright (c) 2021 Nat! - Mulle kybernetiK.
+//  Copyright (c) 2021 Codeon GmbH.
+//  All rights reserved.
+//
 //
 //  Redistribution and use in source and binary forms, with or without
 //  modification, are permitted provided that the following conditions are met:
@@ -31,12 +33,26 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
+#ifdef __has_include
+# if __has_include( "NSObject.h")
+#  import "NSObject.h"
+# endif
+#endif
+
 #import "import.h"
 
 
-@interface MulleHoedown( MulleScionPrinting)
+@interface MulleMarkdown : NSObject
+{
+   NSMutableString  *_buf;
+   BOOL             _htmlEscape;
+}
 
-- (NSString *) flushWithLocalVariables:(NSMutableDictionary *) locals
-                            dataSource:(id <MulleScionDataSource>) dataSource;
++ (id) regularFilter;
++ (id) htmlEscapedFilter;
+
+- (NSString *) hoedownedString;
+- (void) appendString:(NSString *) s;
 
 @end
+
