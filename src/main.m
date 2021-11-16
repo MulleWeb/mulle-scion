@@ -545,7 +545,7 @@ static int   _main(int argc, char *argv[])
 
    info = getInfoFromArguments();
    if( ! info)
-      return( -3);
+      return( -3);   //
 
    template = acquireTemplateFromPath( [info objectForKey:@"MulleScionRootTemplate"]);
    if( ! template)
@@ -573,7 +573,7 @@ int main( int argc, char *argv[])
    {
       MulleObjCHTMLDumpUniverseToTmp();
       MulleObjCDotdumpUniverseToTmp();
-      return( 1);
+      return( 111);
    }
 #endif
 

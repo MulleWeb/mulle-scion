@@ -31,11 +31,10 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
-#import "MulleHoedown+MulleScionPrinting.h"
+#import "MulleMarkdown+MulleScionPrinting.h"
 
 
 @implementation NSString( MulleScionPrinting)
-
 
 - (NSString *) scionHoedownedString:(BOOL) escaping
 {
@@ -78,7 +77,7 @@
 @end
 
 
-@implementation MulleHoedown (MulleScionPrinting)
+@implementation MulleMarkdown( MulleScionPrinting)
 
 - (NSString *) flushWithLocalVariables:(NSMutableDictionary *) locals
                             dataSource:(id <MulleScionDataSource>) dataSource

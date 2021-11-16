@@ -1,6 +1,8 @@
 cmake_minimum_required( VERSION 3.1)
 
 project( mulle-scion C)
+add_definitions( -DMULLE_SCION_EXTERN_GLOBAL=extern)
+
 
 
 ### mulle-sde environment

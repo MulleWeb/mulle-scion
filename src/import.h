@@ -16,5 +16,9 @@
    sourcetree, then you don't need it.
  */
 #import "_mulle-scion-import.h"
+#ifndef MULLE_SCION_EXTERN_GLOBAL
+# define MULLE_SCION_EXTERN_GLOBAL MULLE_C_EXTERN_GLOBAL
+#endif
+
 
 #endif
