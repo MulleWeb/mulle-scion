@@ -356,7 +356,7 @@ main()
             VERBOSE="NO"
          ;;
 
-         --path-prefix|--serial|--no-parallel)
+         --path-prefix|--serial|--no-parallel|--rerun)
             shift # ignore argument
          ;;
 
