@@ -161,21 +161,21 @@ export MULLE_ATEXIT_BRANCH="prerelease"
 
 
 #
-# mulle-scion nodetype: ${MULLE_SCION_NODETYPE:-tar}
+# mulle-scion nodetype: ${MULLE__SCION_NODETYPE:-tar}
 #
-export MULLE_SCION_NODETYPE="git"
+export MULLE__SCION_NODETYPE="git"
 
 
 #
-# mulle-scion url: ${MULLE_SCION_URL:-https://github.com/MulleWeb/mulle-scion/archive/${MULLE_TAG}.tar.gz}
+# mulle-scion url: ${MULLE__SCION_URL:-https://github.com/MulleWeb/mulle-scion/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE_SCION_URL="https://github.com/MulleWeb/MulleScion.git"
+export MULLE__SCION_URL="https://github.com/MulleWeb/mulle-scion.git"
 
 
 #
-# mulle-scion branch: ${MULLE_SCION_BRANCH}
+# mulle-scion branch: ${MULLE__SCION_BRANCH}
 #
-export MULLE_SCION_BRANCH="prerelease"
+export MULLE__SCION_BRANCH="prerelease"
 
 
 #
@@ -251,21 +251,21 @@ export MULLE_OBJC_STANDARD_FOUNDATION_BRANCH="prerelease"
 
 
 #
-# MulleObjCValueFoundation nodetype: ${MULLE_OBJC_VALUE_FOUNDATION_NODETYPE:-tar}
+# MulleObjCTimeFoundation nodetype: ${MULLE_OBJC_TIME_FOUNDATION_NODETYPE:-tar}
 #
-export MULLE_OBJC_VALUE_FOUNDATION_NODETYPE="git"
+export MULLE_OBJC_TIME_FOUNDATION_NODETYPE="git"
 
 
 #
-# MulleObjCValueFoundation url: ${MULLE_OBJC_VALUE_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCValueFoundation/archive/${MULLE_TAG}.tar.gz}
+# MulleObjCTimeFoundation url: ${MULLE_OBJC_TIME_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCTimeFoundation/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE_OBJC_VALUE_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCValueFoundation.git"
+export MULLE_OBJC_TIME_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCTimeFoundation.git"
 
 
 #
-# MulleObjCValueFoundation branch: ${MULLE_OBJC_VALUE_FOUNDATION_BRANCH}
+# MulleObjCTimeFoundation branch: ${MULLE_OBJC_TIME_FOUNDATION_BRANCH}
 #
-export MULLE_OBJC_VALUE_FOUNDATION_BRANCH="prerelease"
+export MULLE_OBJC_TIME_FOUNDATION_BRANCH="prerelease"
 
 
 #
@@ -521,6 +521,42 @@ export MULLE_MULTIFIFO_BRANCH="prerelease"
 
 
 #
+# mulle-time nodetype: ${MULLE_TIME_NODETYPE:-tar}
+#
+export MULLE_TIME_NODETYPE="git"
+
+
+#
+# mulle-time url: ${MULLE_TIME_URL:-https://github.com/mulle-core/mulle-time/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_TIME_URL="https://github.com/mulle-core/mulle-time.git"
+
+
+#
+# mulle-time branch: ${MULLE_TIME_BRANCH}
+#
+export MULLE_TIME_BRANCH="prerelease"
+
+
+#
+# MulleObjCValueFoundation nodetype: ${MULLE_OBJC_VALUE_FOUNDATION_NODETYPE:-tar}
+#
+export MULLE_OBJC_VALUE_FOUNDATION_NODETYPE="git"
+
+
+#
+# MulleObjCValueFoundation url: ${MULLE_OBJC_VALUE_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCValueFoundation/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_OBJC_VALUE_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCValueFoundation.git"
+
+
+#
+# MulleObjCValueFoundation branch: ${MULLE_OBJC_VALUE_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_VALUE_FOUNDATION_BRANCH="prerelease"
+
+
+#
 # MulleObjCContainerFoundation nodetype: ${MULLE_OBJC_CONTAINER_FOUNDATION_NODETYPE:-tar}
 #
 export MULLE_OBJC_CONTAINER_FOUNDATION_NODETYPE="git"
@@ -590,24 +626,6 @@ export MULLE_OBJC_LOCK_FOUNDATION_URL="https://github.com/MulleFoundation/MulleO
 # MulleObjCLockFoundation branch: ${MULLE_OBJC_LOCK_FOUNDATION_BRANCH}
 #
 export MULLE_OBJC_LOCK_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# mulle-time nodetype: ${MULLE_TIME_NODETYPE:-tar}
-#
-export MULLE_TIME_NODETYPE="git"
-
-
-#
-# mulle-time url: ${MULLE_TIME_URL:-https://github.com/mulle-core/mulle-time/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_TIME_URL="https://github.com/mulle-core/mulle-time.git"
-
-
-#
-# mulle-time branch: ${MULLE_TIME_BRANCH}
-#
-export MULLE_TIME_BRANCH="prerelease"
 
 
 #
@@ -932,6 +950,24 @@ export FOUNDATION_STARTUP_URL="https://github.com/MulleFoundation/Foundation-sta
 # Foundation-startup branch: ${FOUNDATION_STARTUP_BRANCH}
 #
 export FOUNDATION_STARTUP_BRANCH="prerelease"
+
+
+#
+# MulleScion nodetype: ${MULLE_SCION_NODETYPE:-tar}
+#
+export MULLE_SCION_NODETYPE="git"
+
+
+#
+# MulleScion url: ${MULLE_SCION_URL:-https://github.com/MulleWeb/MulleScion/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_SCION_URL="https://github.com/MulleWeb/MulleScion.git"
+
+
+#
+# MulleScion branch: ${MULLE_SCION_BRANCH}
+#
+export MULLE_SCION_BRANCH="prerelease"
 
 
 #

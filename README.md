@@ -4,14 +4,14 @@
 
 (written in an oldfashioned way)
 
-This is the command-line tool for the  [MulleScion](//github.com/MulleWeb/MulleScion)
+This is the command-line tool for the [MulleScion](//github.com/MulleWeb/MulleScion)
 library. It also provides the documentation for the project in a
 self-contained webserver.
 
 
 Build Status | Release Version
 -------------|-----------------------------------
-[![Build Status](https://travis-ci.org/MulleWeb/MulleScion.svg?branch=release)](https://travis-ci.org/MulleWeb/MulleScion) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/MulleScion.svg) [![Build Status](https://travis-ci.org/MulleWeb/MulleScion.svg?branch=release)](https://travis-ci.org/MulleWeb/MulleScion)
+[![Build Status](https://github.com/MulleWeb/mulle-scion.svg?branch=release)](https://github.com/MulleWeb/mulle-scion/actions) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/mulle-scion.svg) [![Build Status](https://github.com/MulleWeb/mulle-scion/actions/workflows/CI/badge.svg?branch=release)](https://github.com/MulleWeb/mulle-scion/actions)
 
 > This is a fork of [mulle-kybernetik/MulleScion](//github.com/mulle-kybernetik/MulleScion)
 > tailored for use in mulle-sde projects
