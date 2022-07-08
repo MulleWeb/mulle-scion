@@ -57,7 +57,7 @@ Examples:
 
 MulleScion is **heavily** (very heavily) inspired by
 
-[TWIG](//twig.sensiolabs.org/) "The flexible, fast, and secure template
+[TWIG](//twig.symfony.com/) "The flexible, fast, and secure template
 engine for PHP"
 
 *MulleScion* is fairly flexible, reasonably fast and can be made as
