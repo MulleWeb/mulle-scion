@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /usr/bin/env mulle-bash
 #
 #  run-test.sh
 #  MulleObjC
@@ -12,62 +12,17 @@
 
 MULLE_EXECUTABLE_VERSION=1.0.0
 
-##########################################################################
-###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###
-###########################################################################
-# #
-# # PRELUDE - Standard startup code for loading mulle-bashfunctions
-# #
-###
-
-#
-# Figure out MULLE_BASHFUNCTIONS_LIBEXEC_DIR on this machine if needed.
-#
-if [ -z "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}" ]
-then
-   MULLE_BASHFUNCTIONS_LIBEXEC_DIR="`mulle-bashfunctions libexec-dir`" || exit 1
-   export MULLE_BASHFUNCTIONS_LIBEXEC_DIR
-fi
-
-#
-# The booter reruns the executable either with bash or zsh, whatever the
-# system provides. On the second run --no-auto-shell will be set first.
-#
-if [ "$1" != --no-auto-shell ]
-then
-   . "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}/mulle-boot.sh" || exit 1
-else
-   shift    # get rid of --no-auto-shell
-fi
-
-
-#
-# Include mulle-bashfunctions.sh         : default functions
-#         mulle-bashfunctions-none.sh    : almost no functions
-#         mulle-bashfunctions-minimal.sh : few functions for basic scripts
-#         mulle-bashfunctions-all.sh     : everything, even obscure functions
-#
-# Do this first to get aliases
-#
-MULLE_EXECUTABLE="${BASH_SOURCE[0]:-${(%):-%x}}"
-. "${MULLE_BASHFUNCTIONS_LIBEXEC_DIR}/mulle-bashfunctions.sh" || exit 1
-
-###
-# # Now we are in bash or zsh with mulle-bashfunctions loaded
-# #
-###########################################################################
-###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###   ###
-###########################################################################
-
-
 
 search_plist()
 {
    local plist
    local root
 
-   dir=`dirname "$1"`
-   plist=`basename "$1"`
+   r_dirname "$1"
+   dir="${RVAL}"
+   r_basename "$1"
+   plist="${RVAL}"
+
    root="$2"
 
    while :
@@ -83,7 +38,8 @@ search_plist()
          break
       fi
 
-      next=`dirname "$dir"`
+      r_dirname "${dir}"
+      next="${RVAL}"
       if [ "$next" = "$dir" ]
       then
          break
@@ -121,7 +77,7 @@ run()
    pretty_template="$pwd/$template"
    pretty_template="${pretty_template#${root}/}"
 
-   if [ "$VERBOSE" = "YES" ]
+   if [ "${MULLE_FLAG_LOG_VERBOSE}" = "YES" ]
    then
       echo "$pretty_template" >&2
    fi
@@ -365,6 +321,7 @@ absolute_path_if_relative()
    case "$1" in
       .*)  echo `pwd`/"$1"
 	   ;;
+
       *)   echo "$1"
 	   ;;
    esac
@@ -373,7 +330,7 @@ absolute_path_if_relative()
 
 trace_ignore()
 {
-  return 0
+   return 0
 }
 
 
@@ -381,27 +338,25 @@ main()
 {
    trap trace_ignore 5 6
 
-   VERBOSE="YES"
    DIR=`pwd -P`
    HAVE_WARNED="NO"
    RUNS=0
 
    while [ $# -ne 0 ]
    do
+      if options_technical_flags "$1"
+      then
+         shift
+         continue
+      fi
+
       case "$1" in
-         -v|-vv|-vvv|-V) # not really the same :)
-            VERBOSE="YES"
+         -h|--help|help)
+            test::usage "${MULLE_TRACE}"
          ;;
 
-         -t)
-            set -x
-         ;;
-
-         -lx|-ld)
-         ;;
-
-         -q)
-            VERBOSE="NO"
+         -f|--force)
+            MULLE_FLAG_MAGNUM_FORCE="BOTH"
          ;;
 
          --path-prefix|--serial|--no-parallel|--rerun)
@@ -428,6 +383,13 @@ main()
    #
    eval `mulle-sde tool-env` || exit 1
 
+   log_setting "ADDICTION_DIR=\"${ADDICTION_DIR}\""
+   log_setting "CRAFTORDER_KITCHEN_DIR=\"${CRAFTORDER_KITCHEN_DIR}\""
+   log_setting "DEPENDENCY_DIR=\"${DEPENDENCY_DIR}\""
+   log_setting "KITCHEN_DIR=\"${KITCHEN_DIR}\""
+   log_setting "PATH=\"${PATH}\""
+   log_setting "MULLE_SOURCETREE_PROJECT_DIR=\"${MULLE_SOURCETREE_PROJECT_DIR}\""
+   log_setting "MULLE_SOURCETREE_STASH_DIR=\"${MULLE_SOURCETREE_STASH_DIR}\""
 
    #
    # find executable
@@ -450,13 +412,13 @@ main()
             DYLD_FALLBACK_FRAMEWORK_PATH="${DEPENDENCY_DIR}/Frameworks"
             export DYLD_FALLBACK_FRAMEWORK_PATH
             log_verbose "DYLD_FALLBACK_FRAMEWORK_PATH='${DEPENDENCY_DIR}/Frameworks'"
-            ;;
+         ;;
 
          *)
             LD_LIBRARY_PATH="${DEPENDENCY_DIR}/lib:${LD_LIBRARY_PATH}"
             export LD_LIBRARY_PATH
             log_verbose "LD_LIBRARY_PATH='${DEPENDENCY_DIR}/lib:${LD_LIBRARY_PATH}'"
-            ;;
+         ;;
       esac
    fi
 
@@ -475,13 +437,16 @@ main()
    else
        local directory
 
-       directory="`dirname "$TEST"`"
+       r_dirname "${TEST}"
+       directory="${RVAL}"
        if [ "${directory}" = "" ]
        then
           directory="."
        fi
 
-       file=`basename "$TEST"`
+       r_basename "${TEST}"
+       file="${RVAL}"
+
        filename=`basename "$file" .scion`
 
        if [ "$file" = "$filename" ]
@@ -504,11 +469,5 @@ main()
 }
 
 set -m
-
-# check if running a single test or all
-
-executable=`basename $0`
-executable=`basename $executable .sh`
-
 
 main "$@"

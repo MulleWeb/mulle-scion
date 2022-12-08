@@ -11,7 +11,7 @@ self-contained webserver.
 
 Build Status | Release Version
 -------------|-----------------------------------
-[![Build Status](https://github.com/MulleWeb/mulle-scion.svg?branch=release)](https://github.com/MulleWeb/mulle-scion/actions) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/mulle-scion.svg) [![Build Status](https://github.com/MulleWeb/mulle-scion/actions/workflows/CI/badge.svg?branch=release)](https://github.com/MulleWeb/mulle-scion/actions)
+[![Build Status](https://github.com/MulleWeb/mulle-scion/workflows/CI/badge.svg?branch=release)](https://github.com/MulleWeb/mulle-scion/actions) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/mulle-scion.svg)
 
 > This is a fork of [mulle-kybernetik/MulleScion](//github.com/mulle-kybernetik/MulleScion)
 > tailored for use in mulle-sde projects

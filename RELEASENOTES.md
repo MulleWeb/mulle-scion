@@ -1,3 +1,7 @@
+### 1859.1.9
+
+* Various small improvements
+
 ### 1859.1.8
 
 * moved generic headers into src/generic
