@@ -77,3 +77,4 @@ kitchen/
 .gdb_history
 .mulle-make-build-dir
 version.old
+.ackrc
