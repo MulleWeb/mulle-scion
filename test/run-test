@@ -399,7 +399,7 @@ main()
    if [ -z "${MULLE_SCION}" ]
    then
       echo "mulle-scion can not be found (Tip: start with \`mulle-sde test\`) PATH=\"${PATH}\" ($PWD)" >&2
-      ls -rl "${DEPENDENCY_DIR}/bin" >&2
+      ls -lR "${DEPENDENCY_DIR:-dependency}" >&2
       exit 1
    fi
 
