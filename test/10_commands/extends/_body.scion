@@ -1,5 +1,7 @@
 {# this template is not very interesting on it's own #}
+_body.scion: 2
 {% block body %}
 my body
 {% block body_extension %}default body_extension text{% endblock %}
 {% endblock %}
+_body.scion: 7

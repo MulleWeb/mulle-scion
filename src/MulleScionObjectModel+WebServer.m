@@ -63,6 +63,7 @@
 #pragma mark Convenience for mulle-scion
 
 - (id) initWithString:(NSString *) s
+           searchPath:(NSArray *) searchPath
 {
    MulleScionParser    *parser;
    NSData              *data;
@@ -70,11 +71,13 @@
    data     = [s dataUsingEncoding:NSUTF8StringEncoding];
    parser   = [[[MulleScionParser alloc] initWithData:data
                                              fileName:@"inline"] autorelease];
+   [parser setSearchPath:searchPath];
 
    [self release];
    self = [[parser template] retain];
 
    return( self);
 }
+
 
 @end

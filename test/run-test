@@ -100,7 +100,7 @@ run()
          echo "TEMPLATE CRASHED: \"$pretty_template\"" >& 2
          echo "DIAGNOSTICS:" >& 2
          cat  "$errput"
-         exit 1
+         return 1
       else
          fail=0
          while read expect
@@ -118,7 +118,7 @@ run()
          done < "$errors"
          if [ $fail -eq 1 ]
          then
-            exit 1
+            return 1
          fi
          rm "$output" "$errput" 2> /dev/null
          return 0
@@ -129,7 +129,7 @@ run()
          echo "TEMPLATE FAILED TO CRASH: \"$pretty_template\"" >& 2
          echo "DIAGNOSTICS:" >&2
          cat  "$errput"
-         exit 1
+         return 1
       fi
    fi
 
@@ -155,7 +155,7 @@ run()
 
          echo "DIAGNOSTICS:" >& 2
          cat  "$errput"
-         exit 2
+         return 2
       fi
    fi
 
@@ -169,10 +169,12 @@ run()
          diff "$errput" "$stderr" >& 2
          echo "DIAGNOSTICS:" >& 2
          cat  "$errput"
-         exit 3
+         return 3
       fi
    fi
    rm "$output" "$errput" 2> /dev/null
+
+   return 0
 }
 
 
@@ -246,7 +248,22 @@ run_test()
       stderr="-"
    fi
 
+   local rc
+
    run "$template" "$plist" "$stdin" "$stdout" "$stderr"
+   rc="$?"
+
+   if [ $rc -eq 0 ]
+   then
+      return
+   fi
+
+   if [ "${STRICT}" = 'YES' ]
+   then
+      exit $rc
+   fi
+
+   FAILS=$(( FAILS + 1))
 }
 
 
@@ -341,6 +358,8 @@ main()
    DIR=`pwd -P`
    HAVE_WARNED="NO"
    RUNS=0
+   FAILS=0
+   STRICT='YES'
 
    while [ $# -ne 0 ]
    do
@@ -357,6 +376,10 @@ main()
 
          -f|--force)
             MULLE_FLAG_MAGNUM_FORCE="BOTH"
+         ;;
+
+         --lenient)
+            STRICT='NO'
          ;;
 
          --path-prefix|--serial|--no-parallel|--rerun)
@@ -428,9 +451,15 @@ main()
    then
       scan_directory "$DIR" "[0-9][0-9]*"
 
-      if [ "$RUNS" -ne 0 ]
+      if [ $RUNS -ne 0 ]
       then
-          echo "All tests ($RUNS) passed successfully"
+         if [ $FAILS -eq 0 ]
+         then
+            echo "All $RUNS tests passed successfully"
+         else
+            echo "$FAILS tests out of $RUNS failed"
+            exit 1
+         fi
       else
          fail "no tests found"
       fi

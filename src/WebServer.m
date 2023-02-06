@@ -91,9 +91,6 @@
    if( ! data)
       return( nil);
 
-   if( getenv( "MULLESCION_DUMP_FILEPATHS"))
-      fprintf( stderr, "parsing \"%s\"\n", [wrapper fileSystemRepresentation]);
-
    search  = [@"{$ WRAPPED_TEMPLATE $}" dataUsingEncoding:NSUTF8StringEncoding];
    replace = [fileName dataUsingEncoding:NSUTF8StringEncoding];
 
@@ -114,6 +111,10 @@
    // no caching :)
    parser = [[[MulleScionParser alloc] initWithData:data
                                            fileName:wrapper] autorelease];
+
+   if( [parser debugFilePaths])
+      fprintf( stderr, "parsing \"%s\"\n", [wrapper fileSystemRepresentation]);
+
    return( [parser template]);
 }
 

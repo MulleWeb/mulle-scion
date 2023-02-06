@@ -24,18 +24,6 @@
 #import <Foundation/Foundation.h>   // Foundation
 
 // You can tweak the following #import with these commands.
-// (Use CE994F9D-CBD0-4CA9-BC81-96B12D0BBB69 instead of MulleScion if there are duplicate entries)
-//    remove #import: : `mulle-sde dependency mark MulleScion no-header`
-//    rename:              `mulle-sde dependency|library set MulleScion include whatever.h`
-//    reorder:             `mulle-sde dependency move MulleScion <up|down>`
-//    toggle #import:     `mulle-sde dependency mark MulleScion [no-]import`
-//    toggle public:       `mulle-sde dependency mark MulleScion [no-]public`
-//    toggle optional:     `mulle-sde dependency mark MulleScion [no-]require`
-//    remove for platform: `mulle-sde dependency mark MulleScion no-platform-<uname>`
-//        (use `mulle-sourcetree-to-c --unames` to list known values)
-#import <MulleScion/MulleScion.h>   // MulleScion
-
-// You can tweak the following #import with these commands.
 // (Use 671DBE4D-4DB4-4AE9-AA29-C96136355B21 instead of MulleHoedown if there are duplicate entries)
 //    remove #import: : `mulle-sde dependency mark MulleHoedown no-header`
 //    rename:              `mulle-sde dependency|library set MulleHoedown include whatever.h`
@@ -58,6 +46,18 @@
 //    remove for platform: `mulle-sde dependency mark MulleWebServer no-platform-<uname>`
 //        (use `mulle-sourcetree-to-c --unames` to list known values)
 #import <MulleWebServer/MulleWebServer.h>   // MulleWebServer
+
+// You can tweak the following #import with these commands.
+// (Use CE994F9D-CBD0-4CA9-BC81-96B12D0BBB69 instead of MulleScion if there are duplicate entries)
+//    remove #import: : `mulle-sde dependency mark MulleScion no-header`
+//    rename:              `mulle-sde dependency|library set MulleScion include whatever.h`
+//    reorder:             `mulle-sde dependency move MulleScion <up|down>`
+//    toggle #import:     `mulle-sde dependency mark MulleScion [no-]import`
+//    toggle public:       `mulle-sde dependency mark MulleScion [no-]public`
+//    toggle optional:     `mulle-sde dependency mark MulleScion [no-]require`
+//    remove for platform: `mulle-sde dependency mark MulleScion no-platform-<uname>`
+//        (use `mulle-sourcetree-to-c --unames` to list known values)
+#import <MulleScion/MulleScion.h>   // MulleScion
 
 #ifdef __has_include
 # if __has_include( "_mulle-scion-include.h")
