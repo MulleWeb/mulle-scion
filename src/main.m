@@ -65,6 +65,7 @@ static void   usage( void)
    fprintf( stderr,
 "\n"
 "Options:\n"
+"   -I       : set search path for {%% includes ... %%} statements\n"
 "   -w       : start webserver for " DOCUMENT_ROOT "\n"
 "   -z       : write compressed archive to outputfile\n"
 "   -Z       : write compressed keyed archive to outputfile (for IOS)\n"
@@ -97,7 +98,7 @@ static void   usage( void)
 
 
 static NSFileHandle  *outputStreamWithInfo( NSDictionary *info);
-static NSDictionary  *getInfoFromArguments( void);
+static NSDictionary  *getInfoFromArguments( NSArray *arguments);
 static id            acquirePropertyListOrDataSourceFromBundle( NSString *s);
 
 
@@ -150,7 +151,8 @@ static NSDictionary  *localVariablesFromInfo( NSDictionary *info)
 }
 
 
-static MulleScionTemplate   *acquireTemplateFromPath( NSString *fileName)
+static MulleScionTemplate   *acquireTemplateFromPath( NSString *fileName,
+                                                      NSArray *searchPath)
 {
    MulleScionTemplate   *template;
    NSString             *string;
@@ -162,14 +164,16 @@ static MulleScionTemplate   *acquireTemplateFromPath( NSString *fileName)
    // if fileName stars with '{' assume, that it's a command line template
    //
    if( [fileName hasPrefix:@"{"]) //  on her milk white neck ... the devil's mark
-      template = [[[MulleScionTemplate alloc] initWithString:fileName] autorelease];
+      template = [[[MulleScionTemplate alloc] initWithString:fileName
+                                                  searchPath:searchPath] autorelease];
    else
       if( [fileName isEqualToString:@"-"])
       {
          data   = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
          string = [[[NSString alloc] initWithData:data
                                          encoding:NSUTF8StringEncoding] autorelease];
-         template = [[[MulleScionTemplate alloc] initWithString:string] autorelease];
+         template = [[[MulleScionTemplate alloc] initWithString:string
+                                                     searchPath:searchPath] autorelease];
 
       }
       else
@@ -177,10 +181,12 @@ static MulleScionTemplate   *acquireTemplateFromPath( NSString *fileName)
          if( [fileName rangeOfString:@"://"].length)
          {
             url      = [NSURL URLWithString:fileName];
-            template = [[[MulleScionTemplate alloc] initWithContentsOfFile:url] autorelease];
+            template = [[[MulleScionTemplate alloc] initWithContentsOfFile:url
+                                                                searchPath:searchPath] autorelease];
          }
          else
-            template = [[[MulleScionTemplate alloc] initWithFile:fileName] autorelease];
+            template = [[[MulleScionTemplate alloc] initWithFile:fileName
+                                                      searchPath:searchPath] autorelease];
       }
 
    if( ! template)
@@ -326,8 +332,6 @@ static NSDictionary  *getInfoFromEnumerator( NSEnumerator *rover)
    NSString              *templateName;
    id                    plist;
 
-   [rover nextObject];  // skip
-
    info         = [NSMutableDictionary dictionary];
    templateName = [rover nextObject];
    plistName    = [rover nextObject];
@@ -372,11 +376,8 @@ usage:
 }
 
 
-static NSDictionary  *getInfoFromArguments( void)
+static NSDictionary  *getInfoFromArguments( NSArray *arguments)
 {
-   NSArray   *arguments;
-
-   arguments = [[NSProcessInfo processInfo] arguments];
    return( getInfoFromEnumerator( [arguments objectEnumerator]));
 }
 
@@ -394,14 +395,10 @@ static NSFileHandle   *outputStreamWithInfo( NSDictionary *info)
 }
 
 
-static void  loadBundles( void)
+static void  loadBundles( NSEnumerator *rover)
 {
-   NSEnumerator   *rover;
-   NSBundle       *bundle;
-   NSString       *argument;
-
-   rover = [[[NSProcessInfo processInfo] arguments] objectEnumerator];
-   [rover nextObject];
+   NSBundle   *bundle;
+   NSString   *argument;
 
    while( argument = [rover nextObject])
    {
@@ -411,6 +408,7 @@ static void  loadBundles( void)
       bundle = [NSBundle bundleWithIdentifier:argument];
       if( ! bundle)
          bundle = [NSBundle bundleWithPath:argument];
+
 #ifdef __MULLE_OBJC__
       if( ! [bundle loadBundle])
 #else
@@ -424,19 +422,14 @@ static void  loadBundles( void)
 }
 
 
-static int   _archive_main( int argc, char *argv[], BOOL keyed)
+static int   _archive_main( NSArray *arguments, NSArray *searchPath, BOOL keyed)
 {
    MulleScionTemplate   *template;
-   NSArray              *arguments;
    NSDictionary         *info;
    NSEnumerator         *rover;
    NSString             *archiveName;
 
-   arguments = [[NSProcessInfo processInfo] arguments];
-   rover     = [arguments objectEnumerator];
-   [rover nextObject];  // skip -z
-
-   info = getInfoFromEnumerator( rover);
+   info  = getInfoFromArguments( arguments);
    if( ! info)
       return( -3);
 
@@ -444,7 +437,7 @@ static int   _archive_main( int argc, char *argv[], BOOL keyed)
    if( [archiveName isEqualToString:@"-"])
       return( -3);
 
-   template = acquireTemplateFromPath( archiveName);
+   template = acquireTemplateFromPath( archiveName, searchPath);
 
    if( ! template)
       return( -1);
@@ -476,42 +469,41 @@ static char    *default_options[] =
 };
 
 
-static int   main_www( int argc, char *argv[])
+static int   main_www( NSArray *arguments, NSArray *searchPath)
 {
-   id         plist;
-   char       *s;
-   NSString   *path;
-   NSString   *root;
-   char       buf[ MAXPATHLEN + 1];
+   id            plist;
+   char          *s;
+   NSString      *path;
+   NSString      *root;
+   char          buf[ MAXPATHLEN + 1];
+   NSEnumerator  *rover;
 
-   loadBundles();
+   rover = [arguments objectEnumerator];
+   root  = [rover nextObject];
 
-   s = DOCUMENT_ROOT;
-   if( s[ 0] != '/')
+   if( ! root)
    {
-      if( getcwd( buf, MAXPATHLEN + 1))
+      s = getenv( "MulleScionServerRoot");
+      if( ! s)
       {
-         if( strlen( buf) + strlen( s) + 2 <= MAXPATHLEN)
+         s = DOCUMENT_ROOT;
+         if( s[ 0] != '/')
          {
-            strcat( buf, "/");
-            strcat( buf, s);
-            s = buf;
+            if( getcwd( buf, MAXPATHLEN + 1))
+            {
+               if( strlen( buf) + strlen( s) + 2 <= MAXPATHLEN)
+               {
+                  strcat( buf, "/");
+                  strcat( buf, s);
+                  s = buf;
+               }
+            }
          }
       }
+      root = [NSString stringWithCString:s];
    }
-   root = [NSString stringWithCString:s];
 
-   // hack to get something else going
-   if( argc)
-      s = argv[ 0];
-   else
-      s = getenv( "MulleScionServerRoot");
-
-   if( s)
-   {
-      root                = [NSString stringWithCString:s];
-      default_options[ 1] = s;
-   }
+   default_options[ 1] = [root UTF8String];
 
    s = getenv( "MulleScionServerPort");
    if( s)
@@ -526,6 +518,8 @@ static int   main_www( int argc, char *argv[])
    if( ! plist)
       plist = [NSDictionary dictionary];
 
+   loadBundles( rover);
+
 #if __APPLE__
    system( "(sleep 1 ; open http://" SERVER_HOST ":" SERVER_PORT ") &");
 #endif
@@ -537,17 +531,18 @@ static int   main_www( int argc, char *argv[])
 #endif
 
 
-static int   _main(int argc, char *argv[])
+static int   _main( NSArray *arguments, NSArray *searchPath)
 {
    NSDictionary         *info;
    NSFileHandle         *stream;
    MulleScionTemplate   *template;
 
-   info = getInfoFromArguments();
+   info = getInfoFromArguments( arguments);
    if( ! info)
       return( -3);   //
 
-   template = acquireTemplateFromPath( [info objectForKey:@"MulleScionRootTemplate"]);
+   template = acquireTemplateFromPath( [info objectForKey:@"MulleScionRootTemplate"],
+                                       searchPath);
    if( ! template)
       return( -1);
 
@@ -566,6 +561,12 @@ int main( int argc, char *argv[])
 {
    NSAutoreleasePool   *pool;
    int                 rval;
+   int                 i;
+   int                 webserver;
+   int                 compressed;
+   NSMutableArray      *searchPath;
+   NSMutableArray      *arguments;
+   NSString            *s;
 
 #if defined( __MULLE_OBJC__) && defined( DEBUG)
    if( mulle_objc_global_check_universe( __MULLE_OBJC_UNIVERSENAME__) !=
@@ -577,37 +578,76 @@ int main( int argc, char *argv[])
    }
 #endif
 
-   if( argc > 1)
+   webserver  = 0;
+   compressed = -1;
+   searchPath = nil;
+
+   for( i = 1; i < argc && argv[ i][ 0] == '-'; i++)
    {
-      if( ! strcmp( argv[ 1], "--version"))
+      if( argv[ i][ 1] == '-')
       {
-         printf( "%s\n", MulleScionFrameworkVersion);
-         return( 0);
+         if( ! strcmp( &argv[ i][ 2], "version"))
+         {
+            printf( "%s\n", MulleScionFrameworkVersion);
+            return( 0);
+         }
+         usage();
+         return( strcmp( &argv[ i][ 2], "help"));
       }
 
-      if( ! strcmp( argv[ 1], "-h") || ! strcmp( argv[ 1], "--help"))
+      if( argv[ i][ 1] != 0 && argv[ i][ 2] == 0)
       {
-         usage();
-         return( 0);
+         switch( argv[ i][ 1])
+         {
+         case 'h' :
+            usage();
+            return( 0);
+
+         case 'w' :
+            webserver = 1;
+            continue;
+
+         case 'z' :
+            compressed = 0;
+            continue;
+
+         case 'Z' :
+            compressed = 1;
+            continue;
+
+         case 'I' :
+            if( ++i >= argc)
+               break;
+            searchPath = searchPath ? searchPath : [NSMutableArray array];
+            s          = [NSString stringWithUTF8String:argv[ i]];
+            [searchPath addObjectsFromArray:[s componentsSeparatedByString:@":"]];
+            continue;
+         }
       }
+      usage();
+      return( 1);
+   }
+
+
+   arguments = [NSMutableArray array];
+   while( i < argc)
+   {
+      s = [NSString stringWithUTF8String:argv[ i]];
+      [arguments addObject:s];
+      i++;
+   }
 
 #ifndef DONT_HAVE_WEBSERVER
-      if( ! strcmp( argv[ 1], "-w"))
-      {
-         return( main_www( argc - 2, &argv[ 2]));
-      }
+   if( webserver)
+      return( main_www( arguments, searchPath));
 #endif
 
-      if( ! strcmp( argv[ 1], "-z"))
-         return( _archive_main( argc - 2, &argv[ 2], NO));
-
-      if( ! strcmp( argv[ 1], "-Z"))
-         return( _archive_main( argc - 2, &argv[ 2], YES));
-   }
+   if( compressed >= 0)
+      return( _archive_main( arguments, searchPath, compressed));
 
    pool = [NSAutoreleasePool new];
 NS_DURING
-   rval = _main( argc, argv);
+   rval = _main( arguments, searchPath);
 NS_HANDLER
    NSLog( @"%@", localException);
    rval = -4;

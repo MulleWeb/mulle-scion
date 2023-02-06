@@ -17,6 +17,7 @@ MulleScionVariable-> MulleScionIdentifierExpression;
 MulleScionOperatorExpression-> MulleScionExpression;
 MulleScionUnaryOperatorExpression-> MulleScionOperatorExpression;
 MulleScionNot-> MulleScionUnaryOperatorExpression;
+MulleScionParenthesis-> MulleScionUnaryOperatorExpression;
 MulleScionBinaryOperatorExpression-> MulleScionOperatorExpression;
 MulleScionAnd-> MulleScionBinaryOperatorExpression;
 MulleScionOr-> MulleScionBinaryOperatorExpression;

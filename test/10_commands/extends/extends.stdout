@@ -1,7 +1,16 @@
+extends.scion: 1
+_header.scion: 2
 replaced the whole header
+_header.scion: 7
+_body.scion: 2
 my body
 extended the body
+_body.scion: 7
+_footer.scion: 2
 my footer
 it's tricky tricky tricky
+_footer.scion: 7
+_hackish.scion: 2
 A bit of a mind bender but useful for doing a little multiple inheritance.
-
+_hackish.scion: 8
+_empty.scion: 2

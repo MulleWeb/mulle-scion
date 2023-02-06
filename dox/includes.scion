@@ -1,13 +1,16 @@
-``includes`` predicatably reads in another file. It's like copy/paste but
+``includes`` predictably reads in another file. It's like copy/paste but
 MulleScion does the work for you. The contents are parsed just like
 any regular template text.
 
 There is a special ``includes verbatim``. It reads the contents of
-a file but doesn't parse it.
+a file but doesn't parse it. You can also use ``includes optionally``, which
+doesn't raise an error, if the file doesn't exist. And you can combine both
+into ``includes optionally verbatim``
 
 Here we include the file **set.scion** and have the comments parsed away
 
 #### Example 1
+
 ```
 {% includes "__demo.scion" %}
 ```
@@ -15,6 +18,7 @@ Here we include the file **set.scion** and have the comments parsed away
 and the file included verbatim
 
 #### Example 2
+
 ```
 {% includes verbatim "__demo.scion" %}
 ```

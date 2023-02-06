@@ -1,0 +1,15 @@
+`exists` is a class, not a keyword. Currently it knows three methods
+`any:`, `file:`, `directory:`. These methods test for existence of files or
+directories on the file system.
+
+This is a shortcut for
+`[NSFileManager defaultManager] fileExistsAtPath:isDirectory:]`, which is
+hard to use from mulle-scion.
+
+#### Example
+
+```
+{% if not [exists file:"should-not-be-there.scion"] %}
+A cherished file is missing!
+{% endif %}
+```

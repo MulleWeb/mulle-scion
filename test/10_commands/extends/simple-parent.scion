@@ -1,0 +1,4 @@
+{% extends "_simple_base.scion" %}
+{% block a %}
+{{ parent() }}yyy
+{% endblock %}

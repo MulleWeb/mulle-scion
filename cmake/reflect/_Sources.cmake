@@ -21,6 +21,7 @@ dox/block.scion
 dox/define.scion
 dox/__demo.scion
 dox/dot.scion
+dox/exists.scion
 dox/extends.scion
 dox/filter.scion
 dox/for.scion

@@ -39,7 +39,8 @@
 
 @interface MulleScionTemplate( WebServer)
 
-- (id) initWithString:(NSString *) s;
+- (id) initWithString:(NSString *) s
+           searchPath:(NSArray *) searchPath;
 
 //- (id) initWithContentsOfFile:(NSString *) fileName
 //                      options:(NSDictionary *) info;

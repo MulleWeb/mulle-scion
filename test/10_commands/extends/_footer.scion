@@ -1,5 +1,7 @@
 {# this template is not very interesting on it's own #}
+_footer.scion: 2
 {% block footer %}
 my footer
 {% block footer_extension %}default footer extension text{% endblock %}
 {% endblock %}
+_footer.scion: 7

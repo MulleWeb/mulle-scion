@@ -41,6 +41,9 @@
 @property( retain) NSDictionary  *dataSource;
 @property( retain) NSString      *documentRoot;
 
+//
+// the WebServer doesn't know about any searchPath
+//
 + (void) runServerWithCStringOptions:(char **) options
                         documentRoot:(NSString *) root
                           dataSource:(id) plist;

@@ -2,6 +2,7 @@ Dots between identifiers without spaces are your usual key value coding
 keypath. 
 
 #### Example 1
+
 ```
 {{ bag.a }}
 ```
@@ -10,6 +11,7 @@ If you leave spaces between the dots, the functionality expands, so
 that you can interpose arbitrary objects
 
 #### Example 2
+
 ```
 {# Then you can also interpose methods if you want  #}
 {%

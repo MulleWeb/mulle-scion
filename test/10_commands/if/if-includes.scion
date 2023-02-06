@@ -1,0 +1,4 @@
+{% if not config %}
+{% includes "_boring.scion" %}
+{% endif %}
+1
