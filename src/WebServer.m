@@ -87,7 +87,7 @@
    if( ! [self fileExists:fileName])
       return( nil);
 
-   data = [NSMutableData dataWithContentsOfMappedFile:wrapper];
+   data = [NSMutableData dataWithContentsOfFile:wrapper];
    if( ! data)
       return( nil);
 
@@ -110,7 +110,8 @@
 
    // no caching :)
    parser = [[[MulleScionParser alloc] initWithData:data
-                                           fileName:wrapper] autorelease];
+                                           fileName:wrapper
+                                         searchPath:nil] autorelease];
 
    if( [parser debugFilePaths])
       fprintf( stderr, "parsing \"%s\"\n", [wrapper fileSystemRepresentation]);

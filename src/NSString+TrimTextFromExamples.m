@@ -50,7 +50,7 @@
    buf     = [NSMutableString object];
    scanner = [[[NSScanner alloc] initWithString:self] autorelease];
 
-   for( ;;)
+   for(;;)
    {
       if( ! [scanner scanUpToString:@"# Example"
                          intoString:&s])
@@ -63,24 +63,25 @@
          s = [s substringFromIndex:range.location + 1];
       [buf appendString:s];
 
-      // scan up to first ``` and copy (including ```)
+      // scan up to first ``` and copy
       if( ! [scanner scanUpToString:@"```"
                          intoString:&s])
          break;
-      [buf appendString:s];
       [scanner scanString:@"```"
                intoString:NULL];
-      [buf appendString:@"```"];
+      [buf appendString:s];
 
-      // scan up to second ``` and copy (including ```)
+      // scan up to second ``` and copy
       // weirdly code, because the NSScanner API is weird...
       if( ! [scanner scanUpToString:@"```"
                          intoString:&s])
          s = @"";
+
       if( ! [scanner scanString:@"```"
                      intoString:NULL])
          break;
 
+      [buf appendString:@"```"];
       [buf appendString:s];
       [buf appendString:@"```\n"];
    }

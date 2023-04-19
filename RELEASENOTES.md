@@ -1,3 +1,13 @@
+# 1860.0.0
+
+* don't use mapped file anymore as it does not work with '<(' indirection
+* update major to reflect changes in MulleScion
+* add -v flag
+* allow multiple plist files or URLs (use property.plist:foo.plist:https://foo.bar/x.plist)
+* mulle-scion now has an -I option to add to the {% includes %} searchpath
+* fix bug where included files broke enveloping endif
+
+
 ### 1859.1.9
 
 * Various small improvements

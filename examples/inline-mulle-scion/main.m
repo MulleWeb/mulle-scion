@@ -19,7 +19,8 @@ int main(int argc, const char * argv[])
    // create a compiled template
    data     = [templateContents dataUsingEncoding:NSUTF8StringEncoding];
    parser   = [[[MulleScionParser alloc] initWithData:data
-                                           fileName:@"whatever"] autorelease];
+                                             fileName:@"whatever"
+                                           searchPath:nil] autorelease];
    template = [parser template];
 
    // use template to produce output

@@ -1,0 +1,7 @@
+(written in an oldfashioned way)
+
+This is the command-line tool for the [MulleScion](//github.com/MulleWeb/MulleScion)
+library. It also provides the documentation for the project in a
+self-contained webserver. It can use JSON, Plist, XML files, even multiples
+and mixes, as a datasource for the template variables.
+

@@ -46,12 +46,14 @@
    NSData             *data;
    MulleScionParser   *parser;
 
-   data = [NSMutableData dataWithContentsOfMappedFile:fileName];
+   // mapped file does not work with <( redirection
+   data = [NSMutableData dataWithContentsOfFile:fileName];
    if( ! data)
       return( nil);
 
    parser = [[[MulleScionParser alloc] initWithData:data
-                                           fileName:fileName] autorelease];
+                                           fileName:fileName
+                                         searchPath:nil] autorelease];
    dictionary = [parser dependencyTable];
 
    return( dictionary);
@@ -70,9 +72,8 @@
 
    data     = [s dataUsingEncoding:NSUTF8StringEncoding];
    parser   = [[[MulleScionParser alloc] initWithData:data
-                                             fileName:@"inline"] autorelease];
-   [parser setSearchPath:searchPath];
-
+                                             fileName:@"inline"
+                                           searchPath:searchPath] autorelease];
    [self release];
    self = [[parser template] retain];
 

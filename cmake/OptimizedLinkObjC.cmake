@@ -86,12 +86,12 @@ if( NOT __OPTIMIZED_LINK_OBJC_CMAKE__)
 
 
       add_custom_command( OUTPUT ${CUSTOM_OUTPUT}
-       COMMAND ${UNARCHIVE} ${MULLE_TECHNICAL_FLAGS}
-                            --unarchive-dir "${UNARCHIVE_DIR}"
-                            --unarchive-info-dir "${OPTIMIZE_INFO_DIR}"
-                            --just-unpack
+       COMMAND ${UNARCHIVE} -vvv -ld -ls -lx ${MULLE_TECHNICAL_FLAGS}
+                           --unarchive-dir "${UNARCHIVE_DIR}"
+                           --unarchive-info-dir "${OPTIMIZE_INFO_DIR}"
+                           --just-unpack
                             ${ALL_LOAD_DEPENDENCY_LIBRARIES}
-       COMMAND ${OPTIMIZE} ${MULLE_TECHNICAL_FLAGS}
+       COMMAND ${OPTIMIZE} -vvv -ld -lx ${MULLE_TECHNICAL_FLAGS}
                            --c-name "${OPTIMIZABLE_LOAD_NAME}"
                            --objc-name "${ALL_LOAD_NAME}"
                            --coverage-dir "${COVERAGE_DIR}"
@@ -122,6 +122,12 @@ if( NOT __OPTIMIZED_LINK_OBJC_CMAKE__)
       set( DEPENDENCY_LIBRARIES
          "${PROJECT_BINARY_DIR}/${OPTIMIZABLE_LOAD_NAME}"
          ${DEPENDENCY_LIBRARIES}
+      )
+
+      # fummel for lazy linux linker
+      set( STARTUP_DEPENDENCY_LIBRARIES
+         ${STARTUP_DEPENDENCY_LIBRARIES}
+         "${PROJECT_BINARY_DIR}/${ALL_LOAD_NAME}"
          "${PROJECT_BINARY_DIR}/${OPTIMIZABLE_LOAD_NAME}"
       )
 

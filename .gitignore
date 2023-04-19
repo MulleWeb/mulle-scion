@@ -79,3 +79,12 @@ kitchen/
 version.old
 .ackrc
 cmake-build-*/
+wilted/
+mulle-template-composer-*
+mulle-markdown-preview-*.html
+class-cachesizes.csv
+class-coverage.csv
+method-coverage.csv
+optimize/
+MEMO-homebrew
+html/

@@ -1,0 +1,6 @@
+## Fork
+
+This is a fork of [mulle-kybernetik/MulleScion](//github.com/mulle-kybernetik/MulleScion)
+tailored for use in mulle-sde projects. It's usually fresher than
+*mulle-kybernetik/MulleScion* and features get backported only on demand,
+or when I need them.

@@ -1,0 +1,35 @@
+Usage:
+   mulle-scion [options] <input> <datasource> [output] [arguments]
+
+   The Objective-C Template processor
+   See: https://github.com/mulle-kybernetik/MulleScion
+
+Options:
+   -v[vv]   : increase verbosity
+   -I       : set ':' style search path for {% includes ... %} statements
+   -w       : start webserver for dox
+   -z       : write compressed archive to outputfile
+   -Z       : write compressed keyed archive to outputfile (for IOS)
+
+Input:
+   -        : Read template from stdin
+   template : a MulleScion template path or URL
+
+Datasource:
+   -        : Read data from stdin (only if input is not stdin already)
+   args     : use arguments as datasource (see below)
+   bundle   : a NSBundle. Its NSPrincipalClass will be the datasource
+   plist    : plist files or URLs separated by ':' merged into a datasource
+   none     : empty datasource
+
+Output:
+   -        : Write result to stdout
+   file     : Write result to file
+
+Arguments:
+   key=value: key/value pairs to be used as __ARGV__ contents
+              (unless args as datasource was specified)
+
+Examples:
+   echo '***{{ VALUE }}***' | mulle-scion - args - VALUE="VfL Bochum 1848"
+   echo '***{{ __ARGV__[ 0]}}***' | mulle-scion - none - "VfL Bochum 1848"

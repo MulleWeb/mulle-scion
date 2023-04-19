@@ -1,0 +1,49 @@
+## Example
+
+Create informational text from a typical
+[package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json/)
+file with the following template:
+
+`package.txt.scion`:
+
+{% verbatim %}
+``` twig
+This is the {{ name }} project version {{ version }}, which resides
+on {{ repository.url }}.
+
+{% if dependencies %}
+It has the following dependencies:
+{% for dep in dependencies %}
+{{ dep }} at {{ dependencies[ dep] }}
+{% endfor %}
+{% endif %}
+```
+{% endverbatim %}
+
+
+and the mulle-scion `package.json`, somewhat trimmed for readability:
+
+`package.json`:
+
+``` json
+{
+   "name" : "mulle-scion",
+   "version" : "1859.1.9",
+   "description" : "🌱 A modern template engine for Objective C",
+   "homepage" : "https://github.com/MulleWeb/mulle-scion",
+   "dependencies" : {
+      "Foundation" : "git://github.com/MulleFoundation/Foundation",
+      "MulleFoundation" : "git://github.com/MulleFoundation/MulleFoundation",
+      "MulleWebServer" : "git://github.com/MulleWeb/MulleWebServer",
+      "MulleCivetWeb" : "git://github.com/MulleWeb/MulleCivetWeb"
+   }
+}
+```
+
+See the output with:
+
+```sh
+mulle-scion package.txt.scion package.json
+```
+
+

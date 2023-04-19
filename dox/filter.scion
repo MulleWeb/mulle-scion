@@ -3,6 +3,7 @@
 to turn off filtering.
 
 #### Example 1
+
 ```
 {% filter lowercaseString|capitalizedString %}
 This is filtered and pushed through lowercaseString and then capitalizedString.
@@ -15,6 +16,7 @@ back to original.
 ```
 
 #### Example 2
+
 ```
 {% filter lowercaseString| [[self componentsSeparatedByString:@"/"] componentsJoinedByString:@"-"] %}
 THIS/IS/POSSIBLE
@@ -26,6 +28,7 @@ through the currently active filter only (but not through the chain). If
 the filter ist stateful (like MulleMarkdown), this may not produce an immediate result.
 
 #### Example 3
+
 ```
 {% filter uppercaseString %}
 {% lower=@"lower"
@@ -38,6 +41,7 @@ You can give filter an array of keywords `output` and/or `plaintext` to tell it
 what to filter. The default is both.
 
 #### Example 4
+
 ```
 {% filter uppercaseString, (output) %}
 This won't get filtered, but {{ "this" }}. Convenient to wrap around HTML
