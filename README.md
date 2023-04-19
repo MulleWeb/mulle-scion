@@ -2,19 +2,19 @@
 
 #### 🌱 A modern template engine for Objective C
 
+
 (written in an oldfashioned way)
 
 This is the command-line tool for the [MulleScion](//github.com/MulleWeb/MulleScion)
 library. It also provides the documentation for the project in a
-self-contained webserver.
+self-contained webserver. It can use JSON, Plist, XML files, even multiples
+and mixes, as a datasource for the template variables.
 
 
-Build Status | Release Version
--------------|-----------------------------------
-[![Build Status](https://github.com/MulleWeb/mulle-scion/workflows/CI/badge.svg?branch=release)](https://github.com/MulleWeb/mulle-scion/actions) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/mulle-scion.svg)
+| Release Version                                       | Release Notes
+|-------------------------------------------------------|--------------
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//mulle-scion.svg?branch=release) [![Build Status](https://github.com//mulle-scion/workflows/CI/badge.svg?branch=release)](//github.com//mulle-scion/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
-> This is a fork of [mulle-kybernetik/MulleScion](//github.com/mulle-kybernetik/MulleScion)
-> tailored for use in mulle-sde projects
 
 
 ## Usage
@@ -23,8 +23,13 @@ Build Status | Release Version
 Usage:
    mulle-scion [options] <input> <datasource> [output] [arguments]
 
+   The Objective-C Template processor
+   See: https://github.com/mulle-kybernetik/MulleScion
+
 Options:
-   -w       : start webserver for /usr/local/share/mulle-scion/dox
+   -v[vv]   : increase verbosity
+   -I       : set ':' style search path for {% includes ... %} statements
+   -w       : start webserver for dox
    -z       : write compressed archive to outputfile
    -Z       : write compressed keyed archive to outputfile (for IOS)
 
@@ -35,8 +40,8 @@ Input:
 Datasource:
    -        : Read data from stdin (only if input is not stdin already)
    args     : use arguments as datasource (see below)
-   bundle   : a NSBundle. It's NSPrincipalClass will be used as the datasource
-   plist    : a property list path or URL as datasource, see: plist(5)
+   bundle   : a NSBundle. Its NSPrincipalClass will be the datasource
+   plist    : plist files or URLs separated by ':' merged into a datasource
    none     : empty datasource
 
 Output:
@@ -50,146 +55,120 @@ Arguments:
 Examples:
    echo '***{{ VALUE }}***' | mulle-scion - args - VALUE="VfL Bochum 1848"
    echo '***{{ __ARGV__[ 0]}}***' | mulle-scion - none - "VfL Bochum 1848"
+
 ```
 
 
-## About
+## Example
 
-MulleScion is **heavily** (very heavily) inspired by
+Create informational text from a typical
+[package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json/)
+file with the following template:
 
-[TWIG](//twig.symfony.com/) "The flexible, fast, and secure template
-engine for PHP"
-
-*MulleScion* is fairly flexible, reasonably fast and can be made as
- secure as you wish.
-
-* **Reasonably
-Fast** :      *MulleScion* can compile templates into a compressed
-               archive format. Loading such an archive ought to be lots faster
-               than parsing (but because the parse is so fast, maybe isn't).
-               A compiled template is read-only, you can use it many
-               times to render different output from different input.
-
-* **Secure** :   *MulleScion* has hooks so your application can ensure
-               that untrusted template code doesn't have access to all of the
-               applications data.
-
-* **Flexible** :    There is the possibility of extending KVC and writing your
-               own "builtin" fuctions. A template can (if allowed) execute
-               arbitrary ObjC code. MulleScion has a powerful define like
-               preprocessing capability and macros to expand your template
-               vocabulary.
-
-Here is a simple example, where ObjC code is embedded in a template:
+`package.txt.scion`:
 
 ``` twig
-<html>
-   <!-- rendered by {{ [[NSProcessInfo processInfo] processName] }} on
-        {{ [NSDate date] }} -->
-   <body>
-     {% for item in [NSTimeZone knownTimeZoneNames] %}
-         {% if item#.isFirst %}
-         <table>
-            <tr><th>TimeZone</th></tr>
-         {% endif %}
-            <tr><td>{{ item }}</td></tr>
-         {% if item#.isLast %}
-         </table>
-         {% endif %}
-      {% else %}
-         Sorry, no timezone info available.
-      {% endfor %}
-   </body>
-</html>
-```
+This is the {{ name }} project version {{ version }}, which resides
+on {{ repository.url }}.
 
-Using MulleScion the creation of a string from your
-object using a template file is as easy as:
-
-``` objective-c
-   NSString  *output;
-
-   output = [MulleScionTemplate descriptionWithTemplateFile:@"test.scion"
-                                                 dataSource:self];
-```
-
-This is the general architecture of *MulleScion*
-
-![](dox/MulleScionDataFlow.png "Data Flow Sketch")
-
-*MulleScion* is happily used in a commercial project and has gone through
-enough iterations to pronounce it "ready for production".
-
-
-HTML PREPROCESSOR
-=============
-There is a companion project
-[MulleScionHTMLPreprocessor](//github.com/MulleWeb/MulleScionHTMLPreprocessor)
-that uses HTML like tags, to make the template easier to reformat in
-HTML editors:
-
-``` html
-<html>
-  <!-- rendered by {{ [[NSProcessInfo processInfo] processName] }} on
-        {{ [NSDate date] }} -->
-  <body>
-    <for item in [NSTimeZone knownTimeZoneNames]>
-      <if item#.isFirst>
-        <table>
-          <tr><th>TimeZone</th></tr>
-      </if>
-        <tr><td>{{ item }}</td></tr>
-      <if item#.isLast>
-        </table>
-      </if>
-    <else/>
-      Sorry, no timezone info available.
-    </for>
-  </body>
-</html>
+{% if dependencies %}
+It has the following dependencies:
+{% for dep in dependencies %}
+{{ dep }} at {{ dependencies[ dep] }}
+{% endfor %}
+{% endif %}
 ```
 
 
-Add
-======
+and the mulle-scion `package.json`, somewhat trimmed for readability:
+
+`package.json`:
+
+``` json
+{
+   "name" : "mulle-scion",
+   "version" : "1859.1.9",
+   "description" : "🌱 A modern template engine for Objective C",
+   "homepage" : "https://github.com/MulleWeb/mulle-scion",
+   "dependencies" : {
+      "Foundation" : "git://github.com/MulleFoundation/Foundation",
+      "MulleFoundation" : "git://github.com/MulleFoundation/MulleFoundation",
+      "MulleWebServer" : "git://github.com/MulleWeb/MulleWebServer",
+      "MulleCivetWeb" : "git://github.com/MulleWeb/MulleCivetWeb"
+   }
+}
+```
+
+See the output with:
+
+```sh
+mulle-scion package.txt.scion package.json
+```
+
+
+
+
+## Fork
+
+This is a fork of [mulle-kybernetik/MulleScion](//github.com/mulle-kybernetik/MulleScion)
+tailored for use in mulle-sde projects. It's usually fresher than
+*mulle-kybernetik/MulleScion* and features get backported only on demand,
+or when I need them.
+
+## Overview
+![Overview](overview.dot.svg)
+
+| Requirement                                  | Description
+|----------------------------------------------|-----------------------
+| [Foundation](https://github.com/MulleFoundation/Foundation)             | 💍 MulleFoundation with improved compatibility and legacy support
+| [Foundation-startup](https://github.com/MulleFoundation/Foundation-startup)             | ▶️ Startup library for MulleFoundation
+| [MulleHoedown](https://github.com/MulleWeb/MulleHoedown)             | 💃🏼 Markdown support for mulle-objc
+| [MulleWebServer](https://github.com/MulleWeb/MulleWebServer)             | 🤽🏻‍♂️ Web Server based on civetweb for mulle-objc
+| [MulleScion](https://github.com/MulleWeb/MulleScion)             | 🌱 A modern template engine for Objective C
+
+
+## Add
 
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-scion to your project:
 
+``` sh
+mulle-sde add github:MulleWeb/mulle-scion
 ```
-mulle-sde dependency add --github MulleWeb mulle-scion
-```
 
+## Install
 
-Install
-=======
+### Install with mulle-sde
 
-Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-scion and
-all its dependencies:
+Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-scion and all dependencies:
 
-```
+``` sh
 mulle-sde install --prefix /usr/local \
-   https://github.com/MulleWeb/mulle-scion/archive/latest.tar.gz
+   https://github.com//mulle-scion/archive/latest.tar.gz
 ```
 
+### Manual Installation
 
-DOCUMENTATION
-=============
+Install the [requirements](#Overview) and then install
+**mulle-scion**
+with [cmake](https://cmake.org). Here `/usr/local` is chosen as the install
+prefix:
 
-Virtually all the documentation is contained in example **.scion** templates
-in the `dox` folder. For each command or feature there should be a separate
-template file that documents it. **mulle-scion**, the command line utility,
-contains  a small quickly hacked together webserver that can present the
-documentation using *MulleScion* itself.
+``` sh
+cmake -B build \
+      -DCMAKE_INSTALL_PREFIX=/usr/local \
+      -DCMAKE_PREFIX_PATH=/usr/local \
+      -DCMAKE_BUILD_TYPE=Release &&
+cmake --build build --config Release &&
+cmake --install build --config Release
+```
+
+## Platforms and Compilers
+
+All platforms and compilers supported by
+[mulle-c11](//github.com/mulle-c/mulle-c11).
 
 
-MulleScion is very similar to TWIG, so you can glean much of relevance from
-<http://twig.sensiolabs.org>. If you see a feature in TWIG but don't see it in
-the tests file, it's likely not there (but it's probably easily achieved some
-other way (using a `define` or a `macro` or an ObjC category on **NSString**).
+## Author
 
-
-AUTHOR
-=============
-Coded by Nat!
-2013-2020 Mulle kybernetiK
+[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
 

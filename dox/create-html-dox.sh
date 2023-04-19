@@ -1,37 +1,30 @@
-#! /bin/sh
+#! /usr/bin/env mulle-bash
 
 # grab all files
 
-if [ ! -d "../dox" ]
+if [ ! -d "dox" ]
 then
-   echo "must be run in dox folder" 1>&2
+   echo "must be run in root folder" 1>&2
    exit 1
 fi
 
 # stop on failure
-set -e
 
-cp -rp *.scion /tmp/MulleScionDox
 mulle-scion -w &
 PID=$#
 
 sleep 2
-wget -E -nd -P html -m http://127.0.0.1:18048
+wget -E -nd -P html/raw -m http://127.0.0.1:18048
 
-cd html
-for i in *wrapper=_wrapper.scion*
+set -x
+
+for i in html/raw/*
 do
-   file=`echo "$i" | sed 's/^\(.*\)\.scion\?wrapper=_wrapper.scion\(.*\)/\1\2/'`
-   mv "$i" "$file"
+   file="${i##*/}"
+   file="${file%%.scion*}.html"
+   file="${file//.html.html/.html}"
+   sed -e 's/\.scion?wrapper=_wrapper\.scion/.html/g' "$i" > "html/${file}"
 done
-
-for i in *.html
-do
-   mv "$i" "$i.orig"
-   cat "$i.orig" | sed 's/\([A-Za-z0-9_|!]*\)\.scion\?wrapper=_wrapper.scion/\1.html/g' > "$i"
-   rm "$i.orig"
-done
-
 
 kill $PID
 

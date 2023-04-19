@@ -7,8 +7,23 @@ again from TWIG in that there is no *imports* facility.
 
 
 #### Example 1
+
 ```
 {# a macro by itself, produces no output #}
+{% macro whatever( text) %}
+Here is some {{ text}}.
+{% endmacro %}
+```
+
+#### Example 2
+
+```
+This value {{ list }} is from the properties file
+```
+
+#### Example 3
+
+```
 {% macro table( border, cellpadding, list) %}
 <table border="{{border}}" cellpadding="{{ cellpadding }}">
  {% for i in list %}
@@ -16,19 +31,11 @@ again from TWIG in that there is no *imports* facility.
  {% endfor %}
 </table>
 {% endmacro %}
-```
-
-#### Example 2
-```
-This value {{ list }} is from the properties file
-```
-
-#### Example 3
-```
 {{ table( 1, 10, @( @"VfL", @"Bochum", @"1848")) }}
 ```
 
 #### Example 4
+
 ```
 And {{ list }} should now be as before the macro expansion
 ```

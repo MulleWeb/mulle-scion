@@ -23,8 +23,9 @@ f
 {% endif %}
 ```
 
-The boolean operations are limited to ``not`` ``and`` ``or``. Read from left to
-right as there is no precedence. If you need precedence use parentheses.
+The boolean operations are limited to ``not`` ``and`` ``or``. If there
+are possibly ambiguities concerning the precedence of the operators, then you
+need to use parentheses.
 
 #### Example 2
 

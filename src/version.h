@@ -4,7 +4,7 @@
 /*
  *  version:  major, minor, patch
  */
-#define MULLE_SCION_VERSION  ((1859 << 20) | (1 << 8) | 9)
+#define MULLE_SCION_VERSION  ((1860 << 20) | (0 << 8) | 0)
 
 
 static inline unsigned int   mulle_scion_get_version_major( void)

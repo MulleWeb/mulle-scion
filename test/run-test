@@ -91,7 +91,7 @@ run()
    # denied, will always print TRACE/BPT
 
    # valgrind -q --error-exitcode=77 --num-callers=500 --track-origins=yes \
-   $MULLE_SCION "$template" "$plist" < "$stdin" > "$output" 2> "$errput"
+   exekutor $MULLE_SCION "$template" "$plist" < "$stdin" > "$output" 2> "$errput"
 
    if [ $? -ne 0 ]
    then
@@ -311,7 +311,7 @@ test_binary()
    output="$random.stdout"
    errput="$random.stderr"
 
-   "${MULLE_SCION}" > /dev/null 2>&1
+   rexekutor "${MULLE_SCION}" > /dev/null 2>&1
    code=$?
 
    if [ $code -eq 127 ]
@@ -324,10 +324,6 @@ test_binary()
       fail "${MULLE_SCION} universe is broken (check tmp ?)"
    fi
 
-   if [ $code -ne 253 ]
-   then
-      fail "${MULLE_SCION} is wrong executable ($code)"
-   fi
 
    log_verbose "using ${MULLE_SCION} to test" >&2
 }

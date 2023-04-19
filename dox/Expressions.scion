@@ -23,15 +23,15 @@ You can use strings like `"foo"` or `@"foo"`.
 
 The available comparion operators are:
 
-Operator  | Alternative Form | Descriptor
-----------|------------------|-----------------------
-`eq`      | '=='             | Equality comparison 
-`ne`      | '!='             | Inequality comparison
-`lt`      | '<'              | Ascending comparison
-`le`      | '<='             | Ascending or equality comparison
-`gt`      | '>'              | Descending comparison
-`ge`      | '>='             | Descending or equality comparison
-`?:`      |                  | The ternary operator
+| Operator  | Alternative Form | Descriptor
+|-----------|------------------|-----------------------
+| `eq`      | '=='             | Equality comparison
+| `ne`      | '!='             | Inequality comparison
+| `lt`      | '<'              | Ascending comparison
+| `le`      | '<='             | Ascending or equality comparison
+| `gt`      | '>'              | Descending comparison
+| `ge`      | '>='             | Descending or equality comparison
+| `?:`      |                  | The ternary operator
 
 
 #### Example 1

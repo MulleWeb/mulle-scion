@@ -1,6 +1,7 @@
 Within **MulleScion** you can use regular Objective-C method call syntax.
 
 #### Example 1
+
 ```
 {{ [NSDate date] }}
 ```
@@ -10,6 +11,7 @@ array. So if you don't want to write `objectAtIndex:` or `objectForKey:` you
 can also use:
 
 #### Example 2
+
 ```
 {{ bag[ "a" ] }}  # where bag is a NSDictionary
 {{ list[ 1] }}    # where list is a NSArray

@@ -11,7 +11,8 @@ Whenever another `extends` command is found. Regular template processing resumes
 again, so that the extends command can perform an include (See first step).
 
 General rule: After an ``extends``, there should be only other ``extends``and
-``block`` definitions.
+``block`` definitions.  `extends` can't be used in multi-line statements.
+
 
 #### Example 1
 
@@ -24,10 +25,3 @@ The example shows how anything besides `block` and `extends` statements get
 ignored. Because of the `extends` in Example 1, the example won't even show. And
 the text you are reading is ignored by MulleScion as well.
 
-#### Example 2
-
-```
-You won't see me.
-```
-
-`extends` can't be used in multi-line statements.

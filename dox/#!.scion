@@ -12,6 +12,7 @@ want to produce shell scripts using **MulleScion**.
 Lets run a simple example.
 
 #### Example
+
 ```
 {%
    file  = [NSFileHandle fileHandleForReadingAtPath:@"/etc/hostconfig"];

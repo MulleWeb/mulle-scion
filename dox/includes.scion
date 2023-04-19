@@ -24,3 +24,18 @@ and the file included verbatim
 ```
 
 ``includes`` can't be used in multi-line statements.
+
+
+There is a "hack" method to perform some filtering on includes. You
+can add a -NSData method after includes, that will filter the included
+data.
+
+#### Example 3
+
+`self` does nothing (but it also produces no error):
+
+```
+{% includes verbatim self "__demo.scion" %}
+```
+
+

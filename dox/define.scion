@@ -3,6 +3,7 @@ substituted into the expression. Subsitution is only within template brackets.
 Substitution is done during the compile stage of the template.
 
 #### Example 1
+
 ```
 {% define PC = [self stringByReplacingOccurrencesOfString:@"S04"
                                                withString:@"***"] %}

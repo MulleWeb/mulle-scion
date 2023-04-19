@@ -54,18 +54,32 @@
 static NSString  *processName( void);
 
 
-static void   usage( void)
+static void   fail( char *format, ...)
 {
-   fprintf( stderr, "Usage:\n"
-                    "   %s [options] <input> <datasource> [output] [arguments]\n"
-                    "\n"
-                    "   The Objective-C Template processor\n"
-                    "   See: https://github.com/mulle-kybernetik/MulleScion\n",
+   va_list   va;
+
+   if( format)
+   {
+      va_start( va, format);
+      {
+         mulle_fprintf( stderr, "error: ");
+         mulle_vfprintf( stderr, format, va);
+         mulle_fprintf( stderr, "\n\n");
+      }
+      va_end( va);
+   }
+
+   mulle_fprintf( stderr, "Usage:\n"
+                          "   %s [options] <input> <datasource> [output] [arguments]\n"
+                          "\n"
+                          "   The Objective-C Template processor\n"
+                         "   See: https://github.com/mulle-kybernetik/MulleScion\n",
                         [processName() cString]);
-   fprintf( stderr,
+   mulle_fprintf( stderr,
 "\n"
 "Options:\n"
-"   -I       : set search path for {%% includes ... %%} statements\n"
+"   -v[vv]   : increase verbosity\n"
+"   -I       : set ':' style search path for {%% includes ... %%} statements\n"
 "   -w       : start webserver for " DOCUMENT_ROOT "\n"
 "   -z       : write compressed archive to outputfile\n"
 "   -Z       : write compressed keyed archive to outputfile (for IOS)\n"
@@ -77,8 +91,8 @@ static void   usage( void)
 "Datasource:\n"
 "   -        : Read data from stdin (only if input is not stdin already)\n"
 "   args     : use arguments as datasource (see below)\n"
-"   bundle   : a NSBundle. It's NSPrincipalClass will be used as the datasource\n"
-"   plist    : a property list path or URL as datasource, see: plist(5)\n"
+"   bundle   : a NSBundle. Its NSPrincipalClass will be the datasource\n"
+"   plist    : plist files or URLs separated by ':' merged into a datasource\n"
 "   none     : empty datasource\n"
 "\n"
 "Output:\n"
@@ -93,6 +107,13 @@ static void   usage( void)
 "   echo '***{{ VALUE }}***' | mulle-scion - args - VALUE=\"VfL Bochum 1848\"\n"
 "   echo '***{{ __ARGV__[ 0]}}***' | mulle-scion - none - \"VfL Bochum 1848\"\n"
    );
+
+   exit( 1);
+}
+
+static inline void   usage( void)
+{
+   fail( NULL);
 }
 
 
@@ -286,6 +307,7 @@ static id   acquirePropertyListOrDataSourceFromBundle( NSString *s)
    NSString   *error;
    NSURL      *url;
    id         plist;
+   NSString   *extension;
 
    if( [s isEqualToString:@"none"])
       return( [NSDictionary dictionary]);
@@ -294,18 +316,22 @@ static id   acquirePropertyListOrDataSourceFromBundle( NSString *s)
       data = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
    else
    {
-      if( [[s pathExtension] isEqualToString:@"plist"])
+      extension = [s pathExtension];
+
+      if( ! [extension isEqualToString:@"plist"] &&
+          ! [extension isEqualToString:@"json"] &&
+          ! [extension isEqualToString:@"xml"])
       {
-         if( [s rangeOfString:@"://"].length)
-         {
-            url  = [NSURL URLWithString:s];
-            data = [NSData dataWithContentsOfURL:url];
-         }
-         else
-            data = [NSData dataWithContentsOfFile:s];
+          return (acquireDataSourceFromBundle(s));
+      }
+
+      if( [s rangeOfString:@"://"].length)
+      {
+         url  = [NSURL URLWithString:s];
+         data = [NSData dataWithContentsOfURL:url];
       }
       else
-         return( acquireDataSourceFromBundle( s));
+         data = [NSData dataWithContentsOfFile:s];
    }
 
    error = nil;
@@ -329,38 +355,81 @@ static NSDictionary  *getInfoFromEnumerator( NSEnumerator *rover)
    NSMutableDictionary   *info;
    NSString              *outputName;
    NSString              *plistName;
+   NSString              *nextName;
+   NSString              *plistPath;
    NSString              *templateName;
+   NSString              *name;
    id                    plist;
+   NSMutableDictionary   *combinedPlist;
+   NSArray               *components;
+   NSUInteger            i, n;
+   NSCharacterSet        *punctuation;
 
    info         = [NSMutableDictionary dictionary];
    templateName = [rover nextObject];
-   plistName    = [rover nextObject];
+   plistPath    = [rover nextObject];
    outputName   = [rover nextObject];
    argv         = [rover allObjects];
 
    if( ! [templateName length])
-      goto usage;
-   if( ! [plistName length])
-      plistName = @"none";
+      fail( "template is empty");
+   if( ! [plistPath length])
+      plistPath = @"none";
    if( ! [outputName length])
       outputName = @"-";
 
-   if( [plistName isEqualToString:@"keyvalue"] || [plistName isEqualToString:@"args"])
-   {
-      plist = acquirePropertyListFromArgs( argv);
-      argv  = [NSArray array];
-   }
-   else
-      plist = acquirePropertyListOrDataSourceFromBundle( plistName);
-   if( ! plist)
-      goto usage;
+   components    = [NSMutableArray arrayWithArray:[plistPath componentsSeparatedByString:@":"]];
+   n             = [components count];
+   combinedPlist = [components count] 
+                   ? [NSMutableDictionary dictionary] 
+                   : nil;
 
-   [info setObject:plist
+   punctuation = [NSCharacterSet punctuationCharacterSet]; // has . and /
+   for( i = 0; i < n; i++)
+   {
+      plistName = [components objectAtIndex:i];
+      if( i + 1 < n && ! [plistName rangeOfCharacterFromSet:punctuation].length)
+      {
+         // recombine URLs, if needed
+         nextName = [components objectAtIndex:i + 1];
+         if( [nextName hasPrefix:@"//"])
+         {
+            plistName = [NSString stringWithFormat:@"%@:%@", plistName, nextName];
+            i++;
+         }
+      }
+
+      if( [plistName isEqualToString:@"keyvalue"] || [plistName isEqualToString:@"args"])
+      {
+         plist = acquirePropertyListFromArgs( argv);
+         argv  = [NSArray array];
+      }
+      else
+         plist = acquirePropertyListOrDataSourceFromBundle( plistName);
+      if( ! plist)
+         fail( "could not acquire plist %s", [plistName UTF8String]);
+
+      // so if the read plist is an array, we can't really merge it
+      // so we turn it into a separate entry, indexed by the name of 
+      // the plist: sans extension.  
+      if( combinedPlist)
+      {
+         if( ! [plist isKindOfClass:[NSDictionary class]])
+         {
+            name  = [plistName stringByDeletingPathExtension];
+            plist = [NSDictionary dictionaryWithObject:plist
+                                                forKey:name];
+         }
+         [combinedPlist addEntriesFromDictionary:plist];
+      }
+   }
+
+   [info setObject:combinedPlist ? combinedPlist : plist
             forKey:@"dataSource"];
 
    [info setObject:templateName
             forKey:@"MulleScionRootTemplate"];
-   [info setObject:plistName
+   [info setObject:plistPath
             forKey:@"MulleScionPropertyListName"];
    [info setObject:outputName
             forKey:@"output"];
@@ -369,10 +438,6 @@ static NSDictionary  *getInfoFromEnumerator( NSEnumerator *rover)
                forKey:@"__ARGV__"];
 
    return( info);
-
-usage:
-   usage();
-   return( nil);
 }
 
 
@@ -562,10 +627,13 @@ int main( int argc, char *argv[])
    NSAutoreleasePool   *pool;
    int                 rval;
    int                 i;
+   int                 j;
    int                 webserver;
+   int                 verbosity;
    int                 compressed;
    NSMutableArray      *searchPath;
    NSMutableArray      *arguments;
+   NSProcessInfo       *processInfo;
    NSString            *s;
 
 #if defined( __MULLE_OBJC__) && defined( DEBUG)
@@ -579,56 +647,87 @@ int main( int argc, char *argv[])
 #endif
 
    webserver  = 0;
+   verbosity  = 0;
    compressed = -1;
    searchPath = nil;
 
    for( i = 1; i < argc && argv[ i][ 0] == '-'; i++)
    {
-      if( argv[ i][ 1] == '-')
+      j = 1; // passed '-'
+      if( argv[ i][ j] == '-')
       {
-         if( ! strcmp( &argv[ i][ 2], "version"))
+         ++j; // passed '--'
+
+         if( ! strcmp( &argv[ i][ j], "version"))
          {
             printf( "%s\n", MulleScionFrameworkVersion);
             return( 0);
          }
-         usage();
-         return( strcmp( &argv[ i][ 2], "help"));
-      }
-
-      if( argv[ i][ 1] != 0 && argv[ i][ 2] == 0)
-      {
-         switch( argv[ i][ 1])
-         {
-         case 'h' :
+         if( ! strcmp( &argv[ i][ j], "help"))
             usage();
-            return( 0);
-
-         case 'w' :
-            webserver = 1;
-            continue;
-
-         case 'z' :
-            compressed = 0;
-            continue;
-
-         case 'Z' :
-            compressed = 1;
-            continue;
-
-         case 'I' :
-            if( ++i >= argc)
-               break;
-            searchPath = searchPath ? searchPath : [NSMutableArray array];
-            s          = [NSString stringWithUTF8String:argv[ i]];
-            [searchPath addObjectsFromArray:[s componentsSeparatedByString:@":"]];
-            continue;
-         }
+         fail( "unknown option %s", argv[ i]);
       }
-      usage();
-      return( 1);
+
+      switch( argv[ i][ j])
+      {
+      case 'h' :
+         usage();
+
+      case '\0' : // '-'
+         goto done;
+
+      default :
+         fail( "unknown option %s", argv[ i]);
+
+      case 'v' :
+         verbosity = 1;
+         ++j;
+         if( argv[ i][ j] == 'v')
+         {
+            verbosity++;
+            ++j;
+            if( argv[ i][ j] == 'v')
+            {
+               verbosity++;
+               ++j;
+            }
+         }
+         break;
+
+      case 'w' :
+         ++j;
+         webserver = 1;
+         break;
+
+      case 'z' :
+         ++j;
+         compressed = 0;
+         break;
+
+      case 'Z' :
+         ++j;
+         compressed = 1;
+         break;
+
+      case 'I' :
+         ++j;
+         if( argv[ i][ j])
+            fail( "unknown option %s", argv[ i]);
+         if( ++i >= argc)
+            fail( "missing colon separated path after -I");
+
+         searchPath = searchPath ? searchPath : [NSMutableArray array];
+         s          = [NSString stringWithUTF8String:argv[ i]];
+         [searchPath addObjectsFromArray:[s componentsSeparatedByString:@":"]];
+         continue;
+      }
+      // no trailing garbage ? like
+      if( ! argv[ i][ j])
+         continue;     
+      fail( "unknown option %s", argv[ i]);
    }
 
-
+done:
    arguments = [NSMutableArray array];
    while( i < argc)
    {
@@ -637,6 +736,25 @@ int main( int argc, char *argv[])
       i++;
    }
 
+   if( verbosity)
+   {
+      processInfo = [NSProcessInfo processInfo];
+      [processInfo mulleSetEnvironmentValue:@"YES"
+                                     forKey:@"MULLESCION_DUMP_FILE_INCLUDES"];
+      if( verbosity > 1)
+      {
+         [processInfo mulleSetEnvironmentValue:@"YES"
+                                        forKey:@"MULLESCION_DUMP_COMMANDS"];
+         [processInfo mulleSetEnvironmentValue:@"YES"
+                                        forKey:@"MULLESCION_DUMP_EXPRESSIONS"];
+         if( verbosity > 2)
+         {
+            [processInfo mulleSetEnvironmentValue:@"YES"
+                                           forKey:@"MULLESCION_DUMP_MACROS"];
+         }
+      }
+   }
+   
 #ifndef DONT_HAVE_WEBSERVER
    if( webserver)
       return( main_www( arguments, searchPath));
