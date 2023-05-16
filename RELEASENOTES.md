@@ -1,3 +1,7 @@
+### 1860.0.1
+
+* produce artifacts on creating a release
+
 # 1860.0.0
 
 * don't use mapped file anymore as it does not work with '<(' indirection
