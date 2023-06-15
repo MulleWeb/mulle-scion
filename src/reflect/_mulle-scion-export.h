@@ -9,8 +9,15 @@
  *
  *      mulle-sde environment set MULLE_MATCH_TO_C_RUN DISABLE
  */
+#ifndef mulle_scion_export_h__
+#define mulle_scion_export_h__
+
+
 #import "MulleMarkdown+MulleScionPrinting.h"
 #import "MulleMarkdown.h"
 #import "MulleScionObjectModel+WebServer.h"
 #import "NSString+TrimTextFromExamples.h"
 #import "WebServer.h"
+
+
+#endif

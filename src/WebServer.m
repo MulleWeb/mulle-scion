@@ -124,11 +124,9 @@
 - (MulleCivetWebResponse *) webResponseForWebRequest:(MulleCivetWebRequest *) request
 {
    NSURL                        *url;
-   NSString                     *query;
    NSDictionary                 *queryDictionary;
    MulleScionTemplate           *template;
    MulleCivetWebTextResponse    *response;
-   NSData                       *utf8Data;
    NSString                     *s;
 
    url  = [request URL];
