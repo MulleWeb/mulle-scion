@@ -70,7 +70,7 @@ static void   fail( char *format, ...)
    }
 
    mulle_fprintf( stderr, "Usage:\n"
-                          "   %s [options] <input> <datasource> [output] [arguments]\n"
+                          "   %s [options] <input> [datasource] [output] [arguments]\n"
                           "\n"
                           "   The Objective-C Template processor\n"
                          "   See: https://github.com/mulle-kybernetik/MulleScion\n",
@@ -491,7 +491,6 @@ static int   _archive_main( NSArray *arguments, NSArray *searchPath, BOOL keyed)
 {
    MulleScionTemplate   *template;
    NSDictionary         *info;
-   NSEnumerator         *rover;
    NSString             *archiveName;
 
    info  = getInfoFromArguments( arguments);
