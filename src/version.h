@@ -4,24 +4,24 @@
 /*
  *  version:  major, minor, patch
  */
-#define MULLE_SCION_VERSION  ((1860 << 20) | (0 << 8) | 1)
+#define MULLE__SCION_VERSION  ((1860 << 20) | (0 << 8) | 1)
 
 
 static inline unsigned int   mulle_scion_get_version_major( void)
 {
-   return( MULLE_SCION_VERSION >> 20);
+   return( MULLE__SCION_VERSION >> 20);
 }
 
 
 static inline unsigned int   mulle_scion_get_version_minor( void)
 {
-   return( (MULLE_SCION_VERSION >> 8) & 0xFFF);
+   return( (MULLE__SCION_VERSION >> 8) & 0xFFF);
 }
 
 
 static inline unsigned int   mulle_scion_get_version_patch( void)
 {
-   return( MULLE_SCION_VERSION & 0xFF);
+   return( MULLE__SCION_VERSION & 0xFF);
 }
 
 #endif

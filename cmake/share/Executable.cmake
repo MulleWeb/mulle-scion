@@ -62,10 +62,11 @@ set_target_properties( ${EXECUTABLE_COMPILE_TARGET}
 
 target_compile_definitions( ${EXECUTABLE_COMPILE_TARGET} PRIVATE "${EXECUTABLE_UPCASE_IDENTIFIER}_BUILD")
 
-# RPATH must be ahead of add_executable
-include( InstallRpath OPTIONAL)
 
 if( LINK_PHASE)
+   # RPATH must be ahead of add_executable
+   include( InstallRpath OPTIONAL)
+
    add_executable( "${EXECUTABLE_NAME}"
       ${ALL_OBJECT_FILES}
       ${PROJECT_HEADERS}

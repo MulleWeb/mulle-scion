@@ -233,7 +233,7 @@ export MULLE_OBJC_OS_FOUNDATION_BRANCH="prerelease"
 
 
 #
-# MulleFoundationBase nodetype: ${MULLE_FOUNDATION_BASE_NODETYPE:-git}
+# MulleFoundationBase nodetype: ${MULLE_FOUNDATION_BASE_NODETYPE:-tar}
 #
 export MULLE_FOUNDATION_BASE_NODETYPE="git"
 
@@ -287,7 +287,7 @@ export MULLE__OBJC__RUNTIME_BRANCH="prerelease"
 
 
 #
-# mulle-core nodetype: ${MULLE__CORE_NODETYPE:-git}
+# mulle-core nodetype: ${MULLE__CORE_NODETYPE:-tar}
 #
 export MULLE__CORE_NODETYPE="git"
 
@@ -329,9 +329,21 @@ export MULLE__HTTP_BRANCH="prerelease"
 
 
 #
+# src/mulle-rbtree branch: ${MULLE__RBTREE_BRANCH:-*}
+#
+export MULLE__RBTREE_BRANCH="prerelease"
+
+
+#
 # src/mulle-slug branch: ${MULLE__SLUG_BRANCH:-*}
 #
 export MULLE__SLUG_BRANCH="prerelease"
+
+
+#
+# src/mulle-storage branch: ${MULLE__STORAGE_BRANCH:-*}
+#
+export MULLE__STORAGE_BRANCH="prerelease"
 
 
 #
@@ -359,9 +371,9 @@ export MULLE__VARARG_BRANCH="prerelease"
 
 
 #
-# src/mulle-aba branch: ${MULLE__ABA_BRANCH:-*}
+# src/mulle-linkedlist branch: ${MULLE__LINKEDLIST_BRANCH:-*}
 #
-export MULLE__ABA_BRANCH="prerelease"
+export MULLE__LINKEDLIST_BRANCH="prerelease"
 
 
 #
@@ -407,7 +419,7 @@ export MULLE__FPRINTF_BRANCH="prerelease"
 
 
 #
-# mulle-objc-debug nodetype: ${MULLE__OBJC__DEBUG_NODETYPE:-git}
+# mulle-objc-debug nodetype: ${MULLE__OBJC__DEBUG_NODETYPE:-tar}
 #
 export MULLE__OBJC__DEBUG_NODETYPE="git"
 
@@ -458,6 +470,72 @@ export MULLE__OBJC__LIST_URL="https://github.com/mulle-objc/mulle-objc-list.git"
 # mulle-objc-list branch: ${MULLE__OBJC__LIST_BRANCH}
 #
 export MULLE__OBJC__LIST_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCArchiverFoundation branch: ${MULLE_OBJC_ARCHIVER_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_ARCHIVER_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCContainerFoundation branch: ${MULLE_OBJC_CONTAINER_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_CONTAINER_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCKVCFoundation branch: ${MULLE_OBJC_KVC_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_KVC_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCLockFoundation branch: ${MULLE_OBJC_LOCK_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_LOCK_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCMathFoundation branch: ${MULLE_OBJC_MATH_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_MATH_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCPlistFoundation branch: ${MULLE_OBJC_PLIST_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_PLIST_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCStandardFoundation branch: ${MULLE_OBJC_STANDARD_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_STANDARD_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCTimeFoundation branch: ${MULLE_OBJC_TIME_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_TIME_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCUnicodeFoundation branch: ${MULLE_OBJC_UNICODE_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_UNICODE_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCUUIDFoundation branch: ${MULLE_OBJC_UUID_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_UUID_FOUNDATION_BRANCH="prerelease"
+
+
+#
+# src/MulleObjCValueFoundation branch: ${MULLE_OBJC_VALUE_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_VALUE_FOUNDATION_BRANCH="prerelease"
 
 
 #
