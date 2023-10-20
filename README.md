@@ -55,7 +55,6 @@ Arguments:
 Examples:
    echo '***{{ VALUE }}***' | mulle-scion - args - VALUE="VfL Bochum 1848"
    echo '***{{ __ARGV__[ 0]}}***' | mulle-scion - none - "VfL Bochum 1848"
-
 ```
 
 
@@ -148,10 +147,19 @@ mulle-sde install --prefix /usr/local \
 
 ### Manual Installation
 
-Install the [requirements](#Overview) and then install
-**mulle-scion**
-with [cmake](https://cmake.org). Here `/usr/local` is chosen as the install
-prefix:
+Install the requirements:
+
+| Requirements                                 | Description
+|----------------------------------------------|-----------------------
+| [Foundation](https://github.com/MulleFoundation/Foundation)             | 💍 MulleFoundation with improved compatibility and legacy support
+| [Foundation-startup](https://github.com/MulleFoundation/Foundation-startup)             | ▶️ Startup library for MulleFoundation
+| [MulleHoedown](https://github.com/MulleWeb/MulleHoedown)             | 💃🏼 Markdown support for mulle-objc
+| [MulleWebServer](https://github.com/MulleWeb/MulleWebServer)             | 🤽🏻‍♂️ Web Server based on civetweb for mulle-objc
+| [MulleScion](https://github.com/MulleWeb/MulleScion)             | 🌱 A modern template engine for Objective C
+
+Download the latest [tar](https://github.com/MulleWeb/mulle-scion/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/MulleWeb/mulle-scion/archive/refs/tags/latest.zip) archive and unpack it.
+
+Install **mulle-scion** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
 cmake -B build \
