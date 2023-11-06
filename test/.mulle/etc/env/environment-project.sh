@@ -31,18 +31,18 @@ export PROJECT_TYPE="none"
 #
 #
 #
-export PROJECT_LANGUAGE="c"
+export PROJECT_LANGUAGE="scion"
 
 
 #
 #
 #
-export PROJECT_DIALECT="objc"
 
 
+
 #
 #
 #
-export PROJECT_EXTENSIONS="m:aam"
+export PROJECT_EXTENSIONS="scion"
 
 
