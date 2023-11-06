@@ -1,7 +1,7 @@
 
 
-// want change here
-// want change only in second I guess
+  // want change here
+  // want change only in second I guess
 
 x  // change all
 x  // change left only
@@ -9,10 +9,10 @@ x  // change left only
 x  // change left only
 YES  // change all
 
-// dont' change target
+  // dont' change target
 
  
- x// change first parameter value only
+ x  // change first parameter value only
 
-// only change expr (second)
+  // only change expr (second)
 

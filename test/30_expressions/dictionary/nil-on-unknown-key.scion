@@ -1,6 +1,7 @@
 {%
    dict = @{ 1, @"key" };
-   if dict[ @"other" ] == nil
+   if (dict[ @"other" ]) == nil
       {{ 1 }}
    endif
 %}
+

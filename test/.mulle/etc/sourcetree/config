@@ -1,2 +1,1 @@
-mulle-testallocator;${MULLE__TESTALLOCATOR_NODETYPE:-tar};no-cmake-searchpath,no-import,no-singlephase;9be227c2-58fb-4ec4-90f0-e66005914948;${MULLE__TESTALLOCATOR_URL:-https://github.com/mulle-core/mulle-testallocator/archive/${MULLE_TAG}.tar.gz};${MULLE__TESTALLOCATOR_BRANCH};${MULLE__TESTALLOCATOR_TAG:-latest};;
 mulle-scion;${MULLE__SCION_NODETYPE:-tar};;88311c3e-82bd-41fc-86f4-978f667560cf;${MULLE__SCION_URL:-https://github.com/MulleWeb/mulle-scion/archive/${MULLE_TAG}.tar.gz};${MULLE__SCION_BRANCH};${MULLE__SCION_TAG:-latest};;
