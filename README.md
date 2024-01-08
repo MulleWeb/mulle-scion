@@ -2,7 +2,6 @@
 
 #### 🌱 A modern template engine for Objective C
 
-
 (written in an oldfashioned way)
 
 This is the command-line tool for the [MulleScion](//github.com/MulleWeb/MulleScion)
@@ -11,9 +10,6 @@ self-contained webserver. It can use JSON, Plist, XML files, even multiples
 and mixes, as a datasource for the template variables.
 
 
-| Release Version                                       | Release Notes
-|-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//mulle-scion.svg?branch=release) [![Build Status](https://github.com//mulle-scion/workflows/CI/badge.svg?branch=release)](//github.com//mulle-scion/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
 
 
@@ -114,16 +110,9 @@ tailored for use in mulle-sde projects. It's usually fresher than
 *mulle-kybernetik/MulleScion* and features get backported only on demand,
 or when I need them.
 
-## Overview
-![Overview](overview.dot.svg)
+### You are here
 
-| Requirement                                  | Description
-|----------------------------------------------|-----------------------
-| [Foundation](https://github.com/MulleFoundation/Foundation)             | 💍 MulleFoundation with improved compatibility and legacy support
-| [Foundation-startup](https://github.com/MulleFoundation/Foundation-startup)             | ▶️ Startup library for MulleFoundation
-| [MulleHoedown](https://github.com/MulleWeb/MulleHoedown)             | 💃🏼 Markdown support for mulle-objc
-| [MulleWebServer](https://github.com/MulleWeb/MulleWebServer)             | 🤽🏻‍♂️ Web Server based on civetweb for mulle-objc
-| [MulleScion](https://github.com/MulleWeb/MulleScion)             | 🌱 A modern template engine for Objective C
+![Overview](overview.dot.svg)
 
 
 ## Add
@@ -170,7 +159,7 @@ cmake --build build --config Release &&
 cmake --install build --config Release
 ```
 
-## Platforms and Compilers
+### Platforms and Compilers
 
 All platforms and compilers supported by
 [mulle-c11](//github.com/mulle-c/mulle-c11).
@@ -178,5 +167,5 @@ All platforms and compilers supported by
 
 ## Author
 
-[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
+[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK  
 
