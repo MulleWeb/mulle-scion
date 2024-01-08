@@ -156,17 +156,17 @@ static NSString  *processName( void)
    ##### #####  CODE SPECIFIC FOR MULLE SCION
    ##### */
 
-static NSDictionary  *localVariablesFromInfo( NSDictionary *info)
+static MulleScionLocals  *localVariablesFromInfo( NSDictionary *info)
 {
-   NSMutableDictionary   *sanitize;
+   MulleScionLocals   *sanitize;
 
-   sanitize = [NSMutableDictionary dictionary];
+   sanitize = [MulleScionLocals object];
    [sanitize setObject:[info objectForKey:@"MulleScionRootTemplate"]
-                forKey:@"MulleScionRootTemplate"];
+       forReadOnlyKey:@"MulleScionRootTemplate"];
    [sanitize setObject:[info objectForKey:@"MulleScionPropertyListName"]
-                forKey:@"MulleScionPropertyListName"];
-   [sanitize setObject:[info objectForKey:@"__ARGV__"]
-                forKey:@"__ARGV__"];
+       forReadOnlyKey:@"MulleScionPropertyListName"];
+   [sanitize setObject:[info objectForKey:MulleScionArgumentsKey]
+        forReadOnlyKey:MulleScionArgumentsKey];
 
    return( sanitize);
 }
@@ -259,7 +259,6 @@ static id   acquireDataSourceFromBundle( NSString *s)
 static id   acquirePropertyListFromArgs( NSArray *args)
 {
    NSMutableDictionary   *plist;
-   NSEnumerator          *rover;
    NSString              *arg;
    id                    components;
    NSString              *key;
@@ -267,8 +266,7 @@ static id   acquirePropertyListFromArgs( NSArray *args)
 
    plist = [NSMutableDictionary dictionary];
 
-   rover = [args objectEnumerator];
-   while( arg = [rover nextObject])
+   for( arg in args)
    {
       components = [arg componentsSeparatedByString:@"="];
 
@@ -435,7 +433,7 @@ static NSDictionary  *getInfoFromEnumerator( NSEnumerator *rover)
             forKey:@"output"];
    if( argv)
       [info setObject:argv
-               forKey:@"__ARGV__"];
+               forKey:MulleScionArgumentsKey];
 
    return( info);
 }

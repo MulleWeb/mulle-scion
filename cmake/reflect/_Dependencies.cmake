@@ -99,58 +99,58 @@ endif()
 # Disable for this platform: `mulle-sourcetree mark Foundation-startup no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark Foundation-startup no-cmake-sdk-<name>`
 #
-if( NOT FOUNDATION_STARTUP_LIBRARY)
-   find_library( FOUNDATION_STARTUP_LIBRARY NAMES
+if( NOT FOUNDATION__STARTUP_LIBRARY)
+   find_library( FOUNDATION__STARTUP_LIBRARY NAMES
       ${CMAKE_STATIC_LIBRARY_PREFIX}Foundation-startup${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
       ${CMAKE_STATIC_LIBRARY_PREFIX}Foundation-startup${CMAKE_STATIC_LIBRARY_SUFFIX}
       NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
    )
-   if( NOT FOUNDATION_STARTUP_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
-      find_library( FOUNDATION_STARTUP_LIBRARY NAMES
+   if( NOT FOUNDATION__STARTUP_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+      find_library( FOUNDATION__STARTUP_LIBRARY NAMES
          ${CMAKE_STATIC_LIBRARY_PREFIX}Foundation-startup${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}Foundation-startup${CMAKE_STATIC_LIBRARY_SUFFIX}
       )
    endif()
-   message( STATUS "FOUNDATION_STARTUP_LIBRARY is ${FOUNDATION_STARTUP_LIBRARY}")
+   message( STATUS "FOUNDATION__STARTUP_LIBRARY is ${FOUNDATION__STARTUP_LIBRARY}")
    #
    # The order looks ascending, but due to the way this file is read
    # it ends up being descending, which is what we need.
    #
-   if( FOUNDATION_STARTUP_LIBRARY)
+   if( FOUNDATION__STARTUP_LIBRARY)
       #
-      # Add FOUNDATION_STARTUP_LIBRARY to STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES list.
+      # Add FOUNDATION__STARTUP_LIBRARY to STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES list.
       # Disable with: `mulle-sourcetree mark Foundation-startup no-cmake-add`
       #
-      list( APPEND STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES ${FOUNDATION_STARTUP_LIBRARY})
+      list( APPEND STARTUP_ALL_LOAD_DEPENDENCY_LIBRARIES ${FOUNDATION__STARTUP_LIBRARY})
       #
       # Inherit information from dependency.
       # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
       # Disable with: `mulle-sourcetree mark Foundation-startup no-cmake-inherit`
       #
       # temporarily expand CMAKE_MODULE_PATH
-      get_filename_component( _TMP_FOUNDATION_STARTUP_ROOT "${FOUNDATION_STARTUP_LIBRARY}" DIRECTORY)
-      get_filename_component( _TMP_FOUNDATION_STARTUP_ROOT "${_TMP_FOUNDATION_STARTUP_ROOT}" DIRECTORY)
+      get_filename_component( _TMP_FOUNDATION__STARTUP_ROOT "${FOUNDATION__STARTUP_LIBRARY}" DIRECTORY)
+      get_filename_component( _TMP_FOUNDATION__STARTUP_ROOT "${_TMP_FOUNDATION__STARTUP_ROOT}" DIRECTORY)
       #
       #
       # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
       # Disable with: `mulle-sourcetree mark Foundation-startup no-cmake-dependency`
       #
-      foreach( _TMP_FOUNDATION_STARTUP_NAME "Foundation-startup")
-         set( _TMP_FOUNDATION_STARTUP_DIR "${_TMP_FOUNDATION_STARTUP_ROOT}/include/${_TMP_FOUNDATION_STARTUP_NAME}/cmake")
+      foreach( _TMP_FOUNDATION__STARTUP_NAME "Foundation-startup")
+         set( _TMP_FOUNDATION__STARTUP_DIR "${_TMP_FOUNDATION__STARTUP_ROOT}/include/${_TMP_FOUNDATION__STARTUP_NAME}/cmake")
          # use explicit path to avoid "surprises"
-         if( IS_DIRECTORY "${_TMP_FOUNDATION_STARTUP_DIR}")
-            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_FOUNDATION_STARTUP_DIR}")
+         if( IS_DIRECTORY "${_TMP_FOUNDATION__STARTUP_DIR}")
+            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_FOUNDATION__STARTUP_DIR}")
             #
-            include( "${_TMP_FOUNDATION_STARTUP_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
+            include( "${_TMP_FOUNDATION__STARTUP_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
             #
-            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_FOUNDATION_STARTUP_DIR}")
+            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_FOUNDATION__STARTUP_DIR}")
             #
-            unset( FOUNDATION_STARTUP_DEFINITIONS)
-            include( "${_TMP_FOUNDATION_STARTUP_DIR}/Definitions.cmake" OPTIONAL)
-            list( APPEND INHERITED_DEFINITIONS ${FOUNDATION_STARTUP_DEFINITIONS})
+            unset( FOUNDATION__STARTUP_DEFINITIONS)
+            include( "${_TMP_FOUNDATION__STARTUP_DIR}/Definitions.cmake" OPTIONAL)
+            list( APPEND INHERITED_DEFINITIONS ${FOUNDATION__STARTUP_DEFINITIONS})
             break()
          else()
-            message( STATUS "${_TMP_FOUNDATION_STARTUP_DIR} not found")
+            message( STATUS "${_TMP_FOUNDATION__STARTUP_DIR} not found")
          endif()
       endforeach()
       #
@@ -158,17 +158,17 @@ if( NOT FOUNDATION_STARTUP_LIBRARY)
       # Disable with: `mulle-sourcetree mark Foundation-startup no-cmake-loader`
       #
       if( NOT NO_INHERIT_OBJC_LOADERS)
-         foreach( _TMP_FOUNDATION_STARTUP_NAME "Foundation-startup")
-            set( _TMP_FOUNDATION_STARTUP_FILE "${_TMP_FOUNDATION_STARTUP_ROOT}/include/${_TMP_FOUNDATION_STARTUP_NAME}/MulleObjCLoader+${_TMP_FOUNDATION_STARTUP_NAME}.h")
-            if( EXISTS "${_TMP_FOUNDATION_STARTUP_FILE}")
-               list( APPEND INHERITED_OBJC_LOADERS ${_TMP_FOUNDATION_STARTUP_FILE})
+         foreach( _TMP_FOUNDATION__STARTUP_NAME "Foundation-startup")
+            set( _TMP_FOUNDATION__STARTUP_FILE "${_TMP_FOUNDATION__STARTUP_ROOT}/include/${_TMP_FOUNDATION__STARTUP_NAME}/MulleObjCLoader+${_TMP_FOUNDATION__STARTUP_NAME}.h")
+            if( EXISTS "${_TMP_FOUNDATION__STARTUP_FILE}")
+               list( APPEND INHERITED_OBJC_LOADERS ${_TMP_FOUNDATION__STARTUP_FILE})
                break()
             endif()
          endforeach()
       endif()
    else()
       # Disable with: `mulle-sourcetree mark Foundation-startup no-require-link`
-      message( FATAL_ERROR "FOUNDATION_STARTUP_LIBRARY was not found")
+      message( FATAL_ERROR "FOUNDATION__STARTUP_LIBRARY was not found")
    endif()
 endif()
 
@@ -415,5 +415,87 @@ if( NOT MULLE_SCION_LIBRARY)
    else()
       # Disable with: `mulle-sourcetree mark MulleScion no-require-link`
       message( FATAL_ERROR "MULLE_SCION_LIBRARY was not found")
+   endif()
+endif()
+
+
+#
+# Generated from sourcetree: 3CD88D41-82EB-4B51-B024-CE0844B782F3;MulleBashStringExpansion;no-singlephase;
+# Disable with : `mulle-sourcetree mark MulleBashStringExpansion no-link`
+# Disable for this platform: `mulle-sourcetree mark MulleBashStringExpansion no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark MulleBashStringExpansion no-cmake-sdk-<name>`
+#
+if( NOT MULLE_BASH_STRING_EXPANSION_LIBRARY)
+   find_library( MULLE_BASH_STRING_EXPANSION_LIBRARY NAMES
+      ${CMAKE_STATIC_LIBRARY_PREFIX}MulleBashStringExpansion${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+      ${CMAKE_STATIC_LIBRARY_PREFIX}MulleBashStringExpansion${CMAKE_STATIC_LIBRARY_SUFFIX}
+      MulleBashStringExpansion
+      NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
+   )
+   if( NOT MULLE_BASH_STRING_EXPANSION_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+      find_library( MULLE_BASH_STRING_EXPANSION_LIBRARY NAMES
+         ${CMAKE_STATIC_LIBRARY_PREFIX}MulleBashStringExpansion${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+         ${CMAKE_STATIC_LIBRARY_PREFIX}MulleBashStringExpansion${CMAKE_STATIC_LIBRARY_SUFFIX}
+         MulleBashStringExpansion
+      )
+   endif()
+   message( STATUS "MULLE_BASH_STRING_EXPANSION_LIBRARY is ${MULLE_BASH_STRING_EXPANSION_LIBRARY}")
+   #
+   # The order looks ascending, but due to the way this file is read
+   # it ends up being descending, which is what we need.
+   #
+   if( MULLE_BASH_STRING_EXPANSION_LIBRARY)
+      #
+      # Add MULLE_BASH_STRING_EXPANSION_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
+      # Disable with: `mulle-sourcetree mark MulleBashStringExpansion no-cmake-add`
+      #
+      list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_BASH_STRING_EXPANSION_LIBRARY})
+      #
+      # Inherit information from dependency.
+      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
+      # Disable with: `mulle-sourcetree mark MulleBashStringExpansion no-cmake-inherit`
+      #
+      # temporarily expand CMAKE_MODULE_PATH
+      get_filename_component( _TMP_MULLE_BASH_STRING_EXPANSION_ROOT "${MULLE_BASH_STRING_EXPANSION_LIBRARY}" DIRECTORY)
+      get_filename_component( _TMP_MULLE_BASH_STRING_EXPANSION_ROOT "${_TMP_MULLE_BASH_STRING_EXPANSION_ROOT}" DIRECTORY)
+      #
+      #
+      # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
+      # Disable with: `mulle-sourcetree mark MulleBashStringExpansion no-cmake-dependency`
+      #
+      foreach( _TMP_MULLE_BASH_STRING_EXPANSION_NAME "MulleBashStringExpansion")
+         set( _TMP_MULLE_BASH_STRING_EXPANSION_DIR "${_TMP_MULLE_BASH_STRING_EXPANSION_ROOT}/include/${_TMP_MULLE_BASH_STRING_EXPANSION_NAME}/cmake")
+         # use explicit path to avoid "surprises"
+         if( IS_DIRECTORY "${_TMP_MULLE_BASH_STRING_EXPANSION_DIR}")
+            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_BASH_STRING_EXPANSION_DIR}")
+            #
+            include( "${_TMP_MULLE_BASH_STRING_EXPANSION_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
+            #
+            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_BASH_STRING_EXPANSION_DIR}")
+            #
+            unset( MULLE_BASH_STRING_EXPANSION_DEFINITIONS)
+            include( "${_TMP_MULLE_BASH_STRING_EXPANSION_DIR}/Definitions.cmake" OPTIONAL)
+            list( APPEND INHERITED_DEFINITIONS ${MULLE_BASH_STRING_EXPANSION_DEFINITIONS})
+            break()
+         else()
+            message( STATUS "${_TMP_MULLE_BASH_STRING_EXPANSION_DIR} not found")
+         endif()
+      endforeach()
+      #
+      # Search for "MulleObjCLoader+<name>.h" in include directory.
+      # Disable with: `mulle-sourcetree mark MulleBashStringExpansion no-cmake-loader`
+      #
+      if( NOT NO_INHERIT_OBJC_LOADERS)
+         foreach( _TMP_MULLE_BASH_STRING_EXPANSION_NAME "MulleBashStringExpansion")
+            set( _TMP_MULLE_BASH_STRING_EXPANSION_FILE "${_TMP_MULLE_BASH_STRING_EXPANSION_ROOT}/include/${_TMP_MULLE_BASH_STRING_EXPANSION_NAME}/MulleObjCLoader+${_TMP_MULLE_BASH_STRING_EXPANSION_NAME}.h")
+            if( EXISTS "${_TMP_MULLE_BASH_STRING_EXPANSION_FILE}")
+               list( APPEND INHERITED_OBJC_LOADERS ${_TMP_MULLE_BASH_STRING_EXPANSION_FILE})
+               break()
+            endif()
+         endforeach()
+      endif()
+   else()
+      # Disable with: `mulle-sourcetree mark MulleBashStringExpansion no-require-link`
+      message( FATAL_ERROR "MULLE_BASH_STRING_EXPANSION_LIBRARY was not found")
    endif()
 endif()

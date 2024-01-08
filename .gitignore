@@ -88,3 +88,7 @@ method-coverage.csv
 optimize/
 MEMO-homebrew
 html/
+coverage*.html
+*.gcda
+*.gcno
+cola/wilted/
