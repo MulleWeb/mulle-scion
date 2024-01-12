@@ -1,3 +1,8 @@
+### 1860.0.2
+
+* mulle-scion tests dont need the old ./run-tests anymore
+* mulle-scion adds the "S Klasse" from MulleBashStringExpansion
+
 ### 1860.0.1
 
 * produce artifacts on creating a release
