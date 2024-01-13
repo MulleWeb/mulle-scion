@@ -7,7 +7,7 @@
       user="MulleWeb";
       repo="mulle-scion";
       homepage="https://github.com/MulleWeb/mulle-scion";
-      license="BSD-3-Clause"
+      license="BSD-3-Clause";
    };
    dependencies =
    (
@@ -20,7 +20,7 @@
          user="MulleFoundation";
       },
       {
-         description="▶️ Startup library for MulleFoundation";
+         description="▶️  Startup code for the Foundation (mulle-objc)";
          domain="github";
          name="Foundation-startup";
          repo="Foundation-startup";
@@ -50,6 +50,14 @@
          repo="MulleScion";
          url="https://github.com/MulleWeb/MulleScion";
          user="MulleWeb";
+      },
+      {
+         description="🤯 Bash like string expansion";
+         domain="github";
+         name="MulleBashStringExpansion";
+         repo="MulleBashStringExpansion";
+         url="https://github.com/MulleWeb/MulleBashStringExpansion";
+         user="MulleWeb";
       }
-   )
+   );
 }

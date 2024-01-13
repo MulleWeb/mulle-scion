@@ -17,7 +17,7 @@ and mixes, as a datasource for the template variables.
 
 ```
 Usage:
-   mulle-scion [options] <input> <datasource> [output] [arguments]
+   mulle-scion [options] <input> [datasource] [output] [arguments]
 
    The Objective-C Template processor
    See: https://github.com/mulle-kybernetik/MulleScion
@@ -51,6 +51,7 @@ Arguments:
 Examples:
    echo '***{{ VALUE }}***' | mulle-scion - args - VALUE="VfL Bochum 1848"
    echo '***{{ __ARGV__[ 0]}}***' | mulle-scion - none - "VfL Bochum 1848"
+
 ```
 
 
@@ -141,10 +142,11 @@ Install the requirements:
 | Requirements                                 | Description
 |----------------------------------------------|-----------------------
 | [Foundation](https://github.com/MulleFoundation/Foundation)             | 💍 MulleFoundation with improved compatibility and legacy support
-| [Foundation-startup](https://github.com/MulleFoundation/Foundation-startup)             | ▶️ Startup library for MulleFoundation
+| [Foundation-startup](https://github.com/MulleFoundation/Foundation-startup)             | ▶️  Startup code for the Foundation (mulle-objc)
 | [MulleHoedown](https://github.com/MulleWeb/MulleHoedown)             | 💃🏼 Markdown support for mulle-objc
 | [MulleWebServer](https://github.com/MulleWeb/MulleWebServer)             | 🤽🏻‍♂️ Web Server based on civetweb for mulle-objc
 | [MulleScion](https://github.com/MulleWeb/MulleScion)             | 🌱 A modern template engine for Objective C
+| [MulleBashStringExpansion](https://github.com/MulleWeb/MulleBashStringExpansion)             | 🤯 Bash like string expansion
 
 Download the latest [tar](https://github.com/MulleWeb/mulle-scion/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/MulleWeb/mulle-scion/archive/refs/tags/latest.zip) archive and unpack it.
 
