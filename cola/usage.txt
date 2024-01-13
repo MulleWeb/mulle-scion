@@ -1,5 +1,5 @@
 Usage:
-   mulle-scion [options] <input> <datasource> [output] [arguments]
+   mulle-scion [options] <input> [datasource] [output] [arguments]
 
    The Objective-C Template processor
    See: https://github.com/mulle-kybernetik/MulleScion
