@@ -22,3 +22,9 @@ export MULLE_MATCH_FILENAMES="${MULLE_MATCH_FILENAMES}:*.plist:*.scion"
 export MULLE_SOURCETREE_RESOLVE_TAG="NO"
 
 
+#
+#
+#
+export MULLE_CRAFT_USE_SCRIPTS="cosmopolitan-build"
+
+
