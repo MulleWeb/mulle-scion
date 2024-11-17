@@ -1,0 +1,15 @@
+You can concatenate strings in MulleScion with the '~' operator. `a ~ b` is
+a shortcut for writing:
+
+   [[a description] stringByAppendingString:[b description]]
+
+with some added logic, if a is nil
+
+
+#### Example
+
+``` twig
+{{ "VfL" ~ "Bochum" }} {{ 1848 }}
+```
+
+<cite>See [properties.plist](properties.plist) for the values used in this example.</cite>

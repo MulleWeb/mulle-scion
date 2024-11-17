@@ -3,6 +3,8 @@
    {
       description="🌱 A modern template engine for Objective C";
       domain="github";
+      language="c";
+      dialect="objc";
       name="mulle-scion";
       user="MulleWeb";
       repo="mulle-scion";
@@ -11,6 +13,37 @@
    };
    dependencies =
    (
+      {
+         domain="github";
+         name="mulle-cosmopolitan";
+         repo="mulle-cosmopolitan";
+         url="https://github.com/mulle-cc/mulle-cosmopolitan";
+         user="mulle-cc";
+      },
+      {
+         description="🎪 Cosmopolitan variants of gcc, clang, mulle-clang for mulle-cosmopolitan";
+         domain="github";
+         name="mulle-cosmopolitan-cc";
+         repo="mulle-cosmopolitan-cc";
+         url="https://github.com/mulle-cc/mulle-cosmopolitan-cc";
+         user="mulle-cc";
+      },
+      {
+         description="🐚 Build the musl C library for static executables";
+         domain="github";
+         name="mulle-musl";
+         repo="mulle-musl";
+         url="https://github.com/mulle-cc/mulle-musl";
+         user="mulle-cc";
+      },
+      {
+         description="🐚 Add -static flag to musl-gcc (and clang)";
+         domain="github";
+         name="mulle-musl-cc";
+         repo="mulle-musl-cc";
+         url="https://github.com/mulle-cc/mulle-musl-cc";
+         user="mulle-cc";
+      },
       {
          description="💍 MulleFoundation with improved compatibility and legacy support";
          domain="github";

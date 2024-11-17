@@ -70,7 +70,7 @@ static void   fail( char *format, ...)
    }
 
    mulle_fprintf( stderr, "Usage:\n"
-                          "   %s [options] <input> [datasource] [output] [arguments]\n"
+                          "   %s [options] [input] [datasource] [output] [arguments]\n"
                           "\n"
                           "   The Objective-C Template processor\n"
                          "   See: https://github.com/mulle-kybernetik/MulleScion\n",
@@ -370,7 +370,7 @@ static NSDictionary  *getInfoFromEnumerator( NSEnumerator *rover)
    argv         = [rover allObjects];
 
    if( ! [templateName length])
-      fail( "template is empty");
+      templateName = @"-";
    if( ! [plistPath length])
       plistPath = @"none";
    if( ! [outputName length])
