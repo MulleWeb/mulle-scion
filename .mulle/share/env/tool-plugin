@@ -49,11 +49,11 @@ ninja
 ps
 pwd;required
 readlink;required
-rmdir;required
 rm;required
+rmdir;required
 sed;required
-shasum
 sh;required
+shasum
 sleep;required
 sort;required
 stat;required
@@ -67,6 +67,7 @@ tee;required
 test;required
 touch;required
 tr;required
+tree
 true;required
 tty
 umount

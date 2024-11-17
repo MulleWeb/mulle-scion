@@ -18,6 +18,7 @@ dox/Global_Variables.scion
 dox/!_Introduction.scion
 dox/NSMakeRange.scion
 dox/block.scion
+dox/concat.scion
 dox/define.scion
 dox/__demo.scion
 dox/dot.scion

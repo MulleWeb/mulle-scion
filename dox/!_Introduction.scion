@@ -112,7 +112,7 @@ be written equivalently as
 ```
 The bag contains {{ bag.@count }} entries
 {%
-   if defined( "bag")
+   if defined( bag)
       for item in [bag allKeys]
          {{ @"   " }} {{ [bag objectForKey:item] }} {{ @"\n" }}
       endfor

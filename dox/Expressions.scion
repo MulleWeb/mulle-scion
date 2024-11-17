@@ -85,3 +85,17 @@ t
 f
 {% endif %}
 ```
+
+## Functions
+
+There is a very limited set of functions available, most of them map to the
+Foundation function, where you can get more information.
+
+
+| Function                         | Description                             |
+|----------------------------------|-----------------------------------------|
+| `defined( variable)`             | Check if a variable is defined          |
+| `NSMakeRange( a, b)`             | Creates a NSRange "object"              |
+| `NSStringFromRange( r)`          | String representation of a NSRange      |
+| `NSLocalizedString( s, comment)` | Get a localized string
+| `NSLog( format, ...)`            | Output to stderr. Useful for debugging. |

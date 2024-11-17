@@ -16,41 +16,253 @@ and mixes, as a datasource for the template variables.
 ## Usage
 
 ```
-Usage:
-   mulle-scion [options] <input> [datasource] [output] [arguments]
-
-   The Objective-C Template processor
-   See: https://github.com/mulle-kybernetik/MulleScion
-
-Options:
-   -v[vv]   : increase verbosity
-   -I       : set ':' style search path for {% includes ... %} statements
-   -w       : start webserver for dox
-   -z       : write compressed archive to outputfile
-   -Z       : write compressed keyed archive to outputfile (for IOS)
-
-Input:
-   -        : Read template from stdin
-   template : a MulleScion template path or URL
-
-Datasource:
-   -        : Read data from stdin (only if input is not stdin already)
-   args     : use arguments as datasource (see below)
-   bundle   : a NSBundle. Its NSPrincipalClass will be the datasource
-   plist    : plist files or URLs separated by ':' merged into a datasource
-   none     : empty datasource
-
-Output:
-   -        : Write result to stdout
-   file     : Write result to file
-
-Arguments:
-   key=value: key/value pairs to be used as __ARGV__ contents
-              (unless args as datasource was specified)
-
-Examples:
-   echo '***{{ VALUE }}***' | mulle-scion - args - VALUE="VfL Bochum 1848"
-   echo '***{{ __ARGV__[ 0]}}***' | mulle-scion - none - "VfL Bochum 1848"
+task 1438329 could not launch /home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/NSMutableDictionary.m:133:29: warning: sending 'id<NSCopying>' to parameter of incompatible type 'id<NSObject,NSCopying>'
+  133 |    if( ! [self objectForKey:key])
+      |                             ^~~
+/home/nat/.mulle/var/mulle-scion-3b5e26254783/dependency/Debug/include/MulleObjC/NSContainer.h:55:48: note: passing argument to parameter 'key' here
+   55 | - (id) objectForKey:(id <NSObject, NSCopying>) key;
+      |                                                ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCTimeFoundation/_MulleObjCTimeFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCValueFoundation/_MulleObjCValueFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+/home/src/srcO/MulleFoundation/MulleFoundationBase/src/MulleObjCContainerFoundation/_MulleObjCContainerFoundation-versioncheck.h:19:4: error: "MulleObjC is too new"
+   19 | #  error "MulleObjC is too new"
+      |    ^
+[0;31m[0m (36:File name too long)
 
 ```
 
@@ -141,6 +353,10 @@ Install the requirements:
 
 | Requirements                                 | Description
 |----------------------------------------------|-----------------------
+| [mulle-cosmopolitan](https://github.com/mulle-cc/mulle-cosmopolitan)             | 
+| [mulle-cosmopolitan-cc](https://github.com/mulle-cc/mulle-cosmopolitan-cc)             | 🎪 Cosmopolitan variants of gcc, clang, mulle-clang for mulle-cosmopolitan
+| [mulle-musl](https://github.com/mulle-cc/mulle-musl)             | 🐚 Build the musl C library for static executables
+| [mulle-musl-cc](https://github.com/mulle-cc/mulle-musl-cc)             | 🐚 Add -static flag to musl-gcc (and clang)
 | [Foundation](https://github.com/MulleFoundation/Foundation)             | 💍 MulleFoundation with improved compatibility and legacy support
 | [Foundation-startup](https://github.com/MulleFoundation/Foundation-startup)             | ▶️  Startup code for the Foundation (mulle-objc)
 | [MulleHoedown](https://github.com/MulleWeb/MulleHoedown)             | 💃🏼 Markdown support for mulle-objc
