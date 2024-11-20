@@ -1,3 +1,11 @@
+## 1860.1.0
+
+* remove cosmopolitan for now, until we make an effort to support it again
+
+
+* you can now omit the first '-' to directly process stdin
+
+
 ### 1860.0.2
 
 * mulle-scion tests dont need the old ./run-tests anymore
