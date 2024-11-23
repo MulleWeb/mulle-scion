@@ -1,0 +1,3 @@
+# This file is produced during reflection, when multiple sourcetrees are
+# available. You should put it into git.
+config
