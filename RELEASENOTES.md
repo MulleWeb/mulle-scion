@@ -1,3 +1,7 @@
+### 1860.1.1
+
+Various small improvements
+
 ## 1860.1.0
 
 * remove cosmopolitan for now, until we make an effort to support it again
