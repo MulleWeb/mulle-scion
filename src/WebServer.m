@@ -51,7 +51,12 @@
 
 #pragma mark - Response
 
-- (BOOL) fileExists:(NSString *) fileName
+
+//
+// this is thread safe, because documentRoot is readOnly and the rest
+// is done by NSFileManager
+//
+- (BOOL) fileExists:(NSString *) fileName MULLE_OBJC_THREADSAFE_METHOD
 {
    NSFileManager  *manager;
    NSString       *dir;
@@ -69,8 +74,11 @@
 }
 
 
+//
+// this is thread safe, because it doesn't access any WebServer state
+//
 - (id) templateWithContentsOfFile:(NSString *) fileName
-                          options:(NSDictionary *) info
+                          options:(NSDictionary *) info  MULLE_OBJC_THREADSAFE_METHOD
 {
    NSString          *wrapper;
    MulleScionParser  *parser;
@@ -171,6 +179,18 @@ static void   signal_handler( int sig_num)
    global_exit_flag = sig_num;
 }
 
+- (id) initWithCStringOptions:(char **) options
+                 documentRoot:(NSString *) root
+                   dataSource:(id) plist
+{
+   self = [self initWithCStringOptions:options];
+   if( self)
+   {
+      _dataSource   = [plist copy];
+      _documentRoot = [root copy];
+   }
+   return( self);
+}
 
 + (void) runServerWithCStringOptions:(char **) options
                         documentRoot:(NSString *) root
@@ -199,14 +219,15 @@ static void   signal_handler( int sig_num)
       break;
    }
 
-   server = [[[self alloc] initWithCStringOptions:options] autorelease];
+   server = [[[self alloc] initWithCStringOptions:options
+                                     documentRoot:root
+                                       dataSource:plist] autorelease];
+
    if( ! server)
    {
       NSLog( @"Failed to start mulle-scion web server.");
       return;
    }
-   [server setDataSource:plist];
-   [server setDocumentRoot:root];
 
    NSLog( @"%s started on port(s) %s with document root \"%s\"",
        server->_server_name,

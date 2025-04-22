@@ -38,8 +38,8 @@
 
 @interface WebServer : MulleCivetWebServer
 
-@property( retain) NSDictionary  *dataSource;
-@property( retain) NSString      *documentRoot;
+@property( copy, readonly) NSDictionary  *dataSource;
+@property( copy, readonly) NSString      *documentRoot;
 
 //
 // the WebServer doesn't know about any searchPath
