@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.15)
 
-project( mulle-scion VERSION 1860.1.1 LANGUAGES C)
+project( mulle-scion VERSION 1860.1.2 LANGUAGES C)
 
 
 
