@@ -94,3 +94,5 @@ coverage*.html
 cola/wilted/
 cmake-build-debug/
 *.bak
+.mulle/etc/make/build-dir
+vgcore.*
