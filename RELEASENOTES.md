@@ -1,3 +1,8 @@
+### 1860.1.2
+
+
+* make some properties readonly for TAO
+
 ### 1860.1.1
 
 Various small improvements
