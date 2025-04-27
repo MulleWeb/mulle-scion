@@ -17,60 +17,6 @@ export MULLE__SCION_BRANCH="prerelease"
 
 
 #
-# mulle-cosmopolitan nodetype: ${MULLE__COSMOPOLITAN_NODETYPE:-tar}
-#
-export MULLE__COSMOPOLITAN_NODETYPE="git"
-
-
-#
-# mulle-cosmopolitan url: ${MULLE__COSMOPOLITAN_URL:-https://github.com/mulle-cc/mulle-cosmopolitan/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE__COSMOPOLITAN_URL="https://github.com/mulle-cc/mulle-cosmopolitan.git"
-
-
-#
-# mulle-cosmopolitan branch: ${MULLE__COSMOPOLITAN_BRANCH}
-#
-export MULLE__COSMOPOLITAN_BRANCH="prerelease"
-
-
-#
-# cosmopolitan nodetype: ${COSMOPOLITAN_NODETYPE:-tar}
-#
-export COSMOPOLITAN_NODETYPE="git"
-
-
-#
-# cosmopolitan url: ${COSMOPOLITAN_URL:-https://github.com/mulle-cc/cosmopolitan/archive/refs/tags/${MULLE_TAG}.tar.gz}
-#
-export COSMOPOLITAN_URL="https://github.com/mulle-cc/cosmopolitan.git"
-
-
-#
-# cosmopolitan branch: ${COSMOPOLITAN_BRANCH}
-#
-export COSMOPOLITAN_BRANCH="prerelease"
-
-
-#
-# mulle-cosmopolitan-cc nodetype: ${MULLE__COSMOPOLITAN__CC_NODETYPE:-tar}
-#
-export MULLE__COSMOPOLITAN__CC_NODETYPE="git"
-
-
-#
-# mulle-cosmopolitan-cc url: ${MULLE__COSMOPOLITAN__CC_URL:-https://github.com/mulle-cc/mulle-cosmopolitan-cc/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE__COSMOPOLITAN__CC_URL="https://github.com/mulle-cc/mulle-cosmopolitan-cc.git"
-
-
-#
-# mulle-cosmopolitan-cc branch: ${MULLE__COSMOPOLITAN__CC_BRANCH}
-#
-export MULLE__COSMOPOLITAN__CC_BRANCH="prerelease"
-
-
-#
 # mulle-musl nodetype: ${MULLE__MUSL_NODETYPE:-tar}
 #
 export MULLE__MUSL_NODETYPE="git"
@@ -140,24 +86,6 @@ export MULLE_FOUNDATION_URL="https://github.com/MulleFoundation/MulleFoundation.
 # MulleFoundation branch: ${MULLE_FOUNDATION_BRANCH}
 #
 export MULLE_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# MulleObjCOSFoundation nodetype: ${MULLE_OBJC_OS_FOUNDATION_NODETYPE:-tar}
-#
-export MULLE_OBJC_OS_FOUNDATION_NODETYPE="git"
-
-
-#
-# MulleObjCOSFoundation url: ${MULLE_OBJC_OS_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCOSFoundation/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_OS_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCOSFoundation.git"
-
-
-#
-# MulleObjCOSFoundation branch: ${MULLE_OBJC_OS_FOUNDATION_BRANCH}
-#
-export MULLE_OBJC_OS_FOUNDATION_BRANCH="prerelease"
 
 
 #
@@ -320,6 +248,24 @@ export MULLE__OBJC__LIST_URL="https://github.com/mulle-objc/mulle-objc-list.git"
 # mulle-objc-list branch: ${MULLE__OBJC__LIST_BRANCH}
 #
 export MULLE__OBJC__LIST_BRANCH="prerelease"
+
+
+#
+# MulleObjCOSFoundation nodetype: ${MULLE_OBJC_OS_FOUNDATION_NODETYPE:-tar}
+#
+export MULLE_OBJC_OS_FOUNDATION_NODETYPE="git"
+
+
+#
+# MulleObjCOSFoundation url: ${MULLE_OBJC_OS_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCOSFoundation/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_OBJC_OS_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCOSFoundation.git"
+
+
+#
+# MulleObjCOSFoundation branch: ${MULLE_OBJC_OS_FOUNDATION_BRANCH}
+#
+export MULLE_OBJC_OS_FOUNDATION_BRANCH="prerelease"
 
 
 #
