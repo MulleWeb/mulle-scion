@@ -125,8 +125,8 @@ static id            acquirePropertyListOrDataSourceFromBundle( NSString *s);
 
 static NSString  *processName( void)
 {
-   NSArray        *arguments;
-   NSEnumerator   *rover;
+   NSArray            *arguments;
+   id<NSEnumerator>   rover;
 
    arguments = [[NSProcessInfo processInfo] arguments];
    rover     = [arguments objectEnumerator];
@@ -256,7 +256,7 @@ static id   acquireDataSourceFromBundle( NSString *s)
 }
 
 
-static id   acquirePropertyListFromArgs( NSArray *args)
+static id   acquirePropertyListFromArgs( id<NSArray> args)
 {
    NSMutableDictionary   *plist;
    NSString              *arg;
@@ -347,9 +347,9 @@ static id   acquirePropertyListOrDataSourceFromBundle( NSString *s)
 }
 
 
-static NSDictionary  *getInfoFromEnumerator( NSEnumerator *rover)
+static NSDictionary  *getInfoFromEnumerator( id<NSEnumerator> rover)
 {
-   NSArray               *argv;
+   id<NSArray>           argv;
    NSMutableDictionary   *info;
    NSString              *outputName;
    NSString              *plistName;
@@ -458,7 +458,7 @@ static NSFileHandle   *outputStreamWithInfo( NSDictionary *info)
 }
 
 
-static void  loadBundles( NSEnumerator *rover)
+static void  loadBundles( id<NSEnumerator> rover)
 {
    NSBundle   *bundle;
    NSString   *argument;
@@ -538,7 +538,7 @@ static int   main_www( NSArray *arguments, NSArray *searchPath)
    NSString      *path;
    NSString      *root;
    char          buf[ MAXPATHLEN + 1];
-   NSEnumerator  *rover;
+   id<NSEnumerator>  rover;
 
    rover = [arguments objectEnumerator];
    root  = [rover nextObject];
