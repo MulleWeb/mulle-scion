@@ -1,0 +1,4 @@
+{# Another mixed test #}
+{# 1 or 0 and 0 should be 1 or (0 and 0) = 1 or 0 = YES #}
+{# WRONG: (1 or 0) and 0 = 1 and 0 = NO #}
+{{ 1 or 0 and 0 }}

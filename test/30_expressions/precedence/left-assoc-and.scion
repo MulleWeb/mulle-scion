@@ -1,0 +1,4 @@
+{# Test that left-associativity works for same-precedence operators #}
+{# 1 and 1 and 0 should be (1 and 1) and 0 = 1 and 0 = NO #}
+{# (both groupings give same result, but structure matters for short-circuit) #}
+{{ 1 and 1 and 0 }}

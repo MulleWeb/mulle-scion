@@ -1,1 +1,1 @@
-mulle-scion;${MULLE__SCION_NODETYPE:-tar};;88311c3e-82bd-41fc-86f4-978f667560cf;${MULLE__SCION_URL:-https://github.com/MulleWeb/mulle-scion/archive/${MULLE_TAG}.tar.gz};${MULLE__SCION_BRANCH};${MULLE__SCION_TAG:-latest};;
+mulle-scion;${MULLE__SCION_NODETYPE:-tar};no-link;88311c3e-82bd-41fc-86f4-978f667560cf;${MULLE__SCION_URL:-https://github.com/MulleWeb/mulle-scion/archive/${MULLE_TAG}.tar.gz};${MULLE__SCION_BRANCH};${MULLE__SCION_TAG:-latest};;

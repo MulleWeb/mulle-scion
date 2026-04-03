@@ -1,0 +1,3 @@
+{# Test: < binds tighter than or #}
+{# 5 < 3 or 2 < 4 should be (5 < 3) or (2 < 4) = NO or YES = YES #}
+{{ 5 < 3 or 2 < 4 }}

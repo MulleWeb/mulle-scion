@@ -1,0 +1,4 @@
+{# Test: and binds tighter than or #}
+{# 0 and 0 or 1 should be (0 and 0) or 1 = 0 or 1 = YES #}
+{# WRONG would be: 0 and (0 or 1) = 0 and 1 = NO #}
+{{ 0 and 0 or 1 }}

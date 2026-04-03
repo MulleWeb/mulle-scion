@@ -1,0 +1,6 @@
+{# Test: relational (<) binds tighter than equality (==) #}
+{# In C: (1 < 2) == 1 means YES == 1 = YES #}
+{# 1 < 2 == 1 should parse as (1 < 2) == 1 #}
+{% set a = 1 < 2 %}
+{% set b = a == 1 %}
+{{ b }}

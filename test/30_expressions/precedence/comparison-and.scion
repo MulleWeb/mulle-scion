@@ -1,0 +1,4 @@
+{# Test: == binds tighter than and #}
+{# (1 == 1) and (0 == 0) should be YES and YES = YES #}
+{# This tests that comparisons group before logical AND #}
+{{ 1 == 1 and 0 == 0 }}

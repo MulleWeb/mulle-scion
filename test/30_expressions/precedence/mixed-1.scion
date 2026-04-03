@@ -1,0 +1,4 @@
+{# Complex mixed precedence test #}
+{# 1 or 0 and 0 or 1 and 1 #}
+{# Should be: 1 or (0 and 0) or (1 and 1) = 1 or 0 or 1 = YES #}
+{{ 1 or 0 and 0 or 1 and 1 }}
