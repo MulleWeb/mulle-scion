@@ -1,0 +1,3 @@
+{# Test: "and" binds tighter than "or" (textual operators) #}
+{# 0 and 0 or 1 should be (0 and 0) or 1 = 0 or 1 = YES #}
+{{ 0 and 0 or 1 }}

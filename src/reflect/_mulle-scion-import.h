@@ -19,7 +19,7 @@
 //    remove #import      : `mulle-sde dependency mark Foundation no-header`
 //    rename              : `mulle-sde dependency|library set Foundation include whatever.h`
 //    reorder             : `mulle-sde dependency move Foundation <up|down>`
-//    toggle #import      : `mulle-sde dependency mark Foundation [no-]import`
+//    toggle objc         : `mulle-sde dependency mark Foundation [no-]import`
 //    toggle public       : `mulle-sde dependency mark Foundation [no-]public`
 //    toggle optional     : `mulle-sde dependency mark Foundation [no-]require`
 //    remove for platform : `mulle-sde dependency mark Foundation no-platform-<uname>`
@@ -34,7 +34,7 @@
 //    remove #import      : `mulle-sde dependency mark MulleHoedown no-header`
 //    rename              : `mulle-sde dependency|library set MulleHoedown include whatever.h`
 //    reorder             : `mulle-sde dependency move MulleHoedown <up|down>`
-//    toggle #import      : `mulle-sde dependency mark MulleHoedown [no-]import`
+//    toggle objc         : `mulle-sde dependency mark MulleHoedown [no-]import`
 //    toggle public       : `mulle-sde dependency mark MulleHoedown [no-]public`
 //    toggle optional     : `mulle-sde dependency mark MulleHoedown [no-]require`
 //    remove for platform : `mulle-sde dependency mark MulleHoedown no-platform-<uname>`
@@ -49,7 +49,7 @@
 //    remove #import      : `mulle-sde dependency mark MulleWebServer no-header`
 //    rename              : `mulle-sde dependency|library set MulleWebServer include whatever.h`
 //    reorder             : `mulle-sde dependency move MulleWebServer <up|down>`
-//    toggle #import      : `mulle-sde dependency mark MulleWebServer [no-]import`
+//    toggle objc         : `mulle-sde dependency mark MulleWebServer [no-]import`
 //    toggle public       : `mulle-sde dependency mark MulleWebServer [no-]public`
 //    toggle optional     : `mulle-sde dependency mark MulleWebServer [no-]require`
 //    remove for platform : `mulle-sde dependency mark MulleWebServer no-platform-<uname>`
@@ -64,7 +64,7 @@
 //    remove #import      : `mulle-sde dependency mark MulleScion no-header`
 //    rename              : `mulle-sde dependency|library set MulleScion include whatever.h`
 //    reorder             : `mulle-sde dependency move MulleScion <up|down>`
-//    toggle #import      : `mulle-sde dependency mark MulleScion [no-]import`
+//    toggle objc         : `mulle-sde dependency mark MulleScion [no-]import`
 //    toggle public       : `mulle-sde dependency mark MulleScion [no-]public`
 //    toggle optional     : `mulle-sde dependency mark MulleScion [no-]require`
 //    remove for platform : `mulle-sde dependency mark MulleScion no-platform-<uname>`
@@ -79,7 +79,7 @@
 //    remove #import      : `mulle-sde dependency mark MulleBashStringExpansion no-header`
 //    rename              : `mulle-sde dependency|library set MulleBashStringExpansion include whatever.h`
 //    reorder             : `mulle-sde dependency move MulleBashStringExpansion <up|down>`
-//    toggle #import      : `mulle-sde dependency mark MulleBashStringExpansion [no-]import`
+//    toggle objc         : `mulle-sde dependency mark MulleBashStringExpansion [no-]import`
 //    toggle public       : `mulle-sde dependency mark MulleBashStringExpansion [no-]public`
 //    toggle optional     : `mulle-sde dependency mark MulleBashStringExpansion [no-]require`
 //    remove for platform : `mulle-sde dependency mark MulleBashStringExpansion no-platform-<uname>`

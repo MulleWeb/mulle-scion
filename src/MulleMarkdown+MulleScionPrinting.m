@@ -84,6 +84,8 @@
 {
    NSString   *s;
 
+   MULLE_C_UNUSED( locals);
+   MULLE_C_UNUSED( dataSource);
    s = [_buf scionHoedownedString:_htmlEscape];
    return( s);
 }
@@ -93,6 +95,8 @@
       localVariables:(NSMutableDictionary *) locals
           dataSource:(id <MulleScionDataSource>) dataSource
 {
+   MULLE_C_UNUSED( locals);
+   MULLE_C_UNUSED( dataSource);
    [self appendString:value];
    return( MulleScionNull);
 }

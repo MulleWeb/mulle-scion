@@ -1,0 +1,6 @@
+{# Test: ternary ?: is right-associative #}
+{# a ? b : c ? d : e should be a ? b : (c ? d : e) #}
+{# With 1 ? 2 : 0 ? 3 : 4 #}
+{#   Right-assoc: 1 ? 2 : (0 ? 3 : 4) = 2 (first cond true, return 2) #}
+{#   Left-assoc:  (1 ? 2 : 0) ? 3 : 4 = 2 ? 3 : 4 = 3 (2 is truthy) #}
+{{ 1 ? 2 : 0 ? 3 : 4 }}
