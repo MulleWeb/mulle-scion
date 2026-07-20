@@ -106,3 +106,4 @@ build-*/
 *.tmp.*
 *.test.*
 .idea
+log

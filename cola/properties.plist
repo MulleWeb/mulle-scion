@@ -10,7 +10,7 @@
       repo="mulle-scion";
       homepage="https://github.com/MulleWeb/mulle-scion";
       license="BSD-3-Clause";
-      version="1860.1.4";
+      version="1860.1.5";
    };
    dependencies =
    (
