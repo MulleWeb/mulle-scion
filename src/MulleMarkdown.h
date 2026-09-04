@@ -1,5 +1,5 @@
 //
-//  MulleMarkdown.m
+//  MulleMarkdown.h
 //  mulle-scion
 //
 //  Copyright (c) 2021 Nat! - Mulle kybernetiK.

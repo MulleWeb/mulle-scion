@@ -107,3 +107,6 @@ build-*/
 *.test.*
 .idea
 log
+.kiro/
+TODO.md
+REVIEW.md
