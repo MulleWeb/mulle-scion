@@ -59,7 +59,6 @@ src/MulleMarkdown.h
 src/MulleScionObjectModel+WebServer.h
 src/NSString+TrimTextFromExamples.h
 src/WebServer.h
-src/reflect/_mulle-scion-versioncheck.h
 src/version.h
 )
 
