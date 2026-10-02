@@ -1,0 +1,4 @@
+{{ [@"VfL" stringByAppendingFormat:@" %@", @"Bochum 1848"] }}
+{{ [@"VfL" stringByAppendingFormat:@" %@ %@ %@", @"a", @"b", @"c"] }}
+{{ [@"VfL" stringByAppendingFormat:@" 1848"] }}
+{{ [@"abcdef" substringToIndex:2] }}

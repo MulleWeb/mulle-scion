@@ -10,7 +10,7 @@
       repo="mulle-scion";
       homepage="https://github.com/MulleWeb/mulle-scion";
       license="BSD-3-Clause";
-      version="1860.1.6";
+      version="1860.1.7";
    };
    dependencies =
    (
@@ -31,20 +31,12 @@
          user="mulle-cc";
       },
       {
-         description="💍 MulleFoundation with improved compatibility and legacy support";
+         description="🌱 A modern template engine for Objective C";
          domain="github";
-         name="Foundation";
-         repo="Foundation";
-         url="https://github.com/MulleFoundation/Foundation";
-         user="MulleFoundation";
-      },
-      {
-         description="▶️  Startup code for the Foundation (mulle-objc)";
-         domain="github";
-         name="Foundation-startup";
-         repo="Foundation-startup";
-         url="https://github.com/MulleFoundation/Foundation-startup";
-         user="MulleFoundation";
+         name="MulleScion";
+         repo="MulleScion";
+         url="https://github.com/MulleWeb/MulleScion";
+         user="MulleWeb";
       },
       {
          description="💃🏼 Markdown support for mulle-objc";
@@ -55,27 +47,19 @@
          user="MulleWeb";
       },
       {
-         description="🤽🏻‍♂️ Web Server based on civetweb for mulle-objc";
-         domain="github";
-         name="MulleWebServer";
-         repo="MulleWebServer";
-         url="https://github.com/MulleWeb/MulleWebServer";
-         user="MulleWeb";
-      },
-      {
-         description="🌱 A modern template engine for Objective C";
-         domain="github";
-         name="MulleScion";
-         repo="MulleScion";
-         url="https://github.com/MulleWeb/MulleScion";
-         user="MulleWeb";
-      },
-      {
          description="🤯 Bash like string expansion";
          domain="github";
          name="MulleBashStringExpansion";
          repo="MulleBashStringExpansion";
          url="https://github.com/MulleWeb/MulleBashStringExpansion";
+         user="MulleWeb";
+      },
+      {
+         description="🤽🏻‍♂️ Web Server based on civetweb for mulle-objc";
+         domain="github";
+         name="MulleWebServer";
+         repo="MulleWebServer";
+         url="https://github.com/MulleWeb/MulleWebServer";
          user="MulleWeb";
       }
    );
