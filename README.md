@@ -51,6 +51,7 @@ Arguments:
 Examples:
    echo '***{{ VALUE }}***' | mulle-scion - args - VALUE="VfL Bochum 1848"
    echo '***{{ __ARGV__[ 0]}}***' | mulle-scion - none - "VfL Bochum 1848"
+
 ```
 
 
