@@ -53,21 +53,39 @@ export MULLE__MUSL__CC_BRANCH="prerelease"
 
 
 #
-# Foundation nodetype: ${FOUNDATION_NODETYPE:-tar}
+# MulleScion nodetype: ${MULLE_SCION_NODETYPE:-tar}
 #
-export FOUNDATION_NODETYPE="git"
+export MULLE_SCION_NODETYPE="git"
 
 
 #
-# Foundation url: ${FOUNDATION_URL:-https://github.com/MulleFoundation/Foundation/archive/${MULLE_TAG}.tar.gz}
+# MulleScion url: ${MULLE_SCION_URL:-https://github.com/MulleWeb/MulleScion/archive/${MULLE_TAG}.tar.gz}
 #
-export FOUNDATION_URL="https://github.com/MulleFoundation/Foundation.git"
+export MULLE_SCION_URL="https://github.com/MulleWeb/MulleScion.git"
 
 
 #
-# Foundation branch: ${FOUNDATION_BRANCH}
+# MulleScion branch: ${MULLE_SCION_BRANCH}
 #
-export FOUNDATION_BRANCH="prerelease"
+export MULLE_SCION_BRANCH="prerelease"
+
+
+#
+# MulleWebFoundation nodetype: ${MULLE_WEB_FOUNDATION_NODETYPE:-tar}
+#
+export MULLE_WEB_FOUNDATION_NODETYPE="git"
+
+
+#
+# MulleWebFoundation url: ${MULLE_WEB_FOUNDATION_URL:-https://github.com/MulleWeb/MulleWebFoundation/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_WEB_FOUNDATION_URL="https://github.com/MulleWeb/MulleWebFoundation.git"
+
+
+#
+# MulleWebFoundation branch: ${MULLE_WEB_FOUNDATION_BRANCH}
+#
+export MULLE_WEB_FOUNDATION_BRANCH="prerelease"
 
 
 #
@@ -305,237 +323,21 @@ export MULLE__OBJC__CC_BRANCH="prerelease"
 
 
 #
-# mulle-objc-list nodetype: ${MULLE__OBJC__LIST_NODETYPE:-tar}
+# mulle-objc-tools nodetype: ${MULLE__OBJC__TOOLS_NODETYPE:-tar}
 #
-export MULLE__OBJC__LIST_NODETYPE="git"
+export MULLE__OBJC__TOOLS_NODETYPE="git"
 
 
 #
-# mulle-objc-list url: ${MULLE__OBJC__LIST_URL:-https://github.com/mulle-objc/mulle-objc-list/archive/${MULLE_TAG}.tar.gz}
+# mulle-objc-tools url: ${MULLE__OBJC__TOOLS_URL:-https://github.com/mulle-objc/mulle-objc-tools/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE__OBJC__LIST_URL="https://github.com/mulle-objc/mulle-objc-list.git"
+export MULLE__OBJC__TOOLS_URL="https://github.com/mulle-objc/mulle-objc-tools.git"
 
 
 #
-# mulle-objc-list branch: ${MULLE__OBJC__LIST_BRANCH}
+# mulle-objc-tools branch: ${MULLE__OBJC__TOOLS_BRANCH}
 #
-export MULLE__OBJC__LIST_BRANCH="prerelease"
-
-
-#
-# MulleObjCOSFoundation nodetype: ${MULLE_OBJC_OS_FOUNDATION_NODETYPE:-tar}
-#
-export MULLE_OBJC_OS_FOUNDATION_NODETYPE="git"
-
-
-#
-# MulleObjCOSFoundation url: ${MULLE_OBJC_OS_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCOSFoundation/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_OS_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCOSFoundation.git"
-
-
-#
-# MulleObjCOSFoundation branch: ${MULLE_OBJC_OS_FOUNDATION_BRANCH}
-#
-export MULLE_OBJC_OS_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# MulleObjCDecimalFoundation nodetype: ${MULLE_OBJC_DECIMAL_FOUNDATION_NODETYPE:-tar}
-#
-export MULLE_OBJC_DECIMAL_FOUNDATION_NODETYPE="git"
-
-
-#
-# MulleObjCDecimalFoundation url: ${MULLE_OBJC_DECIMAL_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCDecimalFoundation/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_DECIMAL_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCDecimalFoundation.git"
-
-
-#
-# MulleObjCDecimalFoundation branch: ${MULLE_OBJC_DECIMAL_FOUNDATION_BRANCH}
-#
-export MULLE_OBJC_DECIMAL_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# mulle-objc-list nodetype: ${MULLE_OBJC_LIST_NODETYPE:-tar}
-#
-export MULLE_OBJC_LIST_NODETYPE="git"
-
-
-#
-# mulle-objc-list url: ${MULLE_OBJC_LIST_URL:-https://github.com/mulle-objc/mulle-objc-list/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_LIST_URL="https://github.com/mulle-objc/mulle-objc-list.git"
-
-
-#
-# mulle-objc-list branch: ${MULLE_OBJC_LIST_BRANCH}
-#
-export MULLE_OBJC_LIST_BRANCH="prerelease"
-
-
-#
-# MulleObjCCalendarFoundation nodetype: ${MULLE_OBJC_CALENDAR_FOUNDATION_NODETYPE:-tar}
-#
-export MULLE_OBJC_CALENDAR_FOUNDATION_NODETYPE="git"
-
-
-#
-# MulleObjCCalendarFoundation url: ${MULLE_OBJC_CALENDAR_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCCalendarFoundation/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_CALENDAR_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCCalendarFoundation.git"
-
-
-#
-# MulleObjCCalendarFoundation branch: ${MULLE_OBJC_CALENDAR_FOUNDATION_BRANCH}
-#
-export MULLE_OBJC_CALENDAR_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# MulleObjCExpatFoundation nodetype: ${MULLE_OBJC_EXPAT_FOUNDATION_NODETYPE:-tar}
-#
-export MULLE_OBJC_EXPAT_FOUNDATION_NODETYPE="git"
-
-
-#
-# MulleObjCExpatFoundation url: ${MULLE_OBJC_EXPAT_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCExpatFoundation/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_EXPAT_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCExpatFoundation.git"
-
-
-#
-# MulleObjCExpatFoundation branch: ${MULLE_OBJC_EXPAT_FOUNDATION_BRANCH}
-#
-export MULLE_OBJC_EXPAT_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# MulleBase64 nodetype: ${MULLE_BASE64_NODETYPE:-tar}
-#
-export MULLE_BASE64_NODETYPE="git"
-
-
-#
-# MulleBase64 url: ${MULLE_BASE64_URL:-https://github.com/MulleWeb/MulleBase64/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_BASE64_URL="https://github.com/MulleWeb/MulleBase64.git"
-
-
-#
-# MulleBase64 branch: ${MULLE_BASE64_BRANCH}
-#
-export MULLE_BASE64_BRANCH="prerelease"
-
-
-#
-# MulleObjCInetOSFoundation nodetype: ${MULLE_OBJC_INET_OS_FOUNDATION_NODETYPE:-tar}
-#
-export MULLE_OBJC_INET_OS_FOUNDATION_NODETYPE="git"
-
-
-#
-# MulleObjCInetOSFoundation url: ${MULLE_OBJC_INET_OS_FOUNDATION_URL:-https://github.com/MulleFoundation/MulleObjCInetOSFoundation/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_INET_OS_FOUNDATION_URL="https://github.com/MulleFoundation/MulleObjCInetOSFoundation.git"
-
-
-#
-# MulleObjCInetOSFoundation branch: ${MULLE_OBJC_INET_OS_FOUNDATION_BRANCH}
-#
-export MULLE_OBJC_INET_OS_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# MulleObjCInetFoundation nodetype: ${MULLE_OBJC_INET_FOUNDATION_NODETYPE:-tar}
-#
-export MULLE_OBJC_INET_FOUNDATION_NODETYPE="git"
-
-
-#
-# MulleObjCInetFoundation url: ${MULLE_OBJC_INET_FOUNDATION_URL:-https://github.com/MulleWeb/MulleObjCInetFoundation/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_INET_FOUNDATION_URL="https://github.com/MulleWeb/MulleObjCInetFoundation.git"
-
-
-#
-# MulleObjCInetFoundation branch: ${MULLE_OBJC_INET_FOUNDATION_BRANCH}
-#
-export MULLE_OBJC_INET_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# MulleObjCHTTPFoundation nodetype: ${MULLE_OBJC_HTTP_FOUNDATION_NODETYPE:-tar}
-#
-export MULLE_OBJC_HTTP_FOUNDATION_NODETYPE="git"
-
-
-#
-# MulleObjCHTTPFoundation url: ${MULLE_OBJC_HTTP_FOUNDATION_URL:-https://github.com/MulleWeb/MulleObjCHTTPFoundation/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_OBJC_HTTP_FOUNDATION_URL="https://github.com/MulleWeb/MulleObjCHTTPFoundation.git"
-
-
-#
-# MulleObjCHTTPFoundation branch: ${MULLE_OBJC_HTTP_FOUNDATION_BRANCH}
-#
-export MULLE_OBJC_HTTP_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# mulle-objc-compat nodetype: ${MULLE__OBJC__COMPAT_NODETYPE:-tar}
-#
-export MULLE__OBJC__COMPAT_NODETYPE="git"
-
-
-#
-# mulle-objc-compat url: ${MULLE__OBJC__COMPAT_URL:-https://github.com/mulle-objc/mulle-objc-compat/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE__OBJC__COMPAT_URL="https://github.com/mulle-objc/mulle-objc-compat.git"
-
-
-#
-# mulle-objc-compat branch: ${MULLE__OBJC__COMPAT_BRANCH}
-#
-export MULLE__OBJC__COMPAT_BRANCH="prerelease"
-
-
-#
-# objc-compat nodetype: ${OBJC__COMPAT_NODETYPE:-tar}
-#
-export OBJC__COMPAT_NODETYPE="git"
-
-
-#
-# objc-compat url: ${OBJC__COMPAT_URL:-https://github.com/MulleFoundation/objc-compat/archive/${MULLE_TAG}.tar.gz}
-#
-export OBJC__COMPAT_URL="https://github.com/MulleFoundation/objc-compat.git"
-
-
-#
-# objc-compat branch: ${OBJC__COMPAT_BRANCH}
-#
-export OBJC__COMPAT_BRANCH="prerelease"
-
-
-#
-# Foundation-startup nodetype: ${FOUNDATION__STARTUP_NODETYPE:-tar}
-#
-export FOUNDATION__STARTUP_NODETYPE="git"
-
-
-#
-# Foundation-startup url: ${FOUNDATION__STARTUP_URL:-https://github.com/MulleFoundation/Foundation-startup/archive/${MULLE_TAG}.tar.gz}
-#
-export FOUNDATION__STARTUP_URL="https://github.com/MulleFoundation/Foundation-startup.git"
-
-
-#
-# Foundation-startup branch: ${FOUNDATION__STARTUP_BRANCH}
-#
-export FOUNDATION__STARTUP_BRANCH="prerelease"
+export MULLE__OBJC__TOOLS_BRANCH="prerelease"
 
 
 #
@@ -554,6 +356,24 @@ export MULLE_HOEDOWN_URL="https://github.com/MulleWeb/MulleHoedown.git"
 # MulleHoedown branch: ${MULLE_HOEDOWN_BRANCH}
 #
 export MULLE_HOEDOWN_BRANCH="prerelease"
+
+
+#
+# MulleBashStringExpansion nodetype: ${MULLE_BASH_STRING_EXPANSION_NODETYPE:-tar}
+#
+export MULLE_BASH_STRING_EXPANSION_NODETYPE="git"
+
+
+#
+# MulleBashStringExpansion url: ${MULLE_BASH_STRING_EXPANSION_URL:-https://github.com/MulleWeb/MulleBashStringExpansion/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE_BASH_STRING_EXPANSION_URL="https://github.com/MulleWeb/MulleBashStringExpansion.git"
+
+
+#
+# MulleBashStringExpansion branch: ${MULLE_BASH_STRING_EXPANSION_BRANCH}
+#
+export MULLE_BASH_STRING_EXPANSION_BRANCH="prerelease"
 
 
 #
@@ -611,56 +431,20 @@ export CIVETWEB_BRANCH="prerelease"
 
 
 #
-# MulleObjCJSMNFoundation nodetype: ${MULLE_OBJC_JSMN_FOUNDATION_NODETYPE:-tar}
+# MulleFoundation-startup nodetype: ${MULLE_FOUNDATION__STARTUP_NODETYPE:-tar}
 #
-export MULLE_OBJC_JSMN_FOUNDATION_NODETYPE="git"
+export MULLE_FOUNDATION__STARTUP_NODETYPE="git"
 
 
 #
-# MulleObjCJSMNFoundation url: ${MULLE_OBJC_JSMN_FOUNDATION_URL:-https://github.com/MulleWeb/MulleObjCJSMNFoundation/archive/${MULLE_TAG}.tar.gz}
+# MulleFoundation-startup url: ${MULLE_FOUNDATION__STARTUP_URL:-https://github.com/MulleFoundation/MulleFoundation-startup/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE_OBJC_JSMN_FOUNDATION_URL="https://github.com/MulleWeb/MulleObjCJSMNFoundation.git"
+export MULLE_FOUNDATION__STARTUP_URL="https://github.com/MulleFoundation/MulleFoundation-startup.git"
 
 
 #
-# MulleObjCJSMNFoundation branch: ${MULLE_OBJC_JSMN_FOUNDATION_BRANCH}
+# MulleFoundation-startup branch: ${MULLE_FOUNDATION__STARTUP_BRANCH}
 #
-export MULLE_OBJC_JSMN_FOUNDATION_BRANCH="prerelease"
-
-
-#
-# MulleScion nodetype: ${MULLE_SCION_NODETYPE:-tar}
-#
-export MULLE_SCION_NODETYPE="git"
-
-
-#
-# MulleScion url: ${MULLE_SCION_URL:-https://github.com/MulleWeb/MulleScion/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_SCION_URL="https://github.com/MulleWeb/MulleScion.git"
-
-
-#
-# MulleScion branch: ${MULLE_SCION_BRANCH}
-#
-export MULLE_SCION_BRANCH="prerelease"
-
-
-#
-# MulleBashStringExpansion nodetype: ${MULLE_BASH_STRING_EXPANSION_NODETYPE:-tar}
-#
-export MULLE_BASH_STRING_EXPANSION_NODETYPE="git"
-
-
-#
-# MulleBashStringExpansion url: ${MULLE_BASH_STRING_EXPANSION_URL:-https://github.com/MulleWeb/MulleBashStringExpansion/archive/${MULLE_TAG}.tar.gz}
-#
-export MULLE_BASH_STRING_EXPANSION_URL="https://github.com/MulleWeb/MulleBashStringExpansion.git"
-
-
-#
-# MulleBashStringExpansion branch: ${MULLE_BASH_STRING_EXPANSION_BRANCH}
-#
-export MULLE_BASH_STRING_EXPANSION_BRANCH="prerelease"
+export MULLE_FOUNDATION__STARTUP_BRANCH="prerelease"
 
 
