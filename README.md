@@ -152,6 +152,7 @@ Install the requirements:
 | [MulleHoedown](https://github.com/MulleWeb/MulleHoedown)             | 💃🏼 Markdown support for mulle-objc
 | [MulleBashStringExpansion](https://github.com/MulleWeb/MulleBashStringExpansion)             | 🤯 Bash like string expansion
 | [MulleWebServer](https://github.com/MulleWeb/MulleWebServer)             | 🤽🏻‍♂️ Web Server based on civetweb for mulle-objc
+| [MulleFoundation-startup](https://github.com/MulleFoundation/MulleFoundation-startup)             | ▶️  Startup code for the MulleFoundation
 
 Download the latest [tar](https://github.com/MulleWeb/mulle-scion/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/MulleWeb/mulle-scion/archive/refs/tags/latest.zip) archive and unpack it.
 

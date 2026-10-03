@@ -25,7 +25,7 @@ export MULLE_SOURCETREE_RESOLVE_TAG="NO"
 #
 #
 #
-export MULLE_CRAFT_USE_SCRIPTS="cosmopolitan-build"
+export MULLE_CRAFT_USE_SCRIPTS="cosmopolitan-build,openssl-build.darwin"
 
 
 #
